@@ -38,6 +38,8 @@ class Response
     const SUCCESSFULLY_GET_USER = 'Successfully get all user';
     const SUCCESSFULLY_CREATED_USER = 'Successfully created user';
     const SUCCESSFULLY_UPDATED_USER = 'Successfully updated user';
+    const SUCCESSFULLY_SET_ROLE = 'Successfully set role';
+    const SUCCESSFULLY_GET_USER_ROLES = 'Successfully get all user with roles';
 
     //Roles
     const SUCCESSFULLY_GET_ALL_ROLES = 'Successfully get all roles';
