@@ -14,4 +14,5 @@ interface IUserRepository
 
     function setUserRoles($user_id, $role_ids);
     function getUserRoles($id);
+    function getByUsername($username);
 }

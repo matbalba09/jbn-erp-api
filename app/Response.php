@@ -40,6 +40,7 @@ class Response
     const SUCCESSFULLY_UPDATED_USER = 'Successfully updated user';
     const SUCCESSFULLY_SET_ROLE = 'Successfully set role';
     const SUCCESSFULLY_GET_USER_ROLES = 'Successfully get all user with roles';
+    const FAILED_TO_CREATE_USER = 'User already exists';
 
     //Roles
     const SUCCESSFULLY_GET_ALL_ROLES = 'Successfully get all roles';

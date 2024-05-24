@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('v1')->group(function () {
 
     Route::get('Heartbeat', [HeartbeatController::class, 'Heartbeat']);
+    Route::post('login', [UserController::class, 'login']);
 
     Route::prefix('user')->group(function () {
         Route::get('/', [UserController::class, 'index']);

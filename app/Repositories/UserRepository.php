@@ -32,7 +32,7 @@ class UserRepository implements IUserRepository
         $user->roles->each(function ($role) {
             $role->setHidden(['pivot']);
         });
-        
+
         return $user;
     }
 
@@ -40,8 +40,14 @@ class UserRepository implements IUserRepository
     {
         $validatedData = $request->validated();
         $validatedData['is_deleted'] = Response::FALSE;
-        $user = User::create($validatedData);
-        return $user;
+        $isExist = User::where('username', $validatedData['username'])->first();
+
+        if (!$isExist) {
+            $user = User::create($validatedData);
+            return $user;
+        } else {
+            return null;
+        }
     }
 
     function update(UpdateUserRequest $request, $id)
@@ -78,12 +84,29 @@ class UserRepository implements IUserRepository
     {
         $user = User::findOrFail($id);
         $roles = Role::whereIn('id', $role_ids)->get();
-        
+
         $user->roles()->sync($roles);
         $user->roles->each(function ($role) {
             $role->setHidden(['pivot']);
         });
 
         return $user;
+    }
+
+    function getByUsername($username)
+    {
+        $user = User::where('username', $username)
+            ->where('is_deleted', Response::FALSE)
+            ->first();
+
+        if (!$user) {
+            return null;
+        }else{
+            $user->roles->each(function ($role) {
+                $role->setHidden(['pivot']);
+            });
+
+            return $user;
+        }
     }
 }
