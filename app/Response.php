@@ -32,7 +32,7 @@ class Response
     const INVALID_CREDENTIAL = 'Invalid Credentials';
     const INVALID_EMAIL = 'Email already exists';
     const SUCCESSFULLY_LOGGED_IN = 'Successfully Logged In';
-    const INCORRECT_LOGIN_INPUT = 'Please input email';
+    const INCORRECT_LOGIN_INPUT = 'Please input username';
     const USER_NOT_FOUND = 'User not found';
     const SUCCESSFULLY_GET_ALL_USERS = 'Successfully get all users';
     const SUCCESSFULLY_GET_USER = 'Successfully get all user';
