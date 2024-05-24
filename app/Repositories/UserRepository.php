@@ -29,6 +29,10 @@ class UserRepository implements IUserRepository
     function getById($id)
     {
         $user = User::findOrFail($id);
+        $user->roles->each(function ($role) {
+            $role->setHidden(['pivot']);
+        });
+        
         return $user;
     }
 
