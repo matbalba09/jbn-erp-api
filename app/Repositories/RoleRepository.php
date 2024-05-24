@@ -14,7 +14,7 @@ class RoleRepository implements IRoleRepository
 
     function getAll()
     {
-        $roles = Role::where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
+        $roles = Role::where('is_deleted', Response::FALSE)->orderBy('created_at', 'asc')->get();
         return $roles;
     }
 

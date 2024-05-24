@@ -16,6 +16,13 @@ class UserRepository implements IUserRepository
     function getAll()
     {
         $users = User::where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
+
+        $users->each(function ($user) {
+            $user->roles->each(function ($role) {
+                $role->setHidden(['pivot']);
+            });
+        });
+
         return $users;
     }
 
