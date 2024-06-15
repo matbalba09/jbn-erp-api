@@ -2,8 +2,8 @@
 
 namespace App\Repositories\Interface;
 
-use App\Http\Requests\CreateCustomerRequest;
-use App\Http\Requests\UpdateCustomerRequest;
+use App\Http\Requests\CreateInventoryRequest;
+use App\Http\Requests\UpdateInventoryRequest;
 
 interface IInventoryRepository
 {

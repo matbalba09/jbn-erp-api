@@ -47,4 +47,88 @@ class Response
     const SUCCESSFULLY_GET_ROLE = 'Successfully get all role';
     const SUCCESSFULLY_CREATED_ROLE = 'Successfully created role';
     const SUCCESSFULLY_UPDATED_ROLE = 'Successfully updated role';
+
+    //Customers
+    const SUCCESSFULLY_GET_ALL_CUSTOMERS = 'Successfully get all customers';
+    const SUCCESSFULLY_GET_CUSTOMER = 'Successfully get all customer';
+    const SUCCESSFULLY_CREATED_CUSTOMER = 'Successfully created customer';
+    const SUCCESSFULLY_UPDATED_CUSTOMER = 'Successfully updated customer';
+    const SUCCESSFULLY_DELETED_CUSTOMER = 'Successfully deleted customer';
+
+    //Inventories
+    const SUCCESSFULLY_GET_ALL_INVENTORIES = 'Successfully get all inventories';
+    const SUCCESSFULLY_GET_INVENTORY = 'Successfully get all inventory';
+    const SUCCESSFULLY_CREATED_INVENTORY = 'Successfully created inventory';
+    const SUCCESSFULLY_UPDATED_INVENTORY = 'Successfully updated inventory';
+    const SUCCESSFULLY_DELETED_INVENTORY = 'Successfully deleted inventory';
+
+    //InventoryDetails
+    const SUCCESSFULLY_GET_ALL_INVENTORY_DETAILS = 'Successfully get all inventory details';
+    const SUCCESSFULLY_GET_INVENTORY_DETAIL = 'Successfully get all inventory detail';
+    const SUCCESSFULLY_CREATED_INVENTORY_DETAIL = 'Successfully created inventory detail';
+    const SUCCESSFULLY_UPDATED_INVENTORY_DETAIL = 'Successfully updated inventory detail';
+    const SUCCESSFULLY_DELETED_INVENTORY_DETAIL = 'Successfully deleted inventory detail';
+
+    //Orders
+    const SUCCESSFULLY_GET_ALL_ORDERS = 'Successfully get all orders';
+    const SUCCESSFULLY_GET_ORDER = 'Successfully get all order';
+    const SUCCESSFULLY_CREATED_ORDER = 'Successfully created order';
+    const SUCCESSFULLY_UPDATED_ORDER = 'Successfully updated order';
+    const SUCCESSFULLY_DELETED_ORDER = 'Successfully deleted order';
+
+    //OrderDetails
+    const SUCCESSFULLY_GET_ALL_ORDER_DETAILS = 'Successfully get all order details';
+    const SUCCESSFULLY_GET_ORDER_DETAIL = 'Successfully get all order detail';
+    const SUCCESSFULLY_CREATED_ORDER_DETAIL = 'Successfully created order detail';
+    const SUCCESSFULLY_UPDATED_ORDER_DETAIL = 'Successfully updated order detail';
+    const SUCCESSFULLY_DELETED_ORDER_DETAIL = 'Successfully deleted order detail';
+
+    //Products
+    const SUCCESSFULLY_GET_ALL_PRODUCTS = 'Successfully get all products';
+    const SUCCESSFULLY_GET_PRODUCT = 'Successfully get all product';
+    const SUCCESSFULLY_CREATED_PRODUCT = 'Successfully created product';
+    const SUCCESSFULLY_UPDATED_PRODUCT = 'Successfully updated product';
+    const SUCCESSFULLY_DELETED_PRODUCT = 'Successfully deleted product';
+
+    //PurchaseOrders
+    const SUCCESSFULLY_GET_ALL_PURCHASE_ORDERS = 'Successfully get all purchase orders';
+    const SUCCESSFULLY_GET_PURCHASE_ORDER = 'Successfully get all purchase order';
+    const SUCCESSFULLY_CREATED_PURCHASE_ORDER = 'Successfully created purchase order';
+    const SUCCESSFULLY_UPDATED_PURCHASE_ORDER = 'Successfully updated purchase order';
+    const SUCCESSFULLY_DELETED_PURCHASE_ORDER = 'Successfully deleted purchase order';
+
+    //PurchaseRequisitionSlips
+    const SUCCESSFULLY_GET_ALL_PURCHASE_REQUISITION_SLIPS = 'Successfully get all purchase requisition slips';
+    const SUCCESSFULLY_GET_PURCHASE_REQUISITION_SLIP = 'Successfully get all purchase requisition slip';
+    const SUCCESSFULLY_CREATED_PURCHASE_REQUISITION_SLIP = 'Successfully created purchase requisition slip';
+    const SUCCESSFULLY_UPDATED_PURCHASE_REQUISITION_SLIP = 'Successfully updated purchase requisition slip';
+    const SUCCESSFULLY_DELETED_PURCHASE_REQUISITION_SLIP = 'Successfully deleted purchase requisition slip';
+
+    //PurchaseRequisitionSlipDetails
+    const SUCCESSFULLY_GET_ALL_PURCHASE_REQUISITION_SLIP_DETAILS = 'Successfully get all purchase requisition slip details';
+    const SUCCESSFULLY_GET_PURCHASE_REQUISITION_SLIP_DETAIL = 'Successfully get all purchase requisition slip detail';
+    const SUCCESSFULLY_CREATED_PURCHASE_REQUISITION_SLIP_DETAIL = 'Successfully created purchase requisition slip detail';
+    const SUCCESSFULLY_UPDATED_PURCHASE_REQUISITION_SLIP_DETAIL = 'Successfully updated purchase requisition slip detail';
+    const SUCCESSFULLY_DELETED_PURCHASE_REQUISITION_SLIP_DETAIL = 'Successfully deleted purchase requisition slip detail';
+
+    //Quotations
+    const SUCCESSFULLY_GET_ALL_QUOTATIONS = 'Successfully get all quotations';
+    const SUCCESSFULLY_GET_QUOTATION = 'Successfully get all quotation';
+    const SUCCESSFULLY_CREATED_QUOTATION = 'Successfully created quotation';
+    const SUCCESSFULLY_UPDATED_QUOTATION = 'Successfully updated quotation';
+    const SUCCESSFULLY_DELETED_QUOTATION = 'Successfully deleted quotation';
+
+    //QuotationDetails
+    const SUCCESSFULLY_GET_ALL_QUOTATION_DETAILS = 'Successfully get all quotation details';
+    const SUCCESSFULLY_GET_QUOTATION_DETAIL = 'Successfully get all quotation detail';
+    const SUCCESSFULLY_CREATED_QUOTATION_DETAIL = 'Successfully created quotation detail';
+    const SUCCESSFULLY_UPDATED_QUOTATION_DETAIL = 'Successfully updated quotation detail';
+    const SUCCESSFULLY_DELETED_QUOTATION_DETAIL = 'Successfully deleted quotation detail';
+    
+    //Suppliers
+    const SUCCESSFULLY_GET_ALL_SUPPLIERS = 'Successfully get all suppliers';
+    const SUCCESSFULLY_GET_SUPPLIER = 'Successfully get all supplier';
+    const SUCCESSFULLY_CREATED_SUPPLIER = 'Successfully created supplier';
+    const SUCCESSFULLY_UPDATED_SUPPLIER = 'Successfully updated supplier';
+    const SUCCESSFULLY_DELETED_SUPPLIER = 'Successfully deleted supplier';
 }
