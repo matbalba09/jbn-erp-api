@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('order_no')->nullable();
             $table->string('quotation_no')->nullable();
             $table->string('quotation_date')->nullable();
-            $table->decimal('total_price', 6, 2)->nullable();
+            $table->decimal('total_price', 10, 2)->nullable();
             $table->string('remarks')->nullable();
             $table->timestamps();
         });

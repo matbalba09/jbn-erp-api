@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('quotation_no')->nullable();
             $table->string('product_name')->nullable();
             $table->integer('quantity')->nullable();
-            $table->decimal('unit_price', 6, 2)->nullable();
-            $table->decimal('total_price', 6, 2)->nullable();
+            $table->decimal('unit_price', 10, 2)->nullable();
+            $table->decimal('total_price', 10, 2)->nullable();
             $table->timestamps();
         });
     }
