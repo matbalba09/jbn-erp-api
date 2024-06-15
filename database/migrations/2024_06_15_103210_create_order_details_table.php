@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('order_details', function (Blueprint $table) {
             $table->id();
             $table->string('order_no')->nullable();
-            $table->string('product_name')->nullable();
-            $table->string('description')->nullable();
+            $table->integer('product_id')->nullable();
             $table->integer('quantity')->nullable();
             $table->decimal('unit_price', 10, 2)->nullable();
             $table->decimal('total_price', 10, 2)->nullable();
+            $table->string('remarks')->nullable();
             $table->timestamps();
         });
     }

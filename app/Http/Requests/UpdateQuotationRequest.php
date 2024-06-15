@@ -25,7 +25,11 @@ class UpdateQuotationRequest extends FormRequest
             'order_no' => 'nullable|string',
             'quotation_no' => 'nullable|string',
             'quotation_date' => 'nullable|string',
+            'valid_until' => 'nullable|string',
             'total_price' => 'nullable|numeric',
+            'requested_by' => 'nullable|integer',
+            'approved_by' => 'nullable|integer',
+            'received_by' => 'nullable|string',
             'remarks' => 'nullable|string',
         ];
     }

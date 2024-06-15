@@ -11,7 +11,7 @@ class QuotationDetail extends Model
 
     protected $fillable = [
         'quotation_no',
-        'product_name',
+        'product_id',
         'quantity',
         'unit_price',
         'total_price',

@@ -5,16 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PurchaseRequisitionSlipDetail extends Model
+class PurchaseRequisitionDetail extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'purchase_requisition_slip_no',
+        'prs_no',
         'supplier',
-        'item',
+        'name',
+        'uom',
         'quantity',
+        'requisition_type',
+        'unit_price',
+        'total_price',
         'remarks',
-        'status',
     ];
 }

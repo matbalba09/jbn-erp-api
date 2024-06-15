@@ -22,10 +22,11 @@ class UpdatePurchaseOrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'purchase_requisition_slip_detail_id' => 'nullable|integer',
-            'supplier' => 'nullable|string',
-            'description' => 'nullable|string',
-            'purchase_order_date' => 'nullable|string',
+            'purchase_requisition_id' => 'nullable|integer',
+            'order_no' => 'nullable|string',
+            'supplier_id' => 'nullable|integer',
+            'status' => 'nullable|string',
+            'po_date' => 'nullable|string',
             'remarks' => 'nullable|string',
         ];
     }

@@ -62,12 +62,12 @@ class Response
     const SUCCESSFULLY_UPDATED_INVENTORY = 'Successfully updated inventory';
     const SUCCESSFULLY_DELETED_INVENTORY = 'Successfully deleted inventory';
 
-    //InventoryDetails
-    const SUCCESSFULLY_GET_ALL_INVENTORY_DETAILS = 'Successfully get all inventory details';
-    const SUCCESSFULLY_GET_INVENTORY_DETAIL = 'Successfully get all inventory detail';
-    const SUCCESSFULLY_CREATED_INVENTORY_DETAIL = 'Successfully created inventory detail';
-    const SUCCESSFULLY_UPDATED_INVENTORY_DETAIL = 'Successfully updated inventory detail';
-    const SUCCESSFULLY_DELETED_INVENTORY_DETAIL = 'Successfully deleted inventory detail';
+    //InventoryTransactions
+    const SUCCESSFULLY_GET_ALL_INVENTORY_TRANSACTIONS = 'Successfully get all inventory transactions';
+    const SUCCESSFULLY_GET_INVENTORY_TRANSACTION = 'Successfully get all inventory transaction';
+    const SUCCESSFULLY_CREATED_INVENTORY_TRANSACTION = 'Successfully created inventory transaction';
+    const SUCCESSFULLY_UPDATED_INVENTORY_TRANSACTION = 'Successfully updated inventory transaction';
+    const SUCCESSFULLY_DELETED_INVENTORY_TRANSACTION = 'Successfully deleted inventory transaction';
 
     //Orders
     const SUCCESSFULLY_GET_ALL_ORDERS = 'Successfully get all orders';
@@ -97,19 +97,19 @@ class Response
     const SUCCESSFULLY_UPDATED_PURCHASE_ORDER = 'Successfully updated purchase order';
     const SUCCESSFULLY_DELETED_PURCHASE_ORDER = 'Successfully deleted purchase order';
 
-    //PurchaseRequisitionSlips
-    const SUCCESSFULLY_GET_ALL_PURCHASE_REQUISITION_SLIPS = 'Successfully get all purchase requisition slips';
-    const SUCCESSFULLY_GET_PURCHASE_REQUISITION_SLIP = 'Successfully get all purchase requisition slip';
-    const SUCCESSFULLY_CREATED_PURCHASE_REQUISITION_SLIP = 'Successfully created purchase requisition slip';
-    const SUCCESSFULLY_UPDATED_PURCHASE_REQUISITION_SLIP = 'Successfully updated purchase requisition slip';
-    const SUCCESSFULLY_DELETED_PURCHASE_REQUISITION_SLIP = 'Successfully deleted purchase requisition slip';
+    //PurchaseRequisitions
+    const SUCCESSFULLY_GET_ALL_PURCHASE_REQUISITIONS = 'Successfully get all purchase requisitions';
+    const SUCCESSFULLY_GET_PURCHASE_REQUISITION = 'Successfully get all purchase requisition';
+    const SUCCESSFULLY_CREATED_PURCHASE_REQUISITION = 'Successfully created purchase requisition';
+    const SUCCESSFULLY_UPDATED_PURCHASE_REQUISITION = 'Successfully updated purchase requisition';
+    const SUCCESSFULLY_DELETED_PURCHASE_REQUISITION = 'Successfully deleted purchase requisition';
 
-    //PurchaseRequisitionSlipDetails
-    const SUCCESSFULLY_GET_ALL_PURCHASE_REQUISITION_SLIP_DETAILS = 'Successfully get all purchase requisition slip details';
-    const SUCCESSFULLY_GET_PURCHASE_REQUISITION_SLIP_DETAIL = 'Successfully get all purchase requisition slip detail';
-    const SUCCESSFULLY_CREATED_PURCHASE_REQUISITION_SLIP_DETAIL = 'Successfully created purchase requisition slip detail';
-    const SUCCESSFULLY_UPDATED_PURCHASE_REQUISITION_SLIP_DETAIL = 'Successfully updated purchase requisition slip detail';
-    const SUCCESSFULLY_DELETED_PURCHASE_REQUISITION_SLIP_DETAIL = 'Successfully deleted purchase requisition slip detail';
+    //PurchaseRequisitionDetails
+    const SUCCESSFULLY_GET_ALL_PURCHASE_REQUISITION_DETAILS = 'Successfully get all purchase requisition details';
+    const SUCCESSFULLY_GET_PURCHASE_REQUISITION_DETAIL = 'Successfully get all purchase requisition detail';
+    const SUCCESSFULLY_CREATED_PURCHASE_REQUISITION_DETAIL = 'Successfully created purchase requisition detail';
+    const SUCCESSFULLY_UPDATED_PURCHASE_REQUISITION_DETAIL = 'Successfully updated purchase requisition detail';
+    const SUCCESSFULLY_DELETED_PURCHASE_REQUISITION_DETAIL = 'Successfully deleted purchase requisition detail';
 
     //Quotations
     const SUCCESSFULLY_GET_ALL_QUOTATIONS = 'Successfully get all quotations';

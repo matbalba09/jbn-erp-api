@@ -15,9 +15,6 @@ return new class extends Migration
             $table->id();
             $table->integer('customer_id')->nullable();
             $table->string('order_no')->nullable();
-            $table->string('company')->nullable();
-            $table->string('contact_person')->nullable();
-            $table->string('contact_no')->nullable();
             $table->string('status')->nullable();
             $table->string('entry_by')->nullable();
             $table->string('entry_date')->nullable();

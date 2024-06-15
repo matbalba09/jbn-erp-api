@@ -22,10 +22,14 @@ class CreateInventoryRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'stock_no' => 'nullable|string',
             'item_code' => 'nullable|string',
             'item_name' => 'nullable|string',
+            'reorder_level' => 'nullable|string',
+            'qty_on_hand' => 'nullable|integer',
+            'item_type' => 'nullable|string',
+            'uom' => 'nullable|string',
             'remarks' => 'nullable|string',
-            'type' => 'nullable|string',
         ];
     }
 }

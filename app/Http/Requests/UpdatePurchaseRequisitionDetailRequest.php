@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdatePurchaseRequisitionSlipRequest extends FormRequest
+class UpdatePurchaseRequisitionDetailRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +22,14 @@ class UpdatePurchaseRequisitionSlipRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'order_no' => 'nullable|string',
-            'purchase_requisition_slip_no' => 'nullable|string',
-            'purchase_requisition_slip_date' => 'nullable|string',
+            'prs_no' => 'nullable|string',
+            'supplier' => 'nullable|string',
+            'name' => 'nullable|string',
+            'uom' => 'nullable|string',
+            'quantity' => 'nullable|integer',
+            'requisition_type' => 'nullable|string',
+            'unit_price' => 'nullable|numeric',
+            'total_price' => 'nullable|numeric',
             'remarks' => 'nullable|string',
         ];
     }

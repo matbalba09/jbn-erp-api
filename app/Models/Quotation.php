@@ -13,7 +13,11 @@ class Quotation extends Model
         'order_no',
         'quotation_no',
         'quotation_date',
+        'valid_until',
         'total_price',
+        'requested_by',
+        'approved_by',
+        'received_by',
         'remarks',
     ];
 }

@@ -23,11 +23,11 @@ class CreateOrderDetailRequest extends FormRequest
     {
         return [
             'order_no' => 'nullable|string',
-            'product_name' => 'nullable|string',
-            'description' => 'nullable|string',
+            'product_id' => 'nullable|integer',
             'quantity' => 'nullable|integer',
             'unit_price' => 'nullable|numeric',
             'total_price' => 'nullable|numeric',
+            'remarks' => 'nullable|string',
         ];
     }
 }

@@ -3,13 +3,13 @@
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HeartbeatController;
 use App\Http\Controllers\InventoryController;
-use App\Http\Controllers\InventoryDetailController;
+use App\Http\Controllers\InventoryTransactionController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderDetailController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PurchaseOrderController;
-use App\Http\Controllers\PurchaseRequisitionSlipController;
-use App\Http\Controllers\PurchaseRequisitionSlipDetailController;
+use App\Http\Controllers\PurchaseRequisitionController;
+use App\Http\Controllers\PurchaseRequisitionDetailController;
 use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\QuotationDetailController;
 use App\Http\Controllers\RoleController;
@@ -68,11 +68,11 @@ Route::prefix('v1')->group(function () {
     });
 
     Route::prefix('inventory_detail')->group(function () {
-        Route::get('/', [InventoryDetailController::class, 'index']);
-        Route::get('{id}', [InventoryDetailController::class, 'getById']);
-        Route::post('create', [InventoryDetailController::class, 'create']);
-        Route::put('update/{id}', [InventoryDetailController::class, 'update']);
-        Route::delete('delete/{id}', [InventoryDetailController::class, 'delete']);
+        Route::get('/', [InventoryTransactionController::class, 'index']);
+        Route::get('{id}', [InventoryTransactionController::class, 'getById']);
+        Route::post('create', [InventoryTransactionController::class, 'create']);
+        Route::put('update/{id}', [InventoryTransactionController::class, 'update']);
+        Route::delete('delete/{id}', [InventoryTransactionController::class, 'delete']);
     });
 
     Route::prefix('order')->group(function () {
@@ -107,20 +107,20 @@ Route::prefix('v1')->group(function () {
         Route::delete('delete/{id}', [PurchaseOrderController::class, 'delete']);
     });
 
-    Route::prefix('purchase_requisition_slip')->group(function () {
-        Route::get('/', [PurchaseRequisitionSlipController::class, 'index']);
-        Route::get('{id}', [PurchaseRequisitionSlipController::class, 'getById']);
-        Route::post('create', [PurchaseRequisitionSlipController::class, 'create']);
-        Route::put('update/{id}', [PurchaseRequisitionSlipController::class, 'update']);
-        Route::delete('delete/{id}', [PurchaseRequisitionSlipController::class, 'delete']);
+    Route::prefix('purchase_requisition')->group(function () {
+        Route::get('/', [PurchaseRequisitionController::class, 'index']);
+        Route::get('{id}', [PurchaseRequisitionController::class, 'getById']);
+        Route::post('create', [PurchaseRequisitionController::class, 'create']);
+        Route::put('update/{id}', [PurchaseRequisitionController::class, 'update']);
+        Route::delete('delete/{id}', [PurchaseRequisitionController::class, 'delete']);
     });
 
-    Route::prefix('purchase_requisition_slip_detail')->group(function () {
-        Route::get('/', [PurchaseRequisitionSlipDetailController::class, 'index']);
-        Route::get('{id}', [PurchaseRequisitionSlipDetailController::class, 'getById']);
-        Route::post('create', [PurchaseRequisitionSlipDetailController::class, 'create']);
-        Route::put('update/{id}', [PurchaseRequisitionSlipDetailController::class, 'update']);
-        Route::delete('delete/{id}', [PurchaseRequisitionSlipDetailController::class, 'delete']);
+    Route::prefix('purchase_requisition_detail')->group(function () {
+        Route::get('/', [PurchaseRequisitionDetailController::class, 'index']);
+        Route::get('{id}', [PurchaseRequisitionDetailController::class, 'getById']);
+        Route::post('create', [PurchaseRequisitionDetailController::class, 'create']);
+        Route::put('update/{id}', [PurchaseRequisitionDetailController::class, 'update']);
+        Route::delete('delete/{id}', [PurchaseRequisitionDetailController::class, 'delete']);
     });
 
     Route::prefix('quotation')->group(function () {

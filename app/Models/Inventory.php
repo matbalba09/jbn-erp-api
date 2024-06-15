@@ -10,9 +10,13 @@ class Inventory extends Model
     use HasFactory;
 
     protected $fillable = [
+        'stock_no',
         'item_code',
         'item_name',
+        'reorder_level',
+        'qty_on_hand',
+        'item_type',
+        'uom',
         'remarks',
-        'type',
     ];
 }

@@ -10,10 +10,11 @@ class PurchaseOrder extends Model
     use HasFactory;
 
     protected $fillable = [
-        'purchase_requisition_slip_detail_id',
-        'supplier',
-        'description',
-        'purchase_order_date',
+        'purchase_requisition_id',
+        'order_no',
+        'supplier_id',
+        'status',
+        'po_date',
         'remarks',
     ];
 }

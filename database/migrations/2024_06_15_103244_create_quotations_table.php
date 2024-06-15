@@ -16,7 +16,11 @@ return new class extends Migration
             $table->string('order_no')->nullable();
             $table->string('quotation_no')->nullable();
             $table->string('quotation_date')->nullable();
+            $table->string('valid_until')->nullable();
             $table->decimal('total_price', 10, 2)->nullable();
+            $table->integer('requested_by')->nullable();
+            $table->integer('approved_by')->nullable();
+            $table->string('received_by')->nullable();
             $table->string('remarks')->nullable();
             $table->timestamps();
         });

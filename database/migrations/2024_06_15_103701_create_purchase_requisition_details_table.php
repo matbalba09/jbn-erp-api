@@ -11,14 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('purchase_requisition_slip_details', function (Blueprint $table) {
+        Schema::create('purchase_requisition_details', function (Blueprint $table) {
             $table->id();
-            $table->string('purchase_requisition_slip_no')->nullable();
+            $table->string('prs_no')->nullable();
             $table->string('supplier')->nullable();
-            $table->string('item')->nullable();
+            $table->string('name')->nullable();
+            $table->string('uom')->nullable();
             $table->integer('quantity')->nullable();
+            $table->string('requisition_type')->nullable();
+            $table->decimal('unit_price', 10, 2)->nullable();
+            $table->decimal('total_price', 10, 2)->nullable();
             $table->string('remarks')->nullable();
-            $table->string('status')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('purchase_requisition_slip_details');
+        Schema::dropIfExists('purchase_requisition_details');
     }
 };

@@ -24,9 +24,6 @@ class CreateOrderRequest extends FormRequest
         return [
             'customer_id' => 'nullable|integer',
             'order_no' => 'nullable|string',
-            'company' => 'nullable|string',
-            'contact_person' => 'nullable|string',
-            'contact_no' => 'nullable|string',
             'status' => 'nullable|string',
             'entry_by' => 'nullable|string',
             'entry_date' => 'nullable|string',
