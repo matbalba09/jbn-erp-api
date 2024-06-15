@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class PurchaseRequisitionSlipDetail extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'purchase_requisition_slip_no',
+        'supplier',
+        'item',
+        'quantity',
+        'remarks',
+        'status',
+    ];
 }
