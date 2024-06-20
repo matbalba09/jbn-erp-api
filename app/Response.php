@@ -145,4 +145,11 @@ class Response
     const SUCCESSFULLY_CREATED_SERVICE_TYPE = 'Successfully created service type';
     const SUCCESSFULLY_UPDATED_SERVICE_TYPE = 'Successfully updated service type';
     const SUCCESSFULLY_DELETED_SERVICE_TYPE = 'Successfully deleted service type';
+
+    //Category
+    const SUCCESSFULLY_GET_ALL_CATEGORIES = 'Successfully get all categories';
+    const SUCCESSFULLY_GET_CATEGORY = 'Successfully get all category';
+    const SUCCESSFULLY_CREATED_CATEGORY = 'Successfully created category';
+    const SUCCESSFULLY_UPDATED_CATEGORY = 'Successfully updated category';
+    const SUCCESSFULLY_DELETED_CATEGORY = 'Successfully deleted category';
 }

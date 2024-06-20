@@ -1,0 +1,51 @@
+<?php
+
+namespace App\Repositories;
+
+use App\Helper\Helper;
+use App\Http\Requests\CreateCategoryRequest;
+use App\Http\Requests\UpdateCategoryRequest;
+use Carbon\Carbon;
+use App\Models\Category;
+use App\Repositories\Interface\ICategoryRepository;
+use App\Response;
+
+class CategoryRepository implements ICategoryRepository
+{
+    function getAll()
+    {
+        $categories = Category::get();
+        return $categories;
+    }
+
+    function getById($id)
+    {
+        $category = Category::findOrFail($id);
+        return $category;
+    }
+
+    function create(CreateCategoryRequest $request)
+    {
+        $validatedData = $request->validated();
+
+        $category = Category::create($validatedData);
+        return $category;
+    }
+
+    function update(UpdateCategoryRequest $request, $id)
+    {
+        $category = Category::findOrFail($id);
+        $validatedData = $request->validated();
+        $category->update($validatedData);
+
+        return $category;
+    }
+
+    function delete($id)
+    {
+        $category = Category::findOrFail($id);
+        $category->delete();
+
+        return $category;
+    }
+}

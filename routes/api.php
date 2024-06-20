@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HeartbeatController;
 use App\Http\Controllers\InventoryController;
@@ -163,6 +164,14 @@ Route::prefix('v1')->group(function () {
         Route::post('create', [ServiceTypeController::class, 'create']);
         Route::put('update/{id}', [ServiceTypeController::class, 'update']);
         Route::delete('delete/{id}', [ServiceTypeController::class, 'delete']);
+    });
+
+    Route::prefix('category')->group(function () {
+        Route::get('/', [CategoryController::class, 'index']);
+        Route::get('{id}', [CategoryController::class, 'getById']);
+        Route::post('create', [CategoryController::class, 'create']);
+        Route::put('update/{id}', [CategoryController::class, 'update']);
+        Route::delete('delete/{id}', [CategoryController::class, 'delete']);
     });
 
     Route::group(['middleware' => ['auth:sanctum']], function () {

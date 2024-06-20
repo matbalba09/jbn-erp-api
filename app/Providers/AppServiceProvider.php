@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Repositories\CategoryRepository;
 use App\Repositories\CustomerRepository;
+use App\Repositories\Interface\ICategoryRepository;
 use App\Repositories\Interface\ICustomerRepository;
 use App\Repositories\Interface\IInventoryTransactionRepository;
 use App\Repositories\Interface\IInventoryRepository;
@@ -106,6 +108,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             IServiceTypeRepository::class,
             ServiceTypeRepository::class
+        );
+        $this->app->bind(
+            ICategoryRepository::class,
+            CategoryRepository::class
         );
     }
 
