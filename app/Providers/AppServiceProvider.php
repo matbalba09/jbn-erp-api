@@ -11,6 +11,7 @@ use App\Repositories\Interface\IInventoryRepository;
 use App\Repositories\Interface\IOrderDetailRepository;
 use App\Repositories\Interface\IOrderRepository;
 use App\Repositories\Interface\IPaymentRepository;
+use App\Repositories\Interface\IProductAttributeRepository;
 use App\Repositories\Interface\IProductRepository;
 use App\Repositories\Interface\IPurchaseOrderRepository;
 use App\Repositories\Interface\IPurchaseRequisitionDetailRepository;
@@ -26,6 +27,7 @@ use App\Repositories\InventoryRepository;
 use App\Repositories\OrderDetailRepository;
 use App\Repositories\OrderRepository;
 use App\Repositories\PaymentRepository;
+use App\Repositories\ProductAttributeRepository;
 use App\Repositories\ProductRepository;
 use App\Repositories\PurchaseOrderRepository;
 use App\Repositories\PurchaseRequisitionDetailRepository;
@@ -112,6 +114,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             ICategoryRepository::class,
             CategoryRepository::class
+        );
+        $this->app->bind(
+            IProductAttributeRepository::class,
+            ProductAttributeRepository::class
         );
     }
 
