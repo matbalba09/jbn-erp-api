@@ -6,6 +6,7 @@ use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\InventoryTransactionController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderDetailController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PurchaseOrderController;
 use App\Http\Controllers\PurchaseRequisitionController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\PurchaseRequisitionDetailController;
 use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\QuotationDetailController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\ServiceTypeController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -145,6 +147,22 @@ Route::prefix('v1')->group(function () {
         Route::post('create', [SupplierController::class, 'create']);
         Route::put('update/{id}', [SupplierController::class, 'update']);
         Route::delete('delete/{id}', [SupplierController::class, 'delete']);
+    });
+
+    Route::prefix('payment')->group(function () {
+        Route::get('/', [PaymentController::class, 'index']);
+        Route::get('{id}', [PaymentController::class, 'getById']);
+        Route::post('create', [PaymentController::class, 'create']);
+        Route::put('update/{id}', [PaymentController::class, 'update']);
+        Route::delete('delete/{id}', [PaymentController::class, 'delete']);
+    });
+
+    Route::prefix('service_type')->group(function () {
+        Route::get('/', [ServiceTypeController::class, 'index']);
+        Route::get('{id}', [ServiceTypeController::class, 'getById']);
+        Route::post('create', [ServiceTypeController::class, 'create']);
+        Route::put('update/{id}', [ServiceTypeController::class, 'update']);
+        Route::delete('delete/{id}', [ServiceTypeController::class, 'delete']);
     });
 
     Route::group(['middleware' => ['auth:sanctum']], function () {

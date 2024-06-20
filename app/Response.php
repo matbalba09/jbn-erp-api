@@ -131,4 +131,18 @@ class Response
     const SUCCESSFULLY_CREATED_SUPPLIER = 'Successfully created supplier';
     const SUCCESSFULLY_UPDATED_SUPPLIER = 'Successfully updated supplier';
     const SUCCESSFULLY_DELETED_SUPPLIER = 'Successfully deleted supplier';
+
+    //Payments
+    const SUCCESSFULLY_GET_ALL_PAYMENTS = 'Successfully get all payments';
+    const SUCCESSFULLY_GET_PAYMENT = 'Successfully get all payment';
+    const SUCCESSFULLY_CREATED_PAYMENT = 'Successfully created payment';
+    const SUCCESSFULLY_UPDATED_PAYMENT = 'Successfully updated payment';
+    const SUCCESSFULLY_DELETED_PAYMENT = 'Successfully deleted payment';
+
+    //ServiceType
+    const SUCCESSFULLY_GET_ALL_SERVICE_TYPES = 'Successfully get all service types';
+    const SUCCESSFULLY_GET_SERVICE_TYPE = 'Successfully get all service type';
+    const SUCCESSFULLY_CREATED_SERVICE_TYPE = 'Successfully created service type';
+    const SUCCESSFULLY_UPDATED_SERVICE_TYPE = 'Successfully updated service type';
+    const SUCCESSFULLY_DELETED_SERVICE_TYPE = 'Successfully deleted service type';
 }
