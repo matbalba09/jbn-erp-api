@@ -159,4 +159,11 @@ class Response
     const SUCCESSFULLY_CREATED_PRODUCT_ATTRIBUTE = 'Successfully created product attribute';
     const SUCCESSFULLY_UPDATED_PRODUCT_ATTRIBUTE = 'Successfully updated product attribute';
     const SUCCESSFULLY_DELETED_PRODUCT_ATTRIBUTE = 'Successfully deleted product attribute';
+
+    //ProductCategory
+    const SUCCESSFULLY_GET_ALL_PRODUCT_CATEGORIES = 'Successfully get all product categories';
+    const SUCCESSFULLY_GET_PRODUCT_CATEGORY = 'Successfully get all product category';
+    const SUCCESSFULLY_CREATED_PRODUCT_CATEGORY = 'Successfully created product category';
+    const SUCCESSFULLY_UPDATED_PRODUCT_CATEGORY = 'Successfully updated product category';
+    const SUCCESSFULLY_DELETED_PRODUCT_CATEGORY = 'Successfully deleted product category';
 }

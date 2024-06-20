@@ -9,6 +9,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderDetailController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductAttributeController;
+use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PurchaseOrderController;
 use App\Http\Controllers\PurchaseRequisitionController;
@@ -181,6 +182,14 @@ Route::prefix('v1')->group(function () {
         Route::post('create', [ProductAttributeController::class, 'create']);
         Route::put('update/{id}', [ProductAttributeController::class, 'update']);
         Route::delete('delete/{id}', [ProductAttributeController::class, 'delete']);
+    });
+
+    Route::prefix('product_category')->group(function () {
+        Route::get('/', [ProductCategoryController::class, 'index']);
+        Route::get('{id}', [ProductCategoryController::class, 'getById']);
+        Route::post('create', [ProductCategoryController::class, 'create']);
+        Route::put('update/{id}', [ProductCategoryController::class, 'update']);
+        Route::delete('delete/{id}', [ProductCategoryController::class, 'delete']);
     });
 
     Route::group(['middleware' => ['auth:sanctum']], function () {
