@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('quotations', function (Blueprint $table) {
             $table->id();
-            $table->string('order_no')->nullable();
             $table->string('quotation_no')->nullable();
             $table->string('quotation_date')->nullable();
             $table->string('valid_until')->nullable();

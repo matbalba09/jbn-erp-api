@@ -10,7 +10,6 @@ class Quotation extends Model
     use HasFactory;
 
     protected $fillable = [
-        'order_no',
         'quotation_no',
         'quotation_date',
         'valid_until',

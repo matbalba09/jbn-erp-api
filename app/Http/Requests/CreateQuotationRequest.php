@@ -22,7 +22,6 @@ class CreateQuotationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'order_no' => 'nullable|string',
             'quotation_no' => 'nullable|string',
             'quotation_date' => 'nullable|string',
             'valid_until' => 'nullable|string',

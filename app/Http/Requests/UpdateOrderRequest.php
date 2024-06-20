@@ -24,6 +24,7 @@ class UpdateOrderRequest extends FormRequest
         return [
             'customer_id' => 'nullable|integer',
             'order_no' => 'nullable|string',
+            'quotation_no' => 'nullable|string',
             'status' => 'nullable|string',
             'entry_by' => 'nullable|string',
             'entry_date' => 'nullable|string',
