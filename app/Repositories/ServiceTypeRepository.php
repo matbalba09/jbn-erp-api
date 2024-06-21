@@ -3,49 +3,49 @@
 namespace App\Repositories;
 
 use App\Helper\Helper;
-use App\Http\Requests\CreatePaymentRequest;
-use App\Http\Requests\UpdatePaymentRequest;
+use App\Http\Requests\CreateServiceTypeRequest;
+use App\Http\Requests\UpdateServiceTypeRequest;
 use Carbon\Carbon;
-use App\Models\Payment;
-use App\Repositories\Interface\IPaymentRepository;
+use App\Models\ServiceType;
+use App\Repositories\Interface\IServiceTypeRepository;
 use App\Response;
 
-class PaymentRepository implements IPaymentRepository
+class ServiceTypeRepository implements IServiceTypeRepository
 {
     function getAll()
     {
-        $payments = Payment::get();
-        return $payments;
+        $serviceTypes = ServiceType::get();
+        return $serviceTypes;
     }
 
     function getById($id)
     {
-        $payment = Payment::findOrFail($id);
-        return $payment;
+        $serviceType = ServiceType::findOrFail($id);
+        return $serviceType;
     }
 
-    function create(CreatePaymentRequest $request)
+    function create(CreateServiceTypeRequest $request)
     {
         $validatedData = $request->validated();
 
-        $payment = Payment::create($validatedData);
-        return $payment;
+        $serviceType = ServiceType::create($validatedData);
+        return $serviceType;
     }
 
-    function update(UpdatePaymentRequest $request, $id)
+    function update(UpdateServiceTypeRequest $request, $id)
     {
-        $payment = Payment::findOrFail($id);
+        $serviceType = ServiceType::findOrFail($id);
         $validatedData = $request->validated();
-        $payment->update($validatedData);
+        $serviceType->update($validatedData);
 
-        return $payment;
+        return $serviceType;
     }
 
     function delete($id)
     {
-        $payment = Payment::findOrFail($id);
-        $payment->delete();
+        $serviceType = ServiceType::findOrFail($id);
+        $serviceType->delete();
 
-        return $payment;
+        return $serviceType;
     }
 }
