@@ -21,14 +21,14 @@ class RoleController extends Controller
 
     public function index()
     {
-        $role = $this->roleRepository->getAll();
+        $roles = $this->roleRepository->getAll();
 
         $response = [
             'code' => Response::HTTP_SUCCESS,
             'status' => Response::SUCCESS,
             'message' => Response::SUCCESSFULLY_GET_ALL_ROLES,
             'count' => Role::count(),
-            'data' => $role,
+            'data' => $roles,
         ];
 
         return response()->json($response, $response['code']);

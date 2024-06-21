@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('username')->nullable();
             $table->string('email')->nullable();
             $table->string('password')->nullable();
-            $table->string('is_deleted')->nullable();
+            $table->integer('is_deleted')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

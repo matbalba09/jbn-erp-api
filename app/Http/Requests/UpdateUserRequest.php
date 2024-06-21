@@ -26,7 +26,7 @@ class UpdateUserRequest extends FormRequest
             'username' => 'nullable|string',
             'email' => 'nullable|string',
             'password' => 'nullable|string',
-            'is_deleted' => 'nullable|string',
+            'is_deleted' => 'nullable|integer',
         ];
     }
 }

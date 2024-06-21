@@ -23,7 +23,7 @@ class CreateRoleRequest extends FormRequest
     {
         return [
             'role_name' => 'nullable|string',
-            'is_deleted' => 'nullable|string',
+            'is_deleted' => 'nullable|integer',
         ];
     }
 }
