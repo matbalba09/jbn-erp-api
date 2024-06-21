@@ -72,7 +72,7 @@ Route::prefix('v1')->group(function () {
         Route::delete('delete/{id}', [InventoryController::class, 'delete']);
     });
 
-    Route::prefix('inventory_detail')->group(function () {
+    Route::prefix('inventory_transaction')->group(function () {
         Route::get('/', [InventoryTransactionController::class, 'index']);
         Route::get('{id}', [InventoryTransactionController::class, 'getById']);
         Route::post('create', [InventoryTransactionController::class, 'create']);
