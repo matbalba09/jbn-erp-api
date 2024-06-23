@@ -22,7 +22,7 @@ class CreateRoleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'role_name' => 'nullable|string',
+            'name' => 'nullable|string',
             'is_deleted' => 'nullable|integer',
         ];
     }
