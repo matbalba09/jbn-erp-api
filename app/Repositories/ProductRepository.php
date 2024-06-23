@@ -26,7 +26,26 @@ class ProductRepository implements IProductRepository
 
     function create(CreateProductRequest $request)
     {
+        $latestProduct = Product::latest()->first();
+        $dateNow = Carbon::now()->format('ymd');
+
         $validatedData = $request->validated();
+
+        if (!$latestProduct) {
+            $initialBase36 = Helper::decimalToBase36(1);
+            $validatedData['product_no'] = 'PRD' . $dateNow . '-AD-' . $initialBase36;
+        } else {
+            $dateOfLatest = Helper::getFullDateFromNo($latestProduct->product_no);
+            if ($dateOfLatest != $dateNow) {
+                $initialBase36 = Helper::decimalToBase36(1);
+                $validatedData['product_no'] = 'PRD' . $dateNow . '-AD-' . $initialBase36;
+            } else {
+                $base36 = Helper::getLastPart($latestProduct->product_no);
+                $decimal = Helper::base36ToDecimal($base36) + 1;
+                $backToBase36 = Helper::decimalToBase36($decimal);
+                $validatedData['product_no'] = 'PRD' . $dateNow . '-AD-' . $backToBase36;
+            }
+        }
         $validatedData['is_deleted'] = Response::FALSE;
 
         $product = Product::create($validatedData);

@@ -28,7 +28,6 @@ class PurchaseRequisitionRepository implements IPurchaseRequisitionRepository
     {
         $latestPrs = PurchaseRequisition::latest()->first();
         $dateNow = Carbon::now()->format('ymd');
-        $decimal = Helper::base36ToDecimal('01Z');
 
         $validatedData = $request->validated();
 
@@ -47,7 +46,6 @@ class PurchaseRequisitionRepository implements IPurchaseRequisitionRepository
                 $validatedData['prs_no'] = 'PRS' . $dateNow . '-SR-' . $backToBase36;
             }
         }
-
         $validatedData['is_deleted'] = Response::FALSE;
 
         $prs = PurchaseRequisition::create($validatedData);

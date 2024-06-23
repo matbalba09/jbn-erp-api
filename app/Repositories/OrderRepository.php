@@ -26,7 +26,26 @@ class OrderRepository implements IOrderRepository
 
     function create(CreateOrderRequest $request)
     {
+        $latestOrder = Order::latest()->first();
+        $dateNow = Carbon::now()->format('ymd');
+
         $validatedData = $request->validated();
+
+        if (!$latestOrder) {
+            $initialBase36 = Helper::decimalToBase36(1);
+            $validatedData['order_no'] = 'ORD' . $dateNow . '-SR-' . $initialBase36;
+        } else {
+            $dateOfLatest = Helper::getFullDateFromNo($latestOrder->order_no);
+            if ($dateOfLatest != $dateNow) {
+                $initialBase36 = Helper::decimalToBase36(1);
+                $validatedData['order_no'] = 'ORD' . $dateNow . '-SR-' . $initialBase36;
+            } else {
+                $base36 = Helper::getLastPart($latestOrder->order_no);
+                $decimal = Helper::base36ToDecimal($base36) + 1;
+                $backToBase36 = Helper::decimalToBase36($decimal);
+                $validatedData['order_no'] = 'ORD' . $dateNow . '-SR-' . $backToBase36;
+            }
+        }
         $validatedData['is_deleted'] = Response::FALSE;
 
         $order = Order::create($validatedData);

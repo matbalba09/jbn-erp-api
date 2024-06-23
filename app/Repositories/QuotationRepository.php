@@ -26,7 +26,26 @@ class QuotationRepository implements IQuotationRepository
 
     function create(CreateQuotationRequest $request)
     {
+        $latestQuotation = Quotation::latest()->first();
+        $dateNow = Carbon::now()->format('ymd');
+
         $validatedData = $request->validated();
+
+        if (!$latestQuotation) {
+            $initialBase36 = Helper::decimalToBase36(1);
+            $validatedData['quotation_no'] = 'QUO' . $dateNow . '-SR-' . $initialBase36;
+        } else {
+            $dateOfLatest = Helper::getFullDateFromNo($latestQuotation->quotation_no);
+            if ($dateOfLatest != $dateNow) {
+                $initialBase36 = Helper::decimalToBase36(1);
+                $validatedData['quotation_no'] = 'QUO' . $dateNow . '-SR-' . $initialBase36;
+            } else {
+                $base36 = Helper::getLastPart($latestQuotation->quotation_no);
+                $decimal = Helper::base36ToDecimal($base36) + 1;
+                $backToBase36 = Helper::decimalToBase36($decimal);
+                $validatedData['quotation_no'] = 'QUO' . $dateNow . '-SR-' . $backToBase36;
+            }
+        }
         $validatedData['is_deleted'] = Response::FALSE;
 
         $quotation = Quotation::create($validatedData);
