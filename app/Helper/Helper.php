@@ -82,10 +82,10 @@ class Helper
         return end($parts);
     }
 
-    public static function getYearFromNo($string) {
+    public static function getFullDateFromNo($string) {
         $parts = explode('-', $string);
         $datePart = $parts[0];
-        $year = substr($datePart, 3, 2);
+        $year = substr($datePart, 3, 6);
         return $year;
     }
 }

@@ -27,7 +27,6 @@ class PurchaseRequisitionRepository implements IPurchaseRequisitionRepository
     function create(CreatePurchaseRequisitionRequest $request)
     {
         $latestPrs = PurchaseRequisition::latest()->first();
-        $yearNow = Carbon::now()->format('y');
         $dateNow = Carbon::now()->format('ymd');
         $decimal = Helper::base36ToDecimal('01Z');
 
@@ -37,8 +36,8 @@ class PurchaseRequisitionRepository implements IPurchaseRequisitionRepository
             $initialBase36 = Helper::decimalToBase36(1);
             $validatedData['prs_no'] = 'PRS' . $dateNow . '-SR-' . $initialBase36;
         } else {
-            $yearOfLatest = Helper::getYearFromNo($latestPrs->prs_no);
-            if ($yearOfLatest != $yearNow) {
+            $dateOfLatest = Helper::getFullDateFromNo($latestPrs->prs_no);
+            if ($dateOfLatest != $dateNow) {
                 $initialBase36 = Helper::decimalToBase36(1);
                 $validatedData['prs_no'] = 'PRS' . $dateNow . '-SR-' . $initialBase36;
             } else {
