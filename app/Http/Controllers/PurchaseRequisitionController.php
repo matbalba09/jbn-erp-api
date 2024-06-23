@@ -12,23 +12,23 @@ use Illuminate\Http\Request;
 
 class PurchaseRequisitionController extends Controller
 {
-    private IPurchaseRequisitionRepository $purchaseRequisitionRepository;
+    private IPurchaseRequisitionRepository $prsRepository;
 
-    public function __construct(IPurchaseRequisitionRepository $purchaseRequisitionRepository)
+    public function __construct(IPurchaseRequisitionRepository $prsRepository)
     {
-        $this->purchaseRequisitionRepository = $purchaseRequisitionRepository;
+        $this->prsRepository = $prsRepository;
     }
 
     public function index()
     {
-        $purchaseRequisitions = $this->purchaseRequisitionRepository->getAll();
+        $prs = $this->prsRepository->getAll();
 
         $response = [
             'code' => Response::HTTP_SUCCESS,
             'status' => Response::SUCCESS,
             'message' => Response::SUCCESSFULLY_GET_ALL_PURCHASE_REQUISITIONS,
             'count' => PurchaseRequisition::count(),
-            'data' => $purchaseRequisitions,
+            'data' => $prs,
         ];
 
         return response()->json($response, $response['code']);
@@ -36,13 +36,13 @@ class PurchaseRequisitionController extends Controller
 
     public function getById($id)
     {
-        $purchaseRequisition = $this->purchaseRequisitionRepository->getById($id);
+        $prs = $this->prsRepository->getById($id);
 
         $response = [
             'code' => Response::HTTP_SUCCESS,
             'status' => Response::SUCCESS,
             'message' => Response::SUCCESSFULLY_GET_PURCHASE_REQUISITION,
-            'data' => $purchaseRequisition,
+            'data' => $prs,
         ];
 
         return response()->json($response, $response['code']);
@@ -50,13 +50,13 @@ class PurchaseRequisitionController extends Controller
 
     public function create(CreatePurchaseRequisitionRequest $request)
     {
-        $purchaseRequisition = $this->purchaseRequisitionRepository->create($request);
+        $prs = $this->prsRepository->create($request);
 
         $response = [
             'code' => Response::HTTP_SUCCESS_POST,
             'status' => Response::SUCCESS,
             'message' => Response::SUCCESSFULLY_CREATED_PURCHASE_REQUISITION,
-            'data' => $purchaseRequisition,
+            'data' => $prs,
         ];
 
         return response()->json($response, $response['code']);
@@ -64,13 +64,13 @@ class PurchaseRequisitionController extends Controller
 
     public function update(UpdatePurchaseRequisitionRequest $request, $id)
     {
-        $purchaseRequisition = $this->purchaseRequisitionRepository->update($request, $id);
+        $prs = $this->prsRepository->update($request, $id);
 
         $response = [
             'code' => Response::HTTP_SUCCESS,
             'status' => Response::SUCCESS,
             'message' => Response::SUCCESSFULLY_UPDATED_PURCHASE_REQUISITION,
-            'data' => $purchaseRequisition,
+            'data' => $prs,
         ];
 
         return response()->json($response, $response['code']);
@@ -78,7 +78,7 @@ class PurchaseRequisitionController extends Controller
 
     public function delete($id)
     {
-        $this->purchaseRequisitionRepository->delete($id);
+        $this->prsRepository->delete($id);
 
         $response = [
             'code' => Response::HTTP_SUCCESS_NO_RETURN,
