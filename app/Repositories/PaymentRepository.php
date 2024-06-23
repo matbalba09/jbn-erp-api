@@ -14,7 +14,7 @@ class PaymentRepository implements IPaymentRepository
 {
     function getAll()
     {
-        $payments = Payment::where('is_deleted', Response::FALSE)->get();
+        $payments = Payment::where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
         return $payments;
     }
 

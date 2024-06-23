@@ -14,7 +14,7 @@ class CustomerRepository implements ICustomerRepository
 {
     function getAll()
     {
-        $customers = Customer::where('is_deleted', Response::FALSE)->get();
+        $customers = Customer::where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
         return $customers;
     }
 

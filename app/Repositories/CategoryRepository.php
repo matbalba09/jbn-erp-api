@@ -14,7 +14,7 @@ class CategoryRepository implements ICategoryRepository
 {
     function getAll()
     {
-        $categories = Category::where('is_deleted', Response::FALSE)->get();
+        $categories = Category::where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
         return $categories;
     }
 

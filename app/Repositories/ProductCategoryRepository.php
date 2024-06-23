@@ -14,7 +14,7 @@ class ProductCategoryRepository implements IProductCategoryRepository
 {
     function getAll()
     {
-        $productCategories = ProductCategory::where('is_deleted', Response::FALSE)->get();
+        $productCategories = ProductCategory::where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
         return $productCategories;
     }
 

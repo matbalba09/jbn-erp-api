@@ -14,7 +14,7 @@ class ProductAttributeRepository implements IProductAttributeRepository
 {
     function getAll()
     {
-        $productAttributes = ProductAttribute::where('is_deleted', Response::FALSE)->get();
+        $productAttributes = ProductAttribute::where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
         return $productAttributes;
     }
 

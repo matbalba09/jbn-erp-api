@@ -14,7 +14,7 @@ class InventoryRepository implements IInventoryRepository
 {
     function getAll()
     {
-        $inventories = Inventory::where('is_deleted', Response::FALSE)->get();
+        $inventories = Inventory::where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
         return $inventories;
     }
 

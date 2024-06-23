@@ -14,7 +14,7 @@ class ServiceTypeRepository implements IServiceTypeRepository
 {
     function getAll()
     {
-        $serviceTypes = ServiceType::where('is_deleted', Response::FALSE)->get();
+        $serviceTypes = ServiceType::where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
         return $serviceTypes;
     }
 

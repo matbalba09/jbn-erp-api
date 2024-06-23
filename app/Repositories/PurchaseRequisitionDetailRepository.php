@@ -14,7 +14,7 @@ class PurchaseRequisitionDetailRepository implements IPurchaseRequisitionDetailR
 {
     function getAll()
     {
-        $purchaseRequisitionDetails = PurchaseRequisitionDetail::where('is_deleted', Response::FALSE)->get();
+        $purchaseRequisitionDetails = PurchaseRequisitionDetail::where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
         return $purchaseRequisitionDetails;
     }
 

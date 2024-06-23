@@ -14,7 +14,7 @@ class PurchaseOrderRepository implements IPurchaseOrderRepository
 {
     function getAll()
     {
-        $purchaseOrders = PurchaseOrder::where('is_deleted', Response::FALSE)->get();
+        $purchaseOrders = PurchaseOrder::where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
         return $purchaseOrders;
     }
 

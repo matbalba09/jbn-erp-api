@@ -14,7 +14,7 @@ class InventoryTransactionRepository implements IInventoryTransactionRepository
 {
     function getAll()
     {
-        $inventoryTransactions = InventoryTransaction::where('is_deleted', Response::FALSE)->get();
+        $inventoryTransactions = InventoryTransaction::where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
         return $inventoryTransactions;
     }
 

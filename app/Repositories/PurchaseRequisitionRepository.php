@@ -14,7 +14,7 @@ class PurchaseRequisitionRepository implements IPurchaseRequisitionRepository
 {
     function getAll()
     {
-        $prs = PurchaseRequisition::with('customer')->where('is_deleted', Response::FALSE)->get();
+        $prs = PurchaseRequisition::with('customer')->where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
         return $prs;
     }
 
@@ -58,7 +58,7 @@ class PurchaseRequisitionRepository implements IPurchaseRequisitionRepository
         $validatedData = $request->validated();
         $prs->update($validatedData);
 
-        return $prs;
+        return $prs->load('customer');
     }
 
     function delete($id)

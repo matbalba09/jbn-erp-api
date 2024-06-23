@@ -14,7 +14,7 @@ class ProductRepository implements IProductRepository
 {
     function getAll()
     {
-        $products = Product::where('is_deleted', Response::FALSE)->get();
+        $products = Product::where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
         return $products;
     }
 

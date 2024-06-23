@@ -14,7 +14,7 @@ class SupplierRepository implements ISupplierRepository
 {
     function getAll()
     {
-        $suppliers = Supplier::where('is_deleted', Response::FALSE)->get();
+        $suppliers = Supplier::where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
         return $suppliers;
     }
 

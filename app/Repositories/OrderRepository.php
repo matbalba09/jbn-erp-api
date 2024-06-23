@@ -14,7 +14,7 @@ class OrderRepository implements IOrderRepository
 {
     function getAll()
     {
-        $orders = Order::where('is_deleted', Response::FALSE)->get();
+        $orders = Order::where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
         return $orders;
     }
 

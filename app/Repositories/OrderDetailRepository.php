@@ -14,7 +14,7 @@ class OrderDetailRepository implements IOrderDetailRepository
 {
     function getAll()
     {
-        $orderDetails = OrderDetail::where('is_deleted', Response::FALSE)->get();
+        $orderDetails = OrderDetail::where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
         return $orderDetails;
     }
 
