@@ -24,6 +24,7 @@ class UpdateQuotationDetailRequest extends FormRequest
         return [
             'quotation_no' => 'nullable|string',
             'product_id' => 'nullable|integer',
+            'uom' => 'nullable|string',
             'quantity' => 'nullable|integer',
             'unit_price' => 'nullable|numeric',
             'total_price' => 'nullable|numeric',

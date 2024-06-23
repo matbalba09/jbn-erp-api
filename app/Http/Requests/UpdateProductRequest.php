@@ -22,9 +22,12 @@ class UpdateProductRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'product_no' => 'nullable|string',
             'name' => 'nullable|string',
             'description' => 'nullable|string',
             'price' => 'nullable|numeric',
+            'status' => 'nullable|string',
+            'remarks' => 'nullable|string',
             'image' => 'nullable|string',
             'is_deleted' => 'nullable|integer',
         ];

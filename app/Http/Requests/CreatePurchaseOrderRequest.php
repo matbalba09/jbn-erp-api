@@ -22,7 +22,7 @@ class CreatePurchaseOrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'purchase_requisition_id' => 'nullable|integer',
+            'prs_id' => 'nullable|integer',
             'order_no' => 'nullable|string',
             'supplier_id' => 'nullable|integer',
             'status' => 'nullable|string',

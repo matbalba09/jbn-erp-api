@@ -23,7 +23,9 @@ class CreateQuotationRequest extends FormRequest
     {
         return [
             'quotation_no' => 'nullable|string',
+            'prs_no' => 'nullable|string',
             'quotation_date' => 'nullable|string',
+            'description' => 'nullable|string',
             'valid_until' => 'nullable|string',
             'total_price' => 'nullable|numeric',
             'requested_by' => 'nullable|integer',

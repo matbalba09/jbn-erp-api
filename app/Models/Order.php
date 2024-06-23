@@ -14,6 +14,7 @@ class Order extends Model
         'order_no',
         'quotation_no',
         'status',
+        'due_date',
         'entry_by',
         'entry_date',
         'remarks',

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('purchase_requisition_details', function (Blueprint $table) {
             $table->id();
-            $table->string('prs_no')->nullable();
+            $table->integer('prs_id')->nullable();
             $table->string('supplier')->nullable();
             $table->string('name')->nullable();
             $table->string('uom')->nullable();

@@ -26,6 +26,7 @@ class CreateOrderRequest extends FormRequest
             'order_no' => 'nullable|string',
             'quotation_no' => 'nullable|string',
             'status' => 'nullable|string',
+            'due_date' => 'nullable|string',
             'entry_by' => 'nullable|string',
             'entry_date' => 'nullable|string',
             'remarks' => 'nullable|string',

@@ -10,7 +10,7 @@ class PurchaseRequisitionDetail extends Model
     use HasFactory;
 
     protected $fillable = [
-        'prs_no',
+        'prs_id',
         'supplier',
         'name',
         'uom',

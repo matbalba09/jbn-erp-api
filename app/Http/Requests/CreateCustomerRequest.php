@@ -22,10 +22,12 @@ class CreateCustomerRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'customer_no' => 'nullable|string',
             'company' => 'nullable|string',
             'contact_person' => 'nullable|string',
             'contact_no' => 'nullable|string',
             'status' => 'nullable|string',
+            'address' => 'nullable|string',
             'entry_by' => 'nullable|string',
             'entry_date' => 'nullable|string',
             'remarks' => 'nullable|string',

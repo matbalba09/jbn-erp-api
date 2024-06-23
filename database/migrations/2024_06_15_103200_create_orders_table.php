@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('order_no')->nullable();
             $table->string('quotation_no')->nullable();
             $table->string('status')->nullable();
+            $table->string('due_date')->nullable();
             $table->string('entry_by')->nullable();
             $table->string('entry_date')->nullable();
             $table->string('remarks')->nullable();
