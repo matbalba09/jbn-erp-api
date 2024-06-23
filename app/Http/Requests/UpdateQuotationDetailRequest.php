@@ -27,6 +27,7 @@ class UpdateQuotationDetailRequest extends FormRequest
             'quantity' => 'nullable|integer',
             'unit_price' => 'nullable|numeric',
             'total_price' => 'nullable|numeric',
+            'is_deleted' => 'nullable|integer',
         ];
     }
 }

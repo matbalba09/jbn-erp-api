@@ -26,6 +26,7 @@ class UpdateInventoryTransactionRequest extends FormRequest
             'image' => 'nullable|string',
             'flow' => 'nullable|string',
             'remarks' => 'nullable|string',
+            'is_deleted' => 'nullable|integer',
         ];
     }
 }

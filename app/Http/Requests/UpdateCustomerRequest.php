@@ -29,6 +29,7 @@ class UpdateCustomerRequest extends FormRequest
             'entry_by' => 'nullable|string',
             'entry_date' => 'nullable|string',
             'remarks' => 'nullable|string',
+            'is_deleted' => 'nullable|integer',
         ];
     }
 }

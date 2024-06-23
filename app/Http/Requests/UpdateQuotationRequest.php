@@ -30,6 +30,7 @@ class UpdateQuotationRequest extends FormRequest
             'approved_by' => 'nullable|integer',
             'received_by' => 'nullable|string',
             'remarks' => 'nullable|string',
+            'is_deleted' => 'nullable|integer',
         ];
     }
 }

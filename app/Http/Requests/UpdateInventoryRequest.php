@@ -30,6 +30,7 @@ class UpdateInventoryRequest extends FormRequest
             'item_type' => 'nullable|string',
             'uom' => 'nullable|string',
             'remarks' => 'nullable|string',
+            'is_deleted' => 'nullable|integer',
         ];
     }
 }

@@ -17,5 +17,6 @@ class Customer extends Model
         'entry_by',
         'entry_date',
         'remarks',
+        'is_deleted',
     ];
 }

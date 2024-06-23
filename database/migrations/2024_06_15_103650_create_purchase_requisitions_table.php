@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('requested_by')->nullable();
             $table->integer('approved_by')->nullable();
             $table->string('remarks')->nullable();
+            $table->integer('is_deleted')->nullable();
             $table->timestamps();
         });
     }

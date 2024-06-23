@@ -14,7 +14,7 @@ class InventoryTransactionRepository implements IInventoryTransactionRepository
 {
     function getAll()
     {
-        $inventoryTransactions = InventoryTransaction::get();
+        $inventoryTransactions = InventoryTransaction::where('is_deleted', Response::FALSE)->get();
         return $inventoryTransactions;
     }
 
@@ -27,6 +27,7 @@ class InventoryTransactionRepository implements IInventoryTransactionRepository
     function create(CreateInventoryTransactionRequest $request)
     {
         $validatedData = $request->validated();
+        $validatedData['is_deleted'] = Response::FALSE;
 
         $inventoryTransaction = InventoryTransaction::create($validatedData);
         return $inventoryTransaction;

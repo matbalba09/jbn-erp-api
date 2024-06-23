@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('contact_no')->nullable();
             $table->string('remarks')->nullable();
+            $table->integer('is_deleted')->nullable();
             $table->timestamps();
         });
     }

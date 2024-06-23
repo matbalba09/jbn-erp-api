@@ -24,6 +24,7 @@ class UpdateCategoryRequest extends FormRequest
         return [
             'name' => 'nullable|string',
             'parent_category_id' => 'nullable|integer',
+            'is_deleted' => 'nullable|integer',
         ];
     }
 }

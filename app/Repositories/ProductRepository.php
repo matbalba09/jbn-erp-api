@@ -14,7 +14,7 @@ class ProductRepository implements IProductRepository
 {
     function getAll()
     {
-        $products = Product::get();
+        $products = Product::where('is_deleted', Response::FALSE)->get();
         return $products;
     }
 
@@ -27,6 +27,7 @@ class ProductRepository implements IProductRepository
     function create(CreateProductRequest $request)
     {
         $validatedData = $request->validated();
+        $validatedData['is_deleted'] = Response::FALSE;
 
         $product = Product::create($validatedData);
         return $product;

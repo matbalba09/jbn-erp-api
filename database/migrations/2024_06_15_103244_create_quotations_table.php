@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('approved_by')->nullable();
             $table->string('received_by')->nullable();
             $table->string('remarks')->nullable();
+            $table->integer('is_deleted')->nullable();
             $table->timestamps();
         });
     }

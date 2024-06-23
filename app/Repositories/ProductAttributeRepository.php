@@ -14,7 +14,7 @@ class ProductAttributeRepository implements IProductAttributeRepository
 {
     function getAll()
     {
-        $productAttributes = ProductAttribute::get();
+        $productAttributes = ProductAttribute::where('is_deleted', Response::FALSE)->get();
         return $productAttributes;
     }
 
@@ -27,6 +27,7 @@ class ProductAttributeRepository implements IProductAttributeRepository
     function create(CreateProductAttributeRequest $request)
     {
         $validatedData = $request->validated();
+        $validatedData['is_deleted'] = Response::FALSE;
 
         $productAttribute = ProductAttribute::create($validatedData);
         return $productAttribute;

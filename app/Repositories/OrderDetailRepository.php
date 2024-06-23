@@ -14,7 +14,7 @@ class OrderDetailRepository implements IOrderDetailRepository
 {
     function getAll()
     {
-        $orderDetails = OrderDetail::get();
+        $orderDetails = OrderDetail::where('is_deleted', Response::FALSE)->get();
         return $orderDetails;
     }
 
@@ -27,6 +27,7 @@ class OrderDetailRepository implements IOrderDetailRepository
     function create(CreateOrderDetailRequest $request)
     {
         $validatedData = $request->validated();
+        $validatedData['is_deleted'] = Response::FALSE;
 
         $orderDetail = OrderDetail::create($validatedData);
         return $orderDetail;

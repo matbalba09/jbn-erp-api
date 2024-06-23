@@ -25,6 +25,7 @@ class UpdateProductAttributeRequest extends FormRequest
             'product_id' => 'nullable|integer',
             'attribute_name' => 'nullable|string',
             'attribute_value' => 'nullable|string',
+            'is_deleted' => 'nullable|integer',
         ];
     }
 }

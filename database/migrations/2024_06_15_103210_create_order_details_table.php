@@ -19,6 +19,7 @@ return new class extends Migration
             $table->decimal('unit_price', 10, 2)->nullable();
             $table->decimal('total_price', 10, 2)->nullable();
             $table->string('remarks')->nullable();
+            $table->integer('is_deleted')->nullable();
             $table->timestamps();
         });
     }

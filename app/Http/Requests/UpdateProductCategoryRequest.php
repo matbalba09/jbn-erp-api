@@ -24,6 +24,7 @@ class UpdateProductCategoryRequest extends FormRequest
         return [
             'category_id' => 'nullable|integer',
             'product_id' => 'nullable|integer',
+            'is_deleted' => 'nullable|integer',
         ];
     }
 }

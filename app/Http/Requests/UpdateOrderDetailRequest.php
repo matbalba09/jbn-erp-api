@@ -28,6 +28,7 @@ class UpdateOrderDetailRequest extends FormRequest
             'unit_price' => 'nullable|numeric',
             'total_price' => 'nullable|numeric',
             'remarks' => 'nullable|string',
+            'is_deleted' => 'nullable|integer',
         ];
     }
 }

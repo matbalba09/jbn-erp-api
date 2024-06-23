@@ -14,7 +14,7 @@ class OrderRepository implements IOrderRepository
 {
     function getAll()
     {
-        $orders = Order::get();
+        $orders = Order::where('is_deleted', Response::FALSE)->get();
         return $orders;
     }
 
@@ -27,6 +27,7 @@ class OrderRepository implements IOrderRepository
     function create(CreateOrderRequest $request)
     {
         $validatedData = $request->validated();
+        $validatedData['is_deleted'] = Response::FALSE;
 
         $order = Order::create($validatedData);
         return $order;

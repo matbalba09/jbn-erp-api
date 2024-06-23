@@ -14,7 +14,7 @@ class PurchaseRequisitionDetailRepository implements IPurchaseRequisitionDetailR
 {
     function getAll()
     {
-        $purchaseRequisitionDetails = PurchaseRequisitionDetail::get();
+        $purchaseRequisitionDetails = PurchaseRequisitionDetail::where('is_deleted', Response::FALSE)->get();
         return $purchaseRequisitionDetails;
     }
 
@@ -27,6 +27,7 @@ class PurchaseRequisitionDetailRepository implements IPurchaseRequisitionDetailR
     function create(CreatePurchaseRequisitionDetailRequest $request)
     {
         $validatedData = $request->validated();
+        $validatedData['is_deleted'] = Response::FALSE;
 
         $purchaseRequisitionDetail = PurchaseRequisitionDetail::create($validatedData);
         return $purchaseRequisitionDetail;

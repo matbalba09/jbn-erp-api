@@ -14,7 +14,7 @@ class ProductCategoryRepository implements IProductCategoryRepository
 {
     function getAll()
     {
-        $productCategories = ProductCategory::get();
+        $productCategories = ProductCategory::where('is_deleted', Response::FALSE)->get();
         return $productCategories;
     }
 
@@ -27,6 +27,7 @@ class ProductCategoryRepository implements IProductCategoryRepository
     function create(CreateProductCategoryRequest $request)
     {
         $validatedData = $request->validated();
+        $validatedData['is_deleted'] = Response::FALSE;
 
         $productCategory = ProductCategory::create($validatedData);
         return $productCategory;

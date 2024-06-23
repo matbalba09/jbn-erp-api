@@ -14,7 +14,7 @@ class CustomerRepository implements ICustomerRepository
 {
     function getAll()
     {
-        $customers = Customer::get();
+        $customers = Customer::where('is_deleted', Response::FALSE)->get();
         return $customers;
     }
 
@@ -27,6 +27,7 @@ class CustomerRepository implements ICustomerRepository
     function create(CreateCustomerRequest $request)
     {
         $validatedData = $request->validated();
+        $validatedData['is_deleted'] = Response::FALSE;
 
         $customer = Customer::create($validatedData);
         return $customer;

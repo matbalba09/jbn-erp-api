@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('entry_by')->nullable();
             $table->string('entry_date')->nullable();
             $table->string('remarks')->nullable();
+            $table->integer('is_deleted')->nullable();
             $table->timestamps();
         });
     }

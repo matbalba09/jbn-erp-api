@@ -11,5 +11,6 @@ class ServiceType extends Model
 
     protected $fillable = [
         'name',
+        'is_deleted',
     ];
 }

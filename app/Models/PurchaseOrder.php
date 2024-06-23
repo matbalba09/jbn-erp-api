@@ -16,5 +16,6 @@ class PurchaseOrder extends Model
         'status',
         'po_date',
         'remarks',
+        'is_deleted',
     ];
 }

@@ -14,7 +14,7 @@ class SupplierRepository implements ISupplierRepository
 {
     function getAll()
     {
-        $suppliers = Supplier::get();
+        $suppliers = Supplier::where('is_deleted', Response::FALSE)->get();
         return $suppliers;
     }
 
@@ -27,6 +27,7 @@ class SupplierRepository implements ISupplierRepository
     function create(CreateSupplierRequest $request)
     {
         $validatedData = $request->validated();
+        $validatedData['is_deleted'] = Response::FALSE;
 
         $supplier = Supplier::create($validatedData);
         return $supplier;

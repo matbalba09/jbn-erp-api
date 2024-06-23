@@ -28,6 +28,7 @@ class UpdatePurchaseOrderRequest extends FormRequest
             'status' => 'nullable|string',
             'po_date' => 'nullable|string',
             'remarks' => 'nullable|string',
+            'is_deleted' => 'nullable|integer',
         ];
     }
 }

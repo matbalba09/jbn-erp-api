@@ -18,5 +18,6 @@ class Quotation extends Model
         'approved_by',
         'received_by',
         'remarks',
+        'is_deleted',
     ];
 }

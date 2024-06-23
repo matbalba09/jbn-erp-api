@@ -14,7 +14,7 @@ class ServiceTypeRepository implements IServiceTypeRepository
 {
     function getAll()
     {
-        $serviceTypes = ServiceType::get();
+        $serviceTypes = ServiceType::where('is_deleted', Response::FALSE)->get();
         return $serviceTypes;
     }
 
@@ -27,6 +27,7 @@ class ServiceTypeRepository implements IServiceTypeRepository
     function create(CreateServiceTypeRequest $request)
     {
         $validatedData = $request->validated();
+        $validatedData['is_deleted'] = Response::FALSE;
 
         $serviceType = ServiceType::create($validatedData);
         return $serviceType;

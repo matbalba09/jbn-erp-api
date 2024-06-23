@@ -28,6 +28,7 @@ class UpdatePurchaseRequisitionRequest extends FormRequest
             'requested_by' => 'nullable|integer',
             'approved_by' => 'nullable|integer',
             'remarks' => 'nullable|string',
+            'is_deleted' => 'nullable|integer',
         ];
     }
 }

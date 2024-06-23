@@ -14,7 +14,7 @@ class QuotationDetailRepository implements IQuotationDetailRepository
 {
     function getAll()
     {
-        $quotationDetails = QuotationDetail::get();
+        $quotationDetails = QuotationDetail::where('is_deleted', Response::FALSE)->get();
         return $quotationDetails;
     }
 
@@ -27,6 +27,7 @@ class QuotationDetailRepository implements IQuotationDetailRepository
     function create(CreateQuotationDetailRequest $request)
     {
         $validatedData = $request->validated();
+        $validatedData['is_deleted'] = Response::FALSE;
 
         $quotationDetail = QuotationDetail::create($validatedData);
         return $quotationDetail;

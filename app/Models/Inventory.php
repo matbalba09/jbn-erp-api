@@ -18,5 +18,6 @@ class Inventory extends Model
         'item_type',
         'uom',
         'remarks',
+        'is_deleted',
     ];
 }

@@ -14,7 +14,7 @@ class CategoryRepository implements ICategoryRepository
 {
     function getAll()
     {
-        $categories = Category::get();
+        $categories = Category::where('is_deleted', Response::FALSE)->get();
         return $categories;
     }
 
@@ -27,6 +27,7 @@ class CategoryRepository implements ICategoryRepository
     function create(CreateCategoryRequest $request)
     {
         $validatedData = $request->validated();
+        $validatedData['is_deleted'] = Response::FALSE;
 
         $category = Category::create($validatedData);
         return $category;

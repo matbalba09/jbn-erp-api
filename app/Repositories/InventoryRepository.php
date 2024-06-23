@@ -14,7 +14,7 @@ class InventoryRepository implements IInventoryRepository
 {
     function getAll()
     {
-        $inventories = Inventory::get();
+        $inventories = Inventory::where('is_deleted', Response::FALSE)->get();
         return $inventories;
     }
 
@@ -27,6 +27,7 @@ class InventoryRepository implements IInventoryRepository
     function create(CreateInventoryRequest $request)
     {
         $validatedData = $request->validated();
+        $validatedData['is_deleted'] = Response::FALSE;
 
         $inventory = Inventory::create($validatedData);
         return $inventory;

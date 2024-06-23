@@ -16,5 +16,6 @@ class OrderDetail extends Model
         'unit_price',
         'total_price',
         'remarks',
+        'is_deleted',
     ];
 }

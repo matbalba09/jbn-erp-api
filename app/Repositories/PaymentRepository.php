@@ -14,7 +14,7 @@ class PaymentRepository implements IPaymentRepository
 {
     function getAll()
     {
-        $payments = Payment::get();
+        $payments = Payment::where('is_deleted', Response::FALSE)->get();
         return $payments;
     }
 
@@ -27,6 +27,7 @@ class PaymentRepository implements IPaymentRepository
     function create(CreatePaymentRequest $request)
     {
         $validatedData = $request->validated();
+        $validatedData['is_deleted'] = Response::FALSE;
 
         $payment = Payment::create($validatedData);
         return $payment;

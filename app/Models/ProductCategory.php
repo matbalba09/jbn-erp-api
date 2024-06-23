@@ -12,5 +12,6 @@ class ProductCategory extends Model
     protected $fillable = [
         'category_id',
         'product_id',
+        'is_deleted',
     ];
 }

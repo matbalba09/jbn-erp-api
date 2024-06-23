@@ -19,6 +19,7 @@ return new class extends Migration
             $table->decimal('amount', 10, 2)->nullable();
             $table->string('description')->nullable();
             $table->string('documents')->nullable();
+            $table->integer('is_deleted')->nullable();
             $table->timestamps();
         });
     }

@@ -13,5 +13,6 @@ class ProductAttribute extends Model
         'product_id',
         'attribute_name',
         'attribute_value',
+        'is_deleted',
     ];
 }

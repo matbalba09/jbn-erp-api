@@ -14,5 +14,6 @@ class InventoryTransaction extends Model
         'image',
         'flow',
         'remarks',
+        'is_deleted',
     ];
 }

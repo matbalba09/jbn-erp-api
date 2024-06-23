@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('item_type')->nullable();
             $table->string('uom')->nullable();
             $table->string('remarks')->nullable();
+            $table->integer('is_deleted')->nullable();
             $table->timestamps();
         });
     }

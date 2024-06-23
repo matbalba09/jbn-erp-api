@@ -28,6 +28,7 @@ class UpdatePaymentRequest extends FormRequest
             'amount' => 'nullable|numeric',
             'description' => 'nullable|string',
             'documents' => 'nullable|string',
+            'is_deleted' => 'nullable|integer',
         ];
     }
 }

@@ -27,6 +27,7 @@ class UpdateSupplierRequest extends FormRequest
             'address' => 'nullable|string',
             'contact_no' => 'nullable|string',
             'remarks' => 'nullable|string',
+            'is_deleted' => 'nullable|integer',
         ];
     }
 }

@@ -23,6 +23,7 @@ class UpdateServiceTypeRequest extends FormRequest
     {
         return [
             'name' => 'nullable|string',
+            'is_deleted' => 'nullable|integer',
         ];
     }
 }

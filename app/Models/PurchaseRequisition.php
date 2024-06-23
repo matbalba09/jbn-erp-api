@@ -16,5 +16,6 @@ class PurchaseRequisition extends Model
         'requested_by',
         'approved_by',
         'remarks',
+        'is_deleted',
     ];
 }

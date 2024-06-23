@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('service_types', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
+            $table->integer('is_deleted')->nullable();
             $table->timestamps();
         });
     }

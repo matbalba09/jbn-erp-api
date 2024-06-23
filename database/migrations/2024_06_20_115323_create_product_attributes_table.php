@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('product_id')->nullable();
             $table->string('attribute_name')->nullable();
             $table->string('attribute_value')->nullable();
+            $table->integer('is_deleted')->nullable();
             $table->timestamps();
         });
     }

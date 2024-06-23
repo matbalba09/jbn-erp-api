@@ -15,5 +15,6 @@ class Supplier extends Model
         'address',
         'contact_no',
         'remarks',
+        'is_deleted',
     ];
 }
