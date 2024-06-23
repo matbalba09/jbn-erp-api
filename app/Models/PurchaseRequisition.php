@@ -12,9 +12,16 @@ class PurchaseRequisition extends Model
     protected $fillable = [
         'prs_no',
         'prs_date',
+        'customer_id',
         'requested_by',
         'approved_by',
         'remarks',
+        'status',
         'is_deleted',
     ];
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class, 'customer_id');
+    }
 }

@@ -21,4 +21,9 @@ class Customer extends Model
         'remarks',
         'is_deleted',
     ];
+
+    public function prs()
+    {
+        return $this->hasOne(PurchaseRequisition::class, 'id');
+    }
 }

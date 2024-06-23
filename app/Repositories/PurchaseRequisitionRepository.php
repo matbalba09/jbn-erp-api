@@ -14,13 +14,13 @@ class PurchaseRequisitionRepository implements IPurchaseRequisitionRepository
 {
     function getAll()
     {
-        $prs = PurchaseRequisition::where('is_deleted', Response::FALSE)->get();
+        $prs = PurchaseRequisition::with('customer')->where('is_deleted', Response::FALSE)->get();
         return $prs;
     }
 
     function getById($id)
     {
-        $prs = PurchaseRequisition::findOrFail($id);
+        $prs = PurchaseRequisition::with('customer')->findOrFail($id);
         return $prs;
     }
 
@@ -49,7 +49,7 @@ class PurchaseRequisitionRepository implements IPurchaseRequisitionRepository
         $validatedData['is_deleted'] = Response::FALSE;
 
         $prs = PurchaseRequisition::create($validatedData);
-        return $prs;
+        return $prs->load('customer');
     }
 
     function update(UpdatePurchaseRequisitionRequest $request, $id)

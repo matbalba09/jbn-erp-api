@@ -24,9 +24,11 @@ class CreatePurchaseRequisitionRequest extends FormRequest
         return [
             'prs_no' => 'nullable|string',
             'prs_date' => 'nullable|string',
+            'customer_id' => 'nullable|integer',
             'requested_by' => 'nullable|integer',
             'approved_by' => 'nullable|integer',
             'remarks' => 'nullable|string',
+            'status' => 'nullable|string',
         ];
     }
 }

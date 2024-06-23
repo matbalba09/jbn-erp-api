@@ -15,9 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('prs_no')->nullable();
             $table->string('prs_date')->nullable();
+            $table->integer('customer_id')->nullable();
             $table->integer('requested_by')->nullable();
             $table->integer('approved_by')->nullable();
             $table->string('remarks')->nullable();
+            $table->string('status')->nullable();
             $table->integer('is_deleted')->nullable();
             $table->timestamps();
         });
