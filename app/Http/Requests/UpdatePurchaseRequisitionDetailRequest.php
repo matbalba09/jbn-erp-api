@@ -23,11 +23,10 @@ class UpdatePurchaseRequisitionDetailRequest extends FormRequest
     {
         return [
             'prs_id' => 'nullable|integer',
-            'supplier' => 'nullable|string',
+            'product_id' => 'nullable|integer',
             'name' => 'nullable|string',
             'uom' => 'nullable|string',
             'quantity' => 'nullable|integer',
-            'requisition_type' => 'nullable|string',
             'unit_price' => 'nullable|numeric',
             'total_price' => 'nullable|numeric',
             'remarks' => 'nullable|string',
