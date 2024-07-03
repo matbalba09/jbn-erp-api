@@ -2,8 +2,12 @@
 
 namespace App\Providers;
 
+use App\Repositories\BomRepository;
+use App\Repositories\BomTypeRepository;
 use App\Repositories\CategoryRepository;
 use App\Repositories\CustomerRepository;
+use App\Repositories\Interface\IBomRepository;
+use App\Repositories\Interface\IBomTypeRepository;
 use App\Repositories\Interface\ICategoryRepository;
 use App\Repositories\Interface\ICustomerRepository;
 use App\Repositories\Interface\IInventoryTransactionRepository;
@@ -14,6 +18,8 @@ use App\Repositories\Interface\IPaymentRepository;
 use App\Repositories\Interface\IProductAttributeRepository;
 use App\Repositories\Interface\IProductCategoryRepository;
 use App\Repositories\Interface\IProductRepository;
+use App\Repositories\Interface\IPrsSupplierRepository;
+use App\Repositories\Interface\IPrsSupplierTypeRepository;
 use App\Repositories\Interface\IPurchaseOrderRepository;
 use App\Repositories\Interface\IPurchaseRequisitionDetailRepository;
 use App\Repositories\Interface\IPurchaseRequisitionRepository;
@@ -31,6 +37,8 @@ use App\Repositories\PaymentRepository;
 use App\Repositories\ProductAttributeRepository;
 use App\Repositories\ProductCategoryRepository;
 use App\Repositories\ProductRepository;
+use App\Repositories\PrsSupplierRepository;
+use App\Repositories\PrsSupplierTypeRepository;
 use App\Repositories\PurchaseOrderRepository;
 use App\Repositories\PurchaseRequisitionDetailRepository;
 use App\Repositories\PurchaseRequisitionRepository;
@@ -124,6 +132,22 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             IProductCategoryRepository::class,
             ProductCategoryRepository::class
+        );
+        $this->app->bind(
+            IPrsSupplierRepository::class,
+            PrsSupplierRepository::class
+        );
+        $this->app->bind(
+            IPrsSupplierTypeRepository::class,
+            PrsSupplierTypeRepository::class
+        );
+        $this->app->bind(
+            IBomRepository::class,
+            BomRepository::class
+        );
+        $this->app->bind(
+            IBomTypeRepository::class,
+            BomTypeRepository::class
         );
     }
 

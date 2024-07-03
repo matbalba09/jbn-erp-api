@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BomController;
+use App\Http\Controllers\BomTypeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HeartbeatController;
@@ -11,6 +13,8 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductAttributeController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PrsSupplierController;
+use App\Http\Controllers\PrsSupplierTypeController;
 use App\Http\Controllers\PurchaseOrderController;
 use App\Http\Controllers\PurchaseRequisitionController;
 use App\Http\Controllers\PurchaseRequisitionDetailController;
@@ -190,6 +194,38 @@ Route::prefix('v1')->group(function () {
         Route::post('create', [ProductCategoryController::class, 'create']);
         Route::put('update/{id}', [ProductCategoryController::class, 'update']);
         Route::delete('delete/{id}', [ProductCategoryController::class, 'delete']);
+    });
+
+    Route::prefix('prs_supplier')->group(function () {
+        Route::get('/', [PrsSupplierController::class, 'index']);
+        Route::get('{id}', [PrsSupplierController::class, 'getById']);
+        Route::post('create', [PrsSupplierController::class, 'create']);
+        Route::put('update/{id}', [PrsSupplierController::class, 'update']);
+        Route::delete('delete/{id}', [PrsSupplierController::class, 'delete']);
+    });
+
+    Route::prefix('prs_supplier_type')->group(function () {
+        Route::get('/', [PrsSupplierTypeController::class, 'index']);
+        Route::get('{id}', [PrsSupplierTypeController::class, 'getById']);
+        Route::post('create', [PrsSupplierTypeController::class, 'create']);
+        Route::put('update/{id}', [PrsSupplierTypeController::class, 'update']);
+        Route::delete('delete/{id}', [PrsSupplierTypeController::class, 'delete']);
+    });
+
+    Route::prefix('bom')->group(function () {
+        Route::get('/', [BomController::class, 'index']);
+        Route::get('{id}', [BomController::class, 'getById']);
+        Route::post('create', [BomController::class, 'create']);
+        Route::put('update/{id}', [BomController::class, 'update']);
+        Route::delete('delete/{id}', [BomController::class, 'delete']);
+    });
+
+    Route::prefix('bom_type')->group(function () {
+        Route::get('/', [BomTypeController::class, 'index']);
+        Route::get('{id}', [BomTypeController::class, 'getById']);
+        Route::post('create', [BomTypeController::class, 'create']);
+        Route::put('update/{id}', [BomTypeController::class, 'update']);
+        Route::delete('delete/{id}', [BomTypeController::class, 'delete']);
     });
 
     Route::group(['middleware' => ['auth:sanctum']], function () {

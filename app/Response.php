@@ -166,4 +166,32 @@ class Response
     const SUCCESSFULLY_CREATED_PRODUCT_CATEGORY = 'Successfully created product category';
     const SUCCESSFULLY_UPDATED_PRODUCT_CATEGORY = 'Successfully updated product category';
     const SUCCESSFULLY_DELETED_PRODUCT_CATEGORY = 'Successfully deleted product category';
+
+    //PrsSupplier
+    const SUCCESSFULLY_GET_ALL_PRS_SUPPLIERS = 'Successfully get all prs suppliers';
+    const SUCCESSFULLY_GET_PRS_SUPPLIER = 'Successfully get all prs supplier';
+    const SUCCESSFULLY_CREATED_PRS_SUPPLIER = 'Successfully created prs supplier';
+    const SUCCESSFULLY_UPDATED_PRS_SUPPLIER = 'Successfully updated prs supplier';
+    const SUCCESSFULLY_DELETED_PRS_SUPPLIER = 'Successfully deleted prs supplier';
+
+    //PrsSupplierType
+    const SUCCESSFULLY_GET_ALL_PRS_SUPPLIER_TYPES = 'Successfully get all prs supplier types';
+    const SUCCESSFULLY_GET_PRS_SUPPLIER_TYPE = 'Successfully get all prs supplier type';
+    const SUCCESSFULLY_CREATED_PRS_SUPPLIER_TYPE = 'Successfully created prs supplier type';
+    const SUCCESSFULLY_UPDATED_PRS_SUPPLIER_TYPE = 'Successfully updated prs supplier type';
+    const SUCCESSFULLY_DELETED_PRS_SUPPLIER_TYPE = 'Successfully deleted prs supplier type';
+
+    //Bom
+    const SUCCESSFULLY_GET_ALL_BOM = 'Successfully get all bom';
+    const SUCCESSFULLY_GET_BOM = 'Successfully get all bom';
+    const SUCCESSFULLY_CREATED_BOM = 'Successfully created bom';
+    const SUCCESSFULLY_UPDATED_BOM = 'Successfully updated bom';
+    const SUCCESSFULLY_DELETED_BOM = 'Successfully deleted bom';
+
+    //BomType
+    const SUCCESSFULLY_GET_ALL_BOM_TYPES = 'Successfully get all bom types';
+    const SUCCESSFULLY_GET_BOM_TYPE = 'Successfully get all bom type';
+    const SUCCESSFULLY_CREATED_BOM_TYPE = 'Successfully created bom type';
+    const SUCCESSFULLY_UPDATED_BOM_TYPE = 'Successfully updated bom type';
+    const SUCCESSFULLY_DELETED_BOM_TYPE = 'Successfully deleted bom type';
 }
