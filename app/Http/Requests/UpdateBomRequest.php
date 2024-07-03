@@ -27,7 +27,7 @@ class UpdateBomRequest extends FormRequest
             'unit_cost' => 'nullable|numeric',
             'quantity' => 'nullable|integer',
             'uom' => 'nullable|string',
-            'bom_type_id ' => 'nullable|integer',
+            'bom_type_id' => 'nullable|integer',
             'is_deleted' => 'nullable|integer',
         ];
     }
