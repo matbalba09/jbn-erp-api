@@ -17,4 +17,9 @@ class Supplier extends Model
         'remarks',
         'is_deleted',
     ];
+
+    public function prs_supplier()
+    {
+        return $this->hasMany(PrsSupplier::class, 'supplier_id');
+    }
 }

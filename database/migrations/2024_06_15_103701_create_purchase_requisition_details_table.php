@@ -14,11 +14,10 @@ return new class extends Migration
         Schema::create('purchase_requisition_details', function (Blueprint $table) {
             $table->id();
             $table->integer('prs_id')->nullable();
-            $table->string('supplier')->nullable();
+            $table->integer('product_id')->nullable();
             $table->string('name')->nullable();
             $table->string('uom')->nullable();
             $table->integer('quantity')->nullable();
-            $table->string('requisition_type')->nullable();
             $table->decimal('unit_price', 10, 2)->nullable();
             $table->decimal('total_price', 10, 2)->nullable();
             $table->string('remarks')->nullable();

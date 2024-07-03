@@ -11,14 +11,25 @@ class PurchaseRequisitionDetail extends Model
 
     protected $fillable = [
         'prs_id',
-        'supplier',
+        'product_id',
         'name',
         'uom',
         'quantity',
-        'requisition_type',
         'unit_price',
         'total_price',
         'remarks',
         'is_deleted',
     ];
+
+    protected $with = ['prs_supplier.supplier'];
+
+    public function prs()
+    {
+        return $this->belongsTo(PurchaseRequisition::class, 'prs_id');
+    }
+    
+    public function prs_supplier()
+    {
+        return $this->hasMany(PrsSupplier::class, 'prs_detail_id');
+    }
 }
