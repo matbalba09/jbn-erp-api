@@ -19,7 +19,7 @@ class PurchaseRequisitionRepository implements IPurchaseRequisitionRepository
     function getAll()
     {
         $prs = PurchaseRequisition::with('customer')
-            ->with('prs_details')
+            ->with('products')
             ->where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
         return $prs;
     }
@@ -27,7 +27,7 @@ class PurchaseRequisitionRepository implements IPurchaseRequisitionRepository
     function getById($id)
     {
         $prs = PurchaseRequisition::with('customer')
-            ->with('prs_details')
+            ->with('products')
             ->findOrFail($id);
         return $prs;
     }
@@ -86,11 +86,6 @@ class PurchaseRequisitionRepository implements IPurchaseRequisitionRepository
                             'is_deleted' => Response::FALSE,
                         ]);
                     }
-                } else {
-                    PrsSupplier::create([
-                        'prs_detail_id' => $prsDetail->id,
-                        'is_deleted' => Response::FALSE,
-                    ]);
                 }
             }
         }
