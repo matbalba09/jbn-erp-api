@@ -14,13 +14,13 @@ class BomRepository implements IBomRepository
 {
     function getAll()
     {
-        $bom = Bom::where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
+        $bom = Bom::with('bom_type')->where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
         return $bom;
     }
 
     function getById($id)
     {
-        $bom = Bom::findOrFail($id);
+        $bom = Bom::with('bom_type')->findOrFail($id);
         return $bom;
     }
 
@@ -30,7 +30,7 @@ class BomRepository implements IBomRepository
         $validatedData['is_deleted'] = Response::FALSE;
 
         $bom = Bom::create($validatedData);
-        return $bom;
+        return $bom->load('bom_type');
     }
 
     function update(UpdateBomRequest $request, $id)
@@ -39,7 +39,7 @@ class BomRepository implements IBomRepository
         $validatedData = $request->validated();
         $bom->update($validatedData);
 
-        return $bom;
+        return $bom->load('bom_type');
     }
 
     function delete($id)

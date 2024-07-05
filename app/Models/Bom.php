@@ -18,4 +18,9 @@ class Bom extends Model
         'bom_type_id',
         'is_deleted',
     ];
+
+    public function bom_type()
+    {
+        return $this->belongsTo(BomType::class);
+    }
 }

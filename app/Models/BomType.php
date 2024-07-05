@@ -13,4 +13,9 @@ class BomType extends Model
         'name',
         'is_deleted',
     ];
+
+    public function boms()
+    {
+        return $this->hasMany(Bom::class);
+    }
 }
