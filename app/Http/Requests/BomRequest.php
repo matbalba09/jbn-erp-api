@@ -23,11 +23,9 @@ class BomRequest extends FormRequest
     {
         return [
             'product_id' => 'nullable|integer',
-            'component_id' => 'nullable|integer',
-            'unit_cost' => 'nullable|numeric',
+            'inventory_id' => 'nullable|integer',
             'quantity' => 'nullable|integer',
             'uom' => 'nullable|string',
-            'bom_type_id' => 'nullable|integer',
             'is_deleted' => 'nullable|integer',
         ];
     }

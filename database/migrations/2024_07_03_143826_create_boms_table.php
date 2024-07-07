@@ -14,11 +14,9 @@ return new class extends Migration
         Schema::create('boms', function (Blueprint $table) {
             $table->id();
             $table->integer('product_id')->nullable();
-            $table->integer('component_id')->nullable();
-            $table->decimal('unit_cost', 10, 2)->nullable();
+            $table->integer('inventory_id')->nullable();
             $table->integer('quantity')->nullable();
             $table->string('uom')->nullable();
-            $table->integer('bom_type_id')->nullable();
             $table->integer('is_deleted')->nullable();
             $table->timestamps();
         });

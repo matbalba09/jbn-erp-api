@@ -11,11 +11,9 @@ class Bom extends Model
 
     protected $fillable = [
         'product_id',
-        'component_id',
-        'unit_cost',
+        'inventory_id',
         'quantity',
         'uom',
-        'bom_type_id',
         'is_deleted',
     ];
 
