@@ -8,8 +8,16 @@ use App\Http\Requests\CreateBomTypeRequest;
 use App\Http\Requests\UpdateBomTypeRequest;
 use Carbon\Carbon;
 use App\Models\BomType;
-use App\Repositories\Interface\IBomTypeRepository;
 use App\Response;
+
+interface IBomTypeRepository
+{
+    function getAll();
+    function getById($id);
+    function create(BomTypeRequest $request);
+    function update(BomTypeRequest $request, $id);
+    function delete($id);
+}
 
 class BomTypeRepository implements IBomTypeRepository
 {

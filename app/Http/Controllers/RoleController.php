@@ -7,7 +7,7 @@ use App\Http\Requests\CreateRoleRequest;
 use App\Http\Requests\RoleRequest;
 use App\Http\Requests\UpdateRoleRequest;
 use App\Models\Role;
-use App\Repositories\Interface\IRoleRepository;
+use App\Repositories\IRoleRepository;
 use App\Response;
 use Illuminate\Http\Request;
 

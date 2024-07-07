@@ -7,7 +7,7 @@ use App\Http\Requests\CreateQuotationRequest;
 use App\Http\Requests\QuotationRequest;
 use App\Http\Requests\UpdateQuotationRequest;
 use App\Models\Quotation;
-use App\Repositories\Interface\IQuotationRepository;
+use App\Repositories\IQuotationRepository;
 use App\Response;
 use Illuminate\Http\Request;
 

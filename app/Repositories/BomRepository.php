@@ -8,8 +8,16 @@ use App\Http\Requests\CreateBomRequest;
 use App\Http\Requests\UpdateBomRequest;
 use Carbon\Carbon;
 use App\Models\Bom;
-use App\Repositories\Interface\IBomRepository;
 use App\Response;
+
+interface IBomRepository
+{
+    function getAll();
+    function getById($id);
+    function create(BomRequest $request);
+    function update(BomRequest $request, $id);
+    function delete($id);
+}
 
 class BomRepository implements IBomRepository
 {

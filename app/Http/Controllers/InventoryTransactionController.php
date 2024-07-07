@@ -7,7 +7,7 @@ use App\Http\Requests\CreateInventoryTransactionRequest;
 use App\Http\Requests\InventoryTransactionRequest;
 use App\Http\Requests\UpdateInventoryTransactionRequest;
 use App\Models\InventoryTransaction;
-use App\Repositories\Interface\IInventoryTransactionRepository;
+use App\Repositories\IInventoryTransactionRepository;
 use App\Response;
 use Illuminate\Http\Request;
 

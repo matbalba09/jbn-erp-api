@@ -7,7 +7,7 @@ use App\Http\Requests\CreatePurchaseRequisitionRequest;
 use App\Http\Requests\PurchaseRequisitionRequest;
 use App\Http\Requests\UpdatePurchaseRequisitionRequest;
 use App\Models\PurchaseRequisition;
-use App\Repositories\Interface\IPurchaseRequisitionRepository;
+use App\Repositories\IPurchaseRequisitionRepository;
 use App\Response;
 use Illuminate\Http\Request;
 

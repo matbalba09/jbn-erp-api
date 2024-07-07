@@ -7,7 +7,7 @@ use App\Http\Requests\CreateProductCategoryRequest;
 use App\Http\Requests\ProductCategoryRequest;
 use App\Http\Requests\UpdateProductCategoryRequest;
 use App\Models\ProductCategory;
-use App\Repositories\Interface\IProductCategoryRepository;
+use App\Repositories\IProductCategoryRepository;
 use App\Response;
 use Illuminate\Http\Request;
 

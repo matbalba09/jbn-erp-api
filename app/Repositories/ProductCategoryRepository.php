@@ -8,8 +8,16 @@ use App\Http\Requests\ProductCategoryRequest;
 use App\Http\Requests\UpdateProductCategoryRequest;
 use Carbon\Carbon;
 use App\Models\ProductCategory;
-use App\Repositories\Interface\IProductCategoryRepository;
 use App\Response;
+
+interface IProductCategoryRepository
+{
+    function getAll();
+    function getById($id);
+    function create(ProductCategoryRequest $request);
+    function update(ProductCategoryRequest $request, $id);
+    function delete($id);
+}
 
 class ProductCategoryRepository implements IProductCategoryRepository
 {

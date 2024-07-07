@@ -8,8 +8,16 @@ use App\Http\Requests\PurchaseRequisitionDetailRequest;
 use App\Http\Requests\UpdatePurchaseRequisitionDetailRequest;
 use Carbon\Carbon;
 use App\Models\PurchaseRequisitionDetail;
-use App\Repositories\Interface\IPurchaseRequisitionDetailRepository;
 use App\Response;
+
+interface IPurchaseRequisitionDetailRepository
+{
+    function getAll();
+    function getById($id);
+    function create(PurchaseRequisitionDetailRequest $request);
+    function update(PurchaseRequisitionDetailRequest $request, $id);
+    function delete($id);
+}
 
 class PurchaseRequisitionDetailRepository implements IPurchaseRequisitionDetailRepository
 {

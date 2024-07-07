@@ -7,7 +7,7 @@ use App\Http\Requests\CreateProductRequest;
 use App\Http\Requests\ProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
-use App\Repositories\Interface\IProductRepository;
+use App\Repositories\IProductRepository;
 use App\Response;
 use Illuminate\Http\Request;
 

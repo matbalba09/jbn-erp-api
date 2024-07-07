@@ -8,8 +8,16 @@ use App\Http\Requests\CustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
 use Carbon\Carbon;
 use App\Models\Customer;
-use App\Repositories\Interface\ICustomerRepository;
 use App\Response;
+
+interface ICustomerRepository
+{
+    function getAll();
+    function getById($id);
+    function create(CustomerRequest $request);
+    function update(CustomerRequest $request, $id);
+    function delete($id);
+}
 
 class CustomerRepository implements ICustomerRepository
 {

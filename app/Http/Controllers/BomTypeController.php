@@ -7,7 +7,7 @@ use App\Http\Requests\BomTypeRequest;
 use App\Http\Requests\CreateBomTypeRequest;
 use App\Http\Requests\UpdateBomTypeRequest;
 use App\Models\BomType;
-use App\Repositories\Interface\IBomTypeRepository;
+use App\Repositories\IBomTypeRepository;
 use App\Response;
 use Illuminate\Http\Request;
 

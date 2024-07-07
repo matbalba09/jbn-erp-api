@@ -8,8 +8,16 @@ use App\Http\Requests\InventoryRequest;
 use App\Http\Requests\UpdateInventoryRequest;
 use Carbon\Carbon;
 use App\Models\Inventory;
-use App\Repositories\Interface\IInventoryRepository;
 use App\Response;
+
+interface IInventoryRepository
+{
+    function getAll();
+    function getById($id);
+    function create(InventoryRequest $request);
+    function update(InventoryRequest $request, $id);
+    function delete($id);
+}
 
 class InventoryRepository implements IInventoryRepository
 {

@@ -7,7 +7,7 @@ use App\Http\Requests\CreateServiceTypeRequest;
 use App\Http\Requests\ServiceTypeRequest;
 use App\Http\Requests\UpdateServiceTypeRequest;
 use App\Models\ServiceType;
-use App\Repositories\Interface\IServiceTypeRepository;
+use App\Repositories\IServiceTypeRepository;
 use App\Response;
 use Illuminate\Http\Request;
 

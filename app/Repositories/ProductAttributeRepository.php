@@ -8,8 +8,16 @@ use App\Http\Requests\ProductAttributeRequest;
 use App\Http\Requests\UpdateProductAttributeRequest;
 use Carbon\Carbon;
 use App\Models\ProductAttribute;
-use App\Repositories\Interface\IProductAttributeRepository;
 use App\Response;
+
+interface IProductAttributeRepository
+{
+    function getAll();
+    function getById($id);
+    function create(ProductAttributeRequest $request);
+    function update(ProductAttributeRequest $request, $id);
+    function delete($id);
+}
 
 class ProductAttributeRepository implements IProductAttributeRepository
 {

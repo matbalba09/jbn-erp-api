@@ -7,7 +7,7 @@ use App\Http\Requests\CreateOrderRequest;
 use App\Http\Requests\OrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Models\Order;
-use App\Repositories\Interface\IOrderRepository;
+use App\Repositories\IOrderRepository;
 use App\Response;
 use Illuminate\Http\Request;
 

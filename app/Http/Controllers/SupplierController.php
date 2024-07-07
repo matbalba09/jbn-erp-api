@@ -7,7 +7,7 @@ use App\Http\Requests\CreateSupplierRequest;
 use App\Http\Requests\SupplierRequest;
 use App\Http\Requests\UpdateSupplierRequest;
 use App\Models\Supplier;
-use App\Repositories\Interface\ISupplierRepository;
+use App\Repositories\ISupplierRepository;
 use App\Response;
 use Illuminate\Http\Request;
 

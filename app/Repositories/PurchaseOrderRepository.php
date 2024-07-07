@@ -8,8 +8,16 @@ use App\Http\Requests\PurchaseOrderRequest;
 use App\Http\Requests\UpdatePurchaseOrderRequest;
 use Carbon\Carbon;
 use App\Models\PurchaseOrder;
-use App\Repositories\Interface\IPurchaseOrderRepository;
 use App\Response;
+
+interface IPurchaseOrderRepository
+{
+    function getAll();
+    function getById($id);
+    function create(PurchaseOrderRequest $request);
+    function update(PurchaseOrderRequest $request, $id);
+    function delete($id);
+}
 
 class PurchaseOrderRepository implements IPurchaseOrderRepository
 {

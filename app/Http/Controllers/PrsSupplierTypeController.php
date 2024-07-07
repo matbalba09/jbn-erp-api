@@ -7,7 +7,7 @@ use App\Http\Requests\CreatePrsSupplierTypeRequest;
 use App\Http\Requests\PrsSupplierTypeRequest;
 use App\Http\Requests\UpdatePrsSupplierTypeRequest;
 use App\Models\PrsSupplierType;
-use App\Repositories\Interface\IPrsSupplierTypeRepository;
+use App\Repositories\IPrsSupplierTypeRepository;
 use App\Response;
 use Illuminate\Http\Request;
 

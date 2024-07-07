@@ -7,7 +7,7 @@ use App\Http\Requests\CreateInventoryRequest;
 use App\Http\Requests\InventoryRequest;
 use App\Http\Requests\UpdateInventoryRequest;
 use App\Models\Inventory;
-use App\Repositories\Interface\IInventoryRepository;
+use App\Repositories\IInventoryRepository;
 use App\Response;
 use Illuminate\Http\Request;
 

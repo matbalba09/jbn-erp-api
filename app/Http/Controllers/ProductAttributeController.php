@@ -7,7 +7,7 @@ use App\Http\Requests\CreateProductAttributeRequest;
 use App\Http\Requests\ProductAttributeRequest;
 use App\Http\Requests\UpdateProductAttributeRequest;
 use App\Models\ProductAttribute;
-use App\Repositories\Interface\IProductAttributeRepository;
+use App\Repositories\IProductAttributeRepository;
 use App\Response;
 use Illuminate\Http\Request;
 

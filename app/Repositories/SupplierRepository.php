@@ -8,8 +8,16 @@ use App\Http\Requests\SupplierRequest;
 use App\Http\Requests\UpdateSupplierRequest;
 use Carbon\Carbon;
 use App\Models\Supplier;
-use App\Repositories\Interface\ISupplierRepository;
 use App\Response;
+
+interface ISupplierRepository
+{
+    function getAll();
+    function getById($id);
+    function create(SupplierRequest $request);
+    function update(SupplierRequest $request, $id);
+    function delete($id);
+}
 
 class SupplierRepository implements ISupplierRepository
 {

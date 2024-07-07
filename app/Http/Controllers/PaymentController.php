@@ -7,7 +7,7 @@ use App\Http\Requests\CreatePaymentRequest;
 use App\Http\Requests\PaymentRequest;
 use App\Http\Requests\UpdatePaymentRequest;
 use App\Models\Payment;
-use App\Repositories\Interface\IPaymentRepository;
+use App\Repositories\IPaymentRepository;
 use App\Response;
 use Illuminate\Http\Request;
 

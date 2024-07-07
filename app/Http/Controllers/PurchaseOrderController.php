@@ -7,7 +7,7 @@ use App\Http\Requests\CreatePurchaseOrderRequest;
 use App\Http\Requests\PurchaseOrderRequest;
 use App\Http\Requests\UpdatePurchaseOrderRequest;
 use App\Models\PurchaseOrder;
-use App\Repositories\Interface\IPurchaseOrderRepository;
+use App\Repositories\IPurchaseOrderRepository;
 use App\Response;
 use Illuminate\Http\Request;
 

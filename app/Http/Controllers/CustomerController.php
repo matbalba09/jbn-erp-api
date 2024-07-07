@@ -7,7 +7,7 @@ use App\Http\Requests\CreateCustomerRequest;
 use App\Http\Requests\CustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
 use App\Models\Customer;
-use App\Repositories\Interface\ICustomerRepository;
+use App\Repositories\ICustomerRepository;
 use App\Response;
 use Illuminate\Http\Request;
 

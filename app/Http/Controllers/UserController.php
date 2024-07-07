@@ -7,7 +7,7 @@ use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
-use App\Repositories\Interface\IUserRepository;
+use App\Repositories\IUserRepository;
 use App\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;

@@ -8,8 +8,16 @@ use App\Http\Requests\OrderDetailRequest;
 use App\Http\Requests\UpdateOrderDetailRequest;
 use Carbon\Carbon;
 use App\Models\OrderDetail;
-use App\Repositories\Interface\IOrderDetailRepository;
 use App\Response;
+
+interface IOrderDetailRepository
+{
+    function getAll();
+    function getById($id);
+    function create(OrderDetailRequest $request);
+    function update(OrderDetailRequest $request, $id);
+    function delete($id);
+}
 
 class OrderDetailRepository implements IOrderDetailRepository
 {

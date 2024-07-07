@@ -12,8 +12,16 @@ use App\Models\PrsSupplier;
 use Carbon\Carbon;
 use App\Models\PurchaseRequisition;
 use App\Models\PurchaseRequisitionDetail;
-use App\Repositories\Interface\IPurchaseRequisitionRepository;
 use App\Response;
+
+interface IPurchaseRequisitionRepository
+{
+    function getAll();
+    function getById($id);
+    function create(PurchaseRequisitionRequest $request);
+    function update(PurchaseRequisitionRequest $request, $id);
+    function delete($id);
+}
 
 class PurchaseRequisitionRepository implements IPurchaseRequisitionRepository
 {

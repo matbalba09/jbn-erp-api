@@ -8,8 +8,16 @@ use App\Http\Requests\PaymentRequest;
 use App\Http\Requests\UpdatePaymentRequest;
 use Carbon\Carbon;
 use App\Models\Payment;
-use App\Repositories\Interface\IPaymentRepository;
 use App\Response;
+
+interface IPaymentRepository
+{
+    function getAll();
+    function getById($id);
+    function create(PaymentRequest $request);
+    function update(PaymentRequest $request, $id);
+    function delete($id);
+}
 
 class PaymentRepository implements IPaymentRepository
 {

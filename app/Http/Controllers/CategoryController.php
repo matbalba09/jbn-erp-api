@@ -7,7 +7,7 @@ use App\Http\Requests\CategoryRequest;
 use App\Http\Requests\CreateCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
-use App\Repositories\Interface\ICategoryRepository;
+use App\Repositories\ICategoryRepository;
 use App\Response;
 use Illuminate\Http\Request;
 

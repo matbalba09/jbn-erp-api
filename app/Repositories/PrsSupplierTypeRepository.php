@@ -8,8 +8,16 @@ use App\Http\Requests\PrsSupplierTypeRequest;
 use App\Http\Requests\UpdatePrsSupplierTypeRequest;
 use Carbon\Carbon;
 use App\Models\PrsSupplierType;
-use App\Repositories\Interface\IPrsSupplierTypeRepository;
 use App\Response;
+
+interface IPrsSupplierTypeRepository
+{
+    function getAll();
+    function getById($id);
+    function create(PrsSupplierTypeRequest $request);
+    function update(PrsSupplierTypeRequest $request, $id);
+    function delete($id);
+}
 
 class PrsSupplierTypeRepository implements IPrsSupplierTypeRepository
 {

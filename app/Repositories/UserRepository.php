@@ -7,9 +7,20 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\Role;
 use App\Models\User;
-use App\Repositories\Interface\IUserRepository;
 use App\Response;
 use Carbon\Carbon;
+
+interface IUserRepository
+{
+    function getAll();
+    function getById($id);
+    function create(UserRequest $request);
+    function update(UserRequest $request, $id);
+
+    function setUserRoles($user_id, $role_ids);
+    function getUserRoles($id);
+    function getByUsername($username);
+}
 
 class UserRepository implements IUserRepository
 {

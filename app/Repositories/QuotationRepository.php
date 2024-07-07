@@ -8,8 +8,16 @@ use App\Http\Requests\QuotationRequest;
 use App\Http\Requests\UpdateQuotationRequest;
 use Carbon\Carbon;
 use App\Models\Quotation;
-use App\Repositories\Interface\IQuotationRepository;
 use App\Response;
+
+interface IQuotationRepository
+{
+    function getAll();
+    function getById($id);
+    function create(QuotationRequest $request);
+    function update(QuotationRequest $request, $id);
+    function delete($id);
+}
 
 class QuotationRepository implements IQuotationRepository
 {
