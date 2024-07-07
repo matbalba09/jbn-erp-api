@@ -31,12 +31,14 @@ use App\Repositories\ISupplierRepository;
 use App\Repositories\IUserRepository;
 use App\Repositories\InventoryTransactionRepository;
 use App\Repositories\InventoryRepository;
+use App\Repositories\IPrsSupplierItemRepository;
 use App\Repositories\OrderDetailRepository;
 use App\Repositories\OrderRepository;
 use App\Repositories\PaymentRepository;
 use App\Repositories\ProductAttributeRepository;
 use App\Repositories\ProductCategoryRepository;
 use App\Repositories\ProductRepository;
+use App\Repositories\PrsSupplierItemRepository;
 use App\Repositories\PrsSupplierRepository;
 use App\Repositories\PrsSupplierTypeRepository;
 use App\Repositories\PurchaseOrderRepository;
@@ -148,6 +150,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             IBomTypeRepository::class,
             BomTypeRepository::class
+        );
+        $this->app->bind(
+            IPrsSupplierItemRepository::class,
+            PrsSupplierItemRepository::class
         );
     }
 

@@ -14,6 +14,7 @@ use App\Http\Controllers\ProductAttributeController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PrsSupplierController;
+use App\Http\Controllers\PrsSupplierItemController;
 use App\Http\Controllers\PrsSupplierTypeController;
 use App\Http\Controllers\PurchaseOrderController;
 use App\Http\Controllers\PurchaseRequisitionController;
@@ -52,14 +53,12 @@ Route::prefix('v1')->group(function () {
         Route::post('setUserRoles', [UserController::class, 'setUserRoles']);
         Route::get('getUserRoles/{id}', [UserController::class, 'getUserRoles']);
     });
-
     Route::prefix('role')->group(function () {
         Route::get('/', [RoleController::class, 'index']);
         Route::get('{id}', [RoleController::class, 'getById']);
         Route::post('create', [RoleController::class, 'create']);
         Route::put('update/{id}', [RoleController::class, 'update']);
     });
-
     Route::prefix('customer')->group(function () {
         Route::get('/', [CustomerController::class, 'index']);
         Route::get('{id}', [CustomerController::class, 'getById']);
@@ -67,7 +66,6 @@ Route::prefix('v1')->group(function () {
         Route::put('update/{id}', [CustomerController::class, 'update']);
         Route::delete('delete/{id}', [CustomerController::class, 'delete']);
     });
-
     Route::prefix('inventory')->group(function () {
         Route::get('/', [InventoryController::class, 'index']);
         Route::get('{id}', [InventoryController::class, 'getById']);
@@ -75,7 +73,6 @@ Route::prefix('v1')->group(function () {
         Route::put('update/{id}', [InventoryController::class, 'update']);
         Route::delete('delete/{id}', [InventoryController::class, 'delete']);
     });
-
     Route::prefix('inventory_transaction')->group(function () {
         Route::get('/', [InventoryTransactionController::class, 'index']);
         Route::get('{id}', [InventoryTransactionController::class, 'getById']);
@@ -83,7 +80,6 @@ Route::prefix('v1')->group(function () {
         Route::put('update/{id}', [InventoryTransactionController::class, 'update']);
         Route::delete('delete/{id}', [InventoryTransactionController::class, 'delete']);
     });
-
     Route::prefix('order')->group(function () {
         Route::get('/', [OrderController::class, 'index']);
         Route::get('{id}', [OrderController::class, 'getById']);
@@ -91,7 +87,6 @@ Route::prefix('v1')->group(function () {
         Route::put('update/{id}', [OrderController::class, 'update']);
         Route::delete('delete/{id}', [OrderController::class, 'delete']);
     });
-
     Route::prefix('order_detail')->group(function () {
         Route::get('/', [OrderDetailController::class, 'index']);
         Route::get('{id}', [OrderDetailController::class, 'getById']);
@@ -99,7 +94,6 @@ Route::prefix('v1')->group(function () {
         Route::put('update/{id}', [OrderDetailController::class, 'update']);
         Route::delete('delete/{id}', [OrderDetailController::class, 'delete']);
     });
-
     Route::prefix('product')->group(function () {
         Route::get('/', [ProductController::class, 'index']);
         Route::get('{id}', [ProductController::class, 'getById']);
@@ -107,7 +101,6 @@ Route::prefix('v1')->group(function () {
         Route::put('update/{id}', [ProductController::class, 'update']);
         Route::delete('delete/{id}', [ProductController::class, 'delete']);
     });
-
     Route::prefix('purchase_order')->group(function () {
         Route::get('/', [PurchaseOrderController::class, 'index']);
         Route::get('{id}', [PurchaseOrderController::class, 'getById']);
@@ -115,7 +108,6 @@ Route::prefix('v1')->group(function () {
         Route::put('update/{id}', [PurchaseOrderController::class, 'update']);
         Route::delete('delete/{id}', [PurchaseOrderController::class, 'delete']);
     });
-
     Route::prefix('purchase_requisition')->group(function () {
         Route::get('/', [PurchaseRequisitionController::class, 'index']);
         Route::get('{id}', [PurchaseRequisitionController::class, 'getById']);
@@ -123,7 +115,6 @@ Route::prefix('v1')->group(function () {
         Route::put('update/{id}', [PurchaseRequisitionController::class, 'update']);
         Route::delete('delete/{id}', [PurchaseRequisitionController::class, 'delete']);
     });
-
     Route::prefix('purchase_requisition_detail')->group(function () {
         Route::get('/', [PurchaseRequisitionDetailController::class, 'index']);
         Route::get('{id}', [PurchaseRequisitionDetailController::class, 'getById']);
@@ -131,7 +122,6 @@ Route::prefix('v1')->group(function () {
         Route::put('update/{id}', [PurchaseRequisitionDetailController::class, 'update']);
         Route::delete('delete/{id}', [PurchaseRequisitionDetailController::class, 'delete']);
     });
-
     Route::prefix('quotation')->group(function () {
         Route::get('/', [QuotationController::class, 'index']);
         Route::get('{id}', [QuotationController::class, 'getById']);
@@ -139,7 +129,6 @@ Route::prefix('v1')->group(function () {
         Route::put('update/{id}', [QuotationController::class, 'update']);
         Route::delete('delete/{id}', [QuotationController::class, 'delete']);
     });
-
     Route::prefix('quotation_detail')->group(function () {
         Route::get('/', [QuotationDetailController::class, 'index']);
         Route::get('{id}', [QuotationDetailController::class, 'getById']);
@@ -147,7 +136,6 @@ Route::prefix('v1')->group(function () {
         Route::put('update/{id}', [QuotationDetailController::class, 'update']);
         Route::delete('delete/{id}', [QuotationDetailController::class, 'delete']);
     });
-
     Route::prefix('supplier')->group(function () {
         Route::get('/', [SupplierController::class, 'index']);
         Route::get('{id}', [SupplierController::class, 'getById']);
@@ -155,7 +143,6 @@ Route::prefix('v1')->group(function () {
         Route::put('update/{id}', [SupplierController::class, 'update']);
         Route::delete('delete/{id}', [SupplierController::class, 'delete']);
     });
-
     Route::prefix('payment')->group(function () {
         Route::get('/', [PaymentController::class, 'index']);
         Route::get('{id}', [PaymentController::class, 'getById']);
@@ -163,7 +150,6 @@ Route::prefix('v1')->group(function () {
         Route::put('update/{id}', [PaymentController::class, 'update']);
         Route::delete('delete/{id}', [PaymentController::class, 'delete']);
     });
-
     Route::prefix('service_type')->group(function () {
         Route::get('/', [ServiceTypeController::class, 'index']);
         Route::get('{id}', [ServiceTypeController::class, 'getById']);
@@ -171,7 +157,6 @@ Route::prefix('v1')->group(function () {
         Route::put('update/{id}', [ServiceTypeController::class, 'update']);
         Route::delete('delete/{id}', [ServiceTypeController::class, 'delete']);
     });
-
     Route::prefix('category')->group(function () {
         Route::get('/', [CategoryController::class, 'index']);
         Route::get('{id}', [CategoryController::class, 'getById']);
@@ -179,7 +164,6 @@ Route::prefix('v1')->group(function () {
         Route::put('update/{id}', [CategoryController::class, 'update']);
         Route::delete('delete/{id}', [CategoryController::class, 'delete']);
     });
-
     Route::prefix('product_attribute')->group(function () {
         Route::get('/', [ProductAttributeController::class, 'index']);
         Route::get('{id}', [ProductAttributeController::class, 'getById']);
@@ -187,7 +171,6 @@ Route::prefix('v1')->group(function () {
         Route::put('update/{id}', [ProductAttributeController::class, 'update']);
         Route::delete('delete/{id}', [ProductAttributeController::class, 'delete']);
     });
-
     Route::prefix('product_category')->group(function () {
         Route::get('/', [ProductCategoryController::class, 'index']);
         Route::get('{id}', [ProductCategoryController::class, 'getById']);
@@ -195,7 +178,6 @@ Route::prefix('v1')->group(function () {
         Route::put('update/{id}', [ProductCategoryController::class, 'update']);
         Route::delete('delete/{id}', [ProductCategoryController::class, 'delete']);
     });
-
     Route::prefix('prs_supplier')->group(function () {
         Route::get('/', [PrsSupplierController::class, 'index']);
         Route::get('{id}', [PrsSupplierController::class, 'getById']);
@@ -203,7 +185,6 @@ Route::prefix('v1')->group(function () {
         Route::put('update/{id}', [PrsSupplierController::class, 'update']);
         Route::delete('delete/{id}', [PrsSupplierController::class, 'delete']);
     });
-
     Route::prefix('prs_supplier_type')->group(function () {
         Route::get('/', [PrsSupplierTypeController::class, 'index']);
         Route::get('{id}', [PrsSupplierTypeController::class, 'getById']);
@@ -211,7 +192,6 @@ Route::prefix('v1')->group(function () {
         Route::put('update/{id}', [PrsSupplierTypeController::class, 'update']);
         Route::delete('delete/{id}', [PrsSupplierTypeController::class, 'delete']);
     });
-
     Route::prefix('bom')->group(function () {
         Route::get('/', [BomController::class, 'index']);
         Route::get('{id}', [BomController::class, 'getById']);
@@ -219,13 +199,19 @@ Route::prefix('v1')->group(function () {
         Route::put('update/{id}', [BomController::class, 'update']);
         Route::delete('delete/{id}', [BomController::class, 'delete']);
     });
-
     Route::prefix('bom_type')->group(function () {
         Route::get('/', [BomTypeController::class, 'index']);
         Route::get('{id}', [BomTypeController::class, 'getById']);
         Route::post('create', [BomTypeController::class, 'create']);
         Route::put('update/{id}', [BomTypeController::class, 'update']);
         Route::delete('delete/{id}', [BomTypeController::class, 'delete']);
+    });
+    Route::prefix('prs_supplier_item')->group(function () {
+        Route::get('/', [PrsSupplierItemController::class, 'index']);
+        Route::get('{id}', [PrsSupplierItemController::class, 'getById']);
+        Route::post('create', [PrsSupplierItemController::class, 'create']);
+        Route::put('update/{id}', [PrsSupplierItemController::class, 'update']);
+        Route::delete('delete/{id}', [PrsSupplierItemController::class, 'delete']);
     });
 
     Route::group(['middleware' => ['auth:sanctum']], function () {

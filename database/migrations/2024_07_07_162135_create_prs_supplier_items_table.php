@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('prs_suppliers', function (Blueprint $table) {
+        Schema::create('prs_supplier_items', function (Blueprint $table) {
             $table->id();
-            $table->integer('prs_detail_id')->nullable();
-            $table->integer('supplier_id')->nullable();
-            $table->integer('prs_supplier_type_id')->nullable();
+            $table->integer('prs_supplier_id')->nullable();
+            $table->integer('bom_id')->nullable();
+            $table->integer('quantity')->nullable();
+            $table->string('uom')->nullable();
+            $table->decimal('price', 10, 2)->nullable();
             $table->integer('is_deleted')->nullable();
             $table->timestamps();
         });
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('prs_suppliers');
+        Schema::dropIfExists('prs_supplier_items');
     }
 };

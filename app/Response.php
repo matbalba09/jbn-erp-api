@@ -194,4 +194,11 @@ class Response
     const SUCCESSFULLY_CREATED_BOM_TYPE = 'Successfully created bom type';
     const SUCCESSFULLY_UPDATED_BOM_TYPE = 'Successfully updated bom type';
     const SUCCESSFULLY_DELETED_BOM_TYPE = 'Successfully deleted bom type';
+
+    //PrsSupplierItem
+    const SUCCESSFULLY_GET_ALL_PRS_SUPPLIER_ITEMS = 'Successfully get all prs supplier items';
+    const SUCCESSFULLY_GET_PRS_SUPPLIER_ITEM = 'Successfully get all prs supplier item';
+    const SUCCESSFULLY_CREATED_PRS_SUPPLIER_ITEM = 'Successfully created prs supplier item';
+    const SUCCESSFULLY_UPDATED_PRS_SUPPLIER_ITEM = 'Successfully updated prs supplier item';
+    const SUCCESSFULLY_DELETED_PRS_SUPPLIER_ITEM = 'Successfully deleted prs supplier item';
 }

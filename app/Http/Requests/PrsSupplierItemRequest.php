@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PrsSupplierRequest extends FormRequest
+class PrsSupplierItemRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +22,11 @@ class PrsSupplierRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'prs_detail_id' => 'nullable|integer',
-            'supplier_id' => 'nullable|integer',
-            'prs_supplier_type_id' => 'nullable|integer',
+            'prs_supplier_id' => 'nullable|integer',
+            'bom_id' => 'nullable|integer',
+            'quantity' => 'nullable|integer',
+            'uom' => 'nullable|string',
+            'price' => 'nullable|numeric',
             'is_deleted' => 'nullable|integer',
         ];
     }

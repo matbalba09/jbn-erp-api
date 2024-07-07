@@ -11,11 +11,7 @@ class PrsSupplier extends Model
 
     protected $fillable = [
         'prs_detail_id',
-        'bom_id',
         'supplier_id',
-        'quantity',
-        'uom',
-        'price',
         'prs_supplier_type_id',
         'is_deleted',
     ];
