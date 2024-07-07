@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateProductAttributeRequest;
+use App\Http\Requests\ProductAttributeRequest;
 use App\Http\Requests\UpdateProductAttributeRequest;
 use App\Models\ProductAttribute;
 use App\Repositories\Interface\IProductAttributeRepository;
@@ -48,7 +49,7 @@ class ProductAttributeController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function create(CreateProductAttributeRequest $request)
+    public function create(ProductAttributeRequest $request)
     {
         $productAttribute = $this->productAttributeRepository->create($request);
 
@@ -62,7 +63,7 @@ class ProductAttributeController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function update(UpdateProductAttributeRequest $request, $id)
+    public function update(ProductAttributeRequest $request, $id)
     {
         $productAttribute = $this->productAttributeRepository->update($request, $id);
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateSupplierRequest;
+use App\Http\Requests\SupplierRequest;
 use App\Http\Requests\UpdateSupplierRequest;
 use App\Models\Supplier;
 use App\Repositories\Interface\ISupplierRepository;
@@ -48,7 +49,7 @@ class SupplierController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function create(CreateSupplierRequest $request)
+    public function create(SupplierRequest $request)
     {
         $supplier = $this->supplierRepository->create($request);
 
@@ -62,7 +63,7 @@ class SupplierController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function update(UpdateSupplierRequest $request, $id)
+    public function update(SupplierRequest $request, $id)
     {
         $supplier = $this->supplierRepository->update($request, $id);
 

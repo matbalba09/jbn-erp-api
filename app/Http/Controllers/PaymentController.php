@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreatePaymentRequest;
+use App\Http\Requests\PaymentRequest;
 use App\Http\Requests\UpdatePaymentRequest;
 use App\Models\Payment;
 use App\Repositories\Interface\IPaymentRepository;
@@ -48,7 +49,7 @@ class PaymentController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function create(CreatePaymentRequest $request)
+    public function create(PaymentRequest $request)
     {
         $payment = $this->paymentRepository->create($request);
 
@@ -62,7 +63,7 @@ class PaymentController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function update(UpdatePaymentRequest $request, $id)
+    public function update(PaymentRequest $request, $id)
     {
         $payment = $this->paymentRepository->update($request, $id);
 

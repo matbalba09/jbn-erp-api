@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BomTypeRequest;
 use App\Http\Requests\CreateBomTypeRequest;
 use App\Http\Requests\UpdateBomTypeRequest;
 use App\Models\BomType;
@@ -48,7 +49,7 @@ class BomTypeController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function create(CreateBomTypeRequest $request)
+    public function create(BomTypeRequest $request)
     {
         $bomType = $this->bomTypeRepository->create($request);
 
@@ -62,7 +63,7 @@ class BomTypeController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function update(UpdateBomTypeRequest $request, $id)
+    public function update(BomTypeRequest $request, $id)
     {
         $bomType = $this->bomTypeRepository->update($request, $id);
 

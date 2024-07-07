@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Helper\Helper;
 use App\Http\Requests\CreateOrderDetailRequest;
+use App\Http\Requests\OrderDetailRequest;
 use App\Http\Requests\UpdateOrderDetailRequest;
 use Carbon\Carbon;
 use App\Models\OrderDetail;
@@ -24,7 +25,7 @@ class OrderDetailRepository implements IOrderDetailRepository
         return $orderDetail;
     }
 
-    function create(CreateOrderDetailRequest $request)
+    function create(OrderDetailRequest $request)
     {
         $validatedData = $request->validated();
         $validatedData['is_deleted'] = Response::FALSE;
@@ -33,7 +34,7 @@ class OrderDetailRepository implements IOrderDetailRepository
         return $orderDetail;
     }
 
-    function update(UpdateOrderDetailRequest $request, $id)
+    function update(OrderDetailRequest $request, $id)
     {
         $orderDetail = OrderDetail::findOrFail($id);
         $validatedData = $request->validated();

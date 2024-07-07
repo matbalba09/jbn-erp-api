@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Http\Requests\UserRequest;
 use App\Models\Role;
 use App\Models\User;
 use App\Repositories\Interface\IUserRepository;
@@ -36,7 +37,7 @@ class UserRepository implements IUserRepository
         return $user;
     }
 
-    function create(CreateUserRequest $request)
+    function create(UserRequest $request)
     {
         $validatedData = $request->validated();
         $validatedData['is_deleted'] = Response::FALSE;
@@ -50,7 +51,7 @@ class UserRepository implements IUserRepository
         }
     }
 
-    function update(UpdateUserRequest $request, $id)
+    function update(UserRequest $request, $id)
     {
         $user = User::findOrFail($id);
         $validatedData = $request->validated();

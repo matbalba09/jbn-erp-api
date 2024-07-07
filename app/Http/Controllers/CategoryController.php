@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryRequest;
 use App\Http\Requests\CreateCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
@@ -48,7 +49,7 @@ class CategoryController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function create(CreateCategoryRequest $request)
+    public function create(CategoryRequest $request)
     {
         $category = $this->categoryRepository->create($request);
 
@@ -62,7 +63,7 @@ class CategoryController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function update(UpdateCategoryRequest $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
         $category = $this->categoryRepository->update($request, $id);
 

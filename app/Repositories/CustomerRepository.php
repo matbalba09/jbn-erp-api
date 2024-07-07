@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Helper\Helper;
 use App\Http\Requests\CreateCustomerRequest;
+use App\Http\Requests\CustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
 use Carbon\Carbon;
 use App\Models\Customer;
@@ -24,7 +25,7 @@ class CustomerRepository implements ICustomerRepository
         return $customer;
     }
 
-    function create(CreateCustomerRequest $request)
+    function create(CustomerRequest $request)
     {
         $latestCustomer = Customer::latest()->first();
         $dateNow = Carbon::now()->format('ymd');
@@ -52,7 +53,7 @@ class CustomerRepository implements ICustomerRepository
         return $customer;
     }
 
-    function update(UpdateCustomerRequest $request, $id)
+    function update(CustomerRequest $request, $id)
     {
         $customer = Customer::findOrFail($id);
         $validatedData = $request->validated();

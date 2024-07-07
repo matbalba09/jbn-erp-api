@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Helper\Helper;
+use App\Http\Requests\BomRequest;
 use App\Http\Requests\CreateBomRequest;
 use App\Http\Requests\UpdateBomRequest;
 use Carbon\Carbon;
@@ -24,7 +25,7 @@ class BomRepository implements IBomRepository
         return $bom;
     }
 
-    function create(CreateBomRequest $request)
+    function create(BomRequest $request)
     {
         $validatedData = $request->validated();
         $validatedData['is_deleted'] = Response::FALSE;
@@ -33,7 +34,7 @@ class BomRepository implements IBomRepository
         return $bom->load('bom_type');
     }
 
-    function update(UpdateBomRequest $request, $id)
+    function update(BomRequest $request, $id)
     {
         $bom = Bom::findOrFail($id);
         $validatedData = $request->validated();

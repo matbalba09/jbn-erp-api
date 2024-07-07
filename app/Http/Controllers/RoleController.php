@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateRoleRequest;
+use App\Http\Requests\RoleRequest;
 use App\Http\Requests\UpdateRoleRequest;
 use App\Models\Role;
 use App\Repositories\Interface\IRoleRepository;
@@ -48,7 +49,7 @@ class RoleController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function create(CreateRoleRequest $request)
+    public function create(RoleRequest $request)
     {
         $role = $this->roleRepository->create($request);
 
@@ -62,7 +63,7 @@ class RoleController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function update(UpdateRoleRequest $request, $id)
+    public function update(RoleRequest $request, $id)
     {
         $role = $this->roleRepository->update($request, $id);
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateProductCategoryRequest;
+use App\Http\Requests\ProductCategoryRequest;
 use App\Http\Requests\UpdateProductCategoryRequest;
 use App\Models\ProductCategory;
 use App\Repositories\Interface\IProductCategoryRepository;
@@ -48,7 +49,7 @@ class ProductCategoryController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function create(CreateProductCategoryRequest $request)
+    public function create(ProductCategoryRequest $request)
     {
         $productCategory = $this->productCategoryRepository->create($request);
 
@@ -62,7 +63,7 @@ class ProductCategoryController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function update(UpdateProductCategoryRequest $request, $id)
+    public function update(ProductCategoryRequest $request, $id)
     {
         $productCategory = $this->productCategoryRepository->update($request, $id);
 

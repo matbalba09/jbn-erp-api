@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateOrderDetailRequest;
+use App\Http\Requests\OrderDetailRequest;
 use App\Http\Requests\UpdateOrderDetailRequest;
 use App\Models\OrderDetail;
 use App\Repositories\Interface\IOrderDetailRepository;
@@ -48,7 +49,7 @@ class OrderDetailController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function create(CreateOrderDetailRequest $request)
+    public function create(OrderDetailRequest $request)
     {
         $orderDetail = $this->orderDetailRepository->create($request);
 
@@ -62,7 +63,7 @@ class OrderDetailController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function update(UpdateOrderDetailRequest $request, $id)
+    public function update(OrderDetailRequest $request, $id)
     {
         $orderDetail = $this->orderDetailRepository->update($request, $id);
 

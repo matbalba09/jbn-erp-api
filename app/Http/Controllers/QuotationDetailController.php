@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateQuotationDetailRequest;
+use App\Http\Requests\QuotationDetailRequest;
 use App\Http\Requests\UpdateQuotationDetailRequest;
 use App\Models\QuotationDetail;
 use App\Repositories\Interface\IQuotationDetailRepository;
@@ -48,7 +49,7 @@ class QuotationDetailController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function create(CreateQuotationDetailRequest $request)
+    public function create(QuotationDetailRequest $request)
     {
         $quotationDetail = $this->quotationDetailRepository->create($request);
 
@@ -62,7 +63,7 @@ class QuotationDetailController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function update(UpdateQuotationDetailRequest $request, $id)
+    public function update(QuotationDetailRequest $request, $id)
     {
         $quotationDetail = $this->quotationDetailRepository->update($request, $id);
 

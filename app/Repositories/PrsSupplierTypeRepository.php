@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Helper\Helper;
 use App\Http\Requests\CreatePrsSupplierTypeRequest;
+use App\Http\Requests\PrsSupplierTypeRequest;
 use App\Http\Requests\UpdatePrsSupplierTypeRequest;
 use Carbon\Carbon;
 use App\Models\PrsSupplierType;
@@ -24,7 +25,7 @@ class PrsSupplierTypeRepository implements IPrsSupplierTypeRepository
         return $prsSupplierType;
     }
 
-    function create(CreatePrsSupplierTypeRequest $request)
+    function create(PrsSupplierTypeRequest $request)
     {
         $validatedData = $request->validated();
         $validatedData['is_deleted'] = Response::FALSE;
@@ -33,7 +34,7 @@ class PrsSupplierTypeRepository implements IPrsSupplierTypeRepository
         return $prsSupplierType;
     }
 
-    function update(UpdatePrsSupplierTypeRequest $request, $id)
+    function update(PrsSupplierTypeRequest $request, $id)
     {
         $prsSupplierType = PrsSupplierType::findOrFail($id);
         $validatedData = $request->validated();

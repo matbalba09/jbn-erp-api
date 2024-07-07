@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Helper\Helper;
 use App\Http\Requests\CreateProductRequest;
+use App\Http\Requests\ProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use Carbon\Carbon;
 use App\Models\Product;
@@ -24,7 +25,7 @@ class ProductRepository implements IProductRepository
         return $product;
     }
 
-    function create(CreateProductRequest $request)
+    function create(ProductRequest $request)
     {
         $latestProduct = Product::latest()->first();
         $dateNow = Carbon::now()->format('ymd');
@@ -52,7 +53,7 @@ class ProductRepository implements IProductRepository
         return $product;
     }
 
-    function update(UpdateProductRequest $request, $id)
+    function update(ProductRequest $request, $id)
     {
         $product = Product::findOrFail($id);
         $validatedData = $request->validated();

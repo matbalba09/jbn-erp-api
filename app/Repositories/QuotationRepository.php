@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Helper\Helper;
 use App\Http\Requests\CreateQuotationRequest;
+use App\Http\Requests\QuotationRequest;
 use App\Http\Requests\UpdateQuotationRequest;
 use Carbon\Carbon;
 use App\Models\Quotation;
@@ -24,7 +25,7 @@ class QuotationRepository implements IQuotationRepository
         return $quotation;
     }
 
-    function create(CreateQuotationRequest $request)
+    function create(QuotationRequest $request)
     {
         $latestQuotation = Quotation::latest()->first();
         $dateNow = Carbon::now()->format('ymd');
@@ -52,7 +53,7 @@ class QuotationRepository implements IQuotationRepository
         return $quotation;
     }
 
-    function update(UpdateQuotationRequest $request, $id)
+    function update(QuotationRequest $request, $id)
     {
         $quotation = Quotation::findOrFail($id);
         $validatedData = $request->validated();

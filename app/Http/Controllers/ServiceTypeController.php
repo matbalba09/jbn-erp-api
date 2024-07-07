@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateServiceTypeRequest;
+use App\Http\Requests\ServiceTypeRequest;
 use App\Http\Requests\UpdateServiceTypeRequest;
 use App\Models\ServiceType;
 use App\Repositories\Interface\IServiceTypeRepository;
@@ -48,7 +49,7 @@ class ServiceTypeController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function create(CreateServiceTypeRequest $request)
+    public function create(ServiceTypeRequest $request)
     {
         $serviceType = $this->serviceTypeRepository->create($request);
 
@@ -62,7 +63,7 @@ class ServiceTypeController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function update(UpdateServiceTypeRequest $request, $id)
+    public function update(ServiceTypeRequest $request, $id)
     {
         $serviceType = $this->serviceTypeRepository->update($request, $id);
 

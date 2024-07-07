@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Helper\Helper;
 use App\Http\Requests\CreateSupplierRequest;
+use App\Http\Requests\SupplierRequest;
 use App\Http\Requests\UpdateSupplierRequest;
 use Carbon\Carbon;
 use App\Models\Supplier;
@@ -24,7 +25,7 @@ class SupplierRepository implements ISupplierRepository
         return $supplier;
     }
 
-    function create(CreateSupplierRequest $request)
+    function create(SupplierRequest $request)
     {
         $validatedData = $request->validated();
         $validatedData['is_deleted'] = Response::FALSE;
@@ -33,7 +34,7 @@ class SupplierRepository implements ISupplierRepository
         return $supplier;
     }
 
-    function update(UpdateSupplierRequest $request, $id)
+    function update(SupplierRequest $request, $id)
     {
         $supplier = Supplier::findOrFail($id);
         $validatedData = $request->validated();

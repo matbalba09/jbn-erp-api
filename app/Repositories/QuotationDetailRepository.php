@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Helper\Helper;
 use App\Http\Requests\CreateQuotationDetailRequest;
+use App\Http\Requests\QuotationDetailRequest;
 use App\Http\Requests\UpdateQuotationDetailRequest;
 use Carbon\Carbon;
 use App\Models\QuotationDetail;
@@ -24,7 +25,7 @@ class QuotationDetailRepository implements IQuotationDetailRepository
         return $quotationDetail;
     }
 
-    function create(CreateQuotationDetailRequest $request)
+    function create(QuotationDetailRequest $request)
     {
         $validatedData = $request->validated();
         $validatedData['is_deleted'] = Response::FALSE;
@@ -33,7 +34,7 @@ class QuotationDetailRepository implements IQuotationDetailRepository
         return $quotationDetail;
     }
 
-    function update(UpdateQuotationDetailRequest $request, $id)
+    function update(QuotationDetailRequest $request, $id)
     {
         $quotationDetail = QuotationDetail::findOrFail($id);
         $validatedData = $request->validated();

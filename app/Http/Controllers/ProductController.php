@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateProductRequest;
+use App\Http\Requests\ProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
 use App\Repositories\Interface\IProductRepository;
@@ -48,7 +49,7 @@ class ProductController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function create(CreateProductRequest $request)
+    public function create(ProductRequest $request)
     {
         $product = $this->productRepository->create($request);
 
@@ -62,7 +63,7 @@ class ProductController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function update(UpdateProductRequest $request, $id)
+    public function update(ProductRequest $request, $id)
     {
         $product = $this->productRepository->update($request, $id);
 

@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Helper\Helper;
 use App\Http\Requests\CreateProductCategoryRequest;
+use App\Http\Requests\ProductCategoryRequest;
 use App\Http\Requests\UpdateProductCategoryRequest;
 use Carbon\Carbon;
 use App\Models\ProductCategory;
@@ -24,7 +25,7 @@ class ProductCategoryRepository implements IProductCategoryRepository
         return $productCategory;
     }
 
-    function create(CreateProductCategoryRequest $request)
+    function create(ProductCategoryRequest $request)
     {
         $validatedData = $request->validated();
         $validatedData['is_deleted'] = Response::FALSE;
@@ -33,7 +34,7 @@ class ProductCategoryRepository implements IProductCategoryRepository
         return $productCategory;
     }
 
-    function update(UpdateProductCategoryRequest $request, $id)
+    function update(ProductCategoryRequest $request, $id)
     {
         $productCategory = ProductCategory::findOrFail($id);
         $validatedData = $request->validated();

@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Helper\Helper;
 use App\Http\Requests\CreatePurchaseRequisitionDetailRequest;
+use App\Http\Requests\PurchaseRequisitionDetailRequest;
 use App\Http\Requests\UpdatePurchaseRequisitionDetailRequest;
 use Carbon\Carbon;
 use App\Models\PurchaseRequisitionDetail;
@@ -24,7 +25,7 @@ class PurchaseRequisitionDetailRepository implements IPurchaseRequisitionDetailR
         return $purchaseRequisitionDetail;
     }
 
-    function create(CreatePurchaseRequisitionDetailRequest $request)
+    function create(PurchaseRequisitionDetailRequest $request)
     {
         $validatedData = $request->validated();
         $validatedData['is_deleted'] = Response::FALSE;
@@ -33,7 +34,7 @@ class PurchaseRequisitionDetailRepository implements IPurchaseRequisitionDetailR
         return $purchaseRequisitionDetail;
     }
 
-    function update(UpdatePurchaseRequisitionDetailRequest $request, $id)
+    function update(PurchaseRequisitionDetailRequest $request, $id)
     {
         $purchaseRequisitionDetail = PurchaseRequisitionDetail::findOrFail($id);
         $validatedData = $request->validated();

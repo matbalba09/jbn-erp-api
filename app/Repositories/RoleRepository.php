@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Http\Requests\CreateRoleRequest;
+use App\Http\Requests\RoleRequest;
 use App\Http\Requests\UpdateRoleRequest;
 use App\Models\Role;
 use App\Repositories\Interface\IRoleRepository;
@@ -24,7 +25,7 @@ class RoleRepository implements IRoleRepository
         return $role;
     }
 
-    function create(CreateRoleRequest $request)
+    function create(RoleRequest $request)
     {
         $validatedData = $request->validated();
         $validatedData['is_deleted'] = Response::FALSE;
@@ -32,7 +33,7 @@ class RoleRepository implements IRoleRepository
         return $role;
     }
 
-    function update(UpdateRoleRequest $request, $id)
+    function update(RoleRequest $request, $id)
     {
         $role = Role::findOrFail($id);
         $validatedData = $request->validated();

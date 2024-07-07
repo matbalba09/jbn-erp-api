@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateCustomerRequest;
+use App\Http\Requests\CustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
 use App\Models\Customer;
 use App\Repositories\Interface\ICustomerRepository;
@@ -48,7 +49,7 @@ class CustomerController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function create(CreateCustomerRequest $request)
+    public function create(CustomerRequest $request)
     {
         $customer = $this->customerRepository->create($request);
 
@@ -62,7 +63,7 @@ class CustomerController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function update(UpdateCustomerRequest $request, $id)
+    public function update(CustomerRequest $request, $id)
     {
         $customer = $this->customerRepository->update($request, $id);
 

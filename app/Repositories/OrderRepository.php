@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Helper\Helper;
 use App\Http\Requests\CreateOrderRequest;
+use App\Http\Requests\OrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use Carbon\Carbon;
 use App\Models\Order;
@@ -24,7 +25,7 @@ class OrderRepository implements IOrderRepository
         return $order;
     }
 
-    function create(CreateOrderRequest $request)
+    function create(OrderRequest $request)
     {
         $latestOrder = Order::latest()->first();
         $dateNow = Carbon::now()->format('ymd');
@@ -52,7 +53,7 @@ class OrderRepository implements IOrderRepository
         return $order;
     }
 
-    function update(UpdateOrderRequest $request, $id)
+    function update(OrderRequest $request, $id)
     {
         $order = Order::findOrFail($id);
         $validatedData = $request->validated();

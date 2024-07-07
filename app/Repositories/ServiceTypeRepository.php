@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Helper\Helper;
 use App\Http\Requests\CreateServiceTypeRequest;
+use App\Http\Requests\ServiceTypeRequest;
 use App\Http\Requests\UpdateServiceTypeRequest;
 use Carbon\Carbon;
 use App\Models\ServiceType;
@@ -24,7 +25,7 @@ class ServiceTypeRepository implements IServiceTypeRepository
         return $serviceType;
     }
 
-    function create(CreateServiceTypeRequest $request)
+    function create(ServiceTypeRequest $request)
     {
         $validatedData = $request->validated();
         $validatedData['is_deleted'] = Response::FALSE;
@@ -33,7 +34,7 @@ class ServiceTypeRepository implements IServiceTypeRepository
         return $serviceType;
     }
 
-    function update(UpdateServiceTypeRequest $request, $id)
+    function update(ServiceTypeRequest $request, $id)
     {
         $serviceType = ServiceType::findOrFail($id);
         $validatedData = $request->validated();

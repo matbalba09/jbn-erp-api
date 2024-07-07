@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Helper\Helper;
 use App\Http\Requests\CreateProductAttributeRequest;
+use App\Http\Requests\ProductAttributeRequest;
 use App\Http\Requests\UpdateProductAttributeRequest;
 use Carbon\Carbon;
 use App\Models\ProductAttribute;
@@ -24,7 +25,7 @@ class ProductAttributeRepository implements IProductAttributeRepository
         return $productAttribute;
     }
 
-    function create(CreateProductAttributeRequest $request)
+    function create(ProductAttributeRequest $request)
     {
         $validatedData = $request->validated();
         $validatedData['is_deleted'] = Response::FALSE;
@@ -33,7 +34,7 @@ class ProductAttributeRepository implements IProductAttributeRepository
         return $productAttribute;
     }
 
-    function update(UpdateProductAttributeRequest $request, $id)
+    function update(ProductAttributeRequest $request, $id)
     {
         $productAttribute = ProductAttribute::findOrFail($id);
         $validatedData = $request->validated();

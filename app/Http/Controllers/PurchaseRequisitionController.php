@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreatePurchaseRequisitionRequest;
+use App\Http\Requests\PurchaseRequisitionRequest;
 use App\Http\Requests\UpdatePurchaseRequisitionRequest;
 use App\Models\PurchaseRequisition;
 use App\Repositories\Interface\IPurchaseRequisitionRepository;
@@ -48,7 +49,7 @@ class PurchaseRequisitionController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function create(CreatePurchaseRequisitionRequest $request)
+    public function create(PurchaseRequisitionRequest $request)
     {
         $prs = $this->prsRepository->create($request);
 
@@ -62,7 +63,7 @@ class PurchaseRequisitionController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function update(UpdatePurchaseRequisitionRequest $request, $id)
+    public function update(PurchaseRequisitionRequest $request, $id)
     {
         $prs = $this->prsRepository->update($request, $id);
 

@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Helper\Helper;
 use App\Http\Requests\CreatePurchaseOrderRequest;
+use App\Http\Requests\PurchaseOrderRequest;
 use App\Http\Requests\UpdatePurchaseOrderRequest;
 use Carbon\Carbon;
 use App\Models\PurchaseOrder;
@@ -24,7 +25,7 @@ class PurchaseOrderRepository implements IPurchaseOrderRepository
         return $purchaseOrder;
     }
 
-    function create(CreatePurchaseOrderRequest $request)
+    function create(PurchaseOrderRequest $request)
     {
         $latestPurchaseOrder = PurchaseOrder::latest()->first();
         $dateNow = Carbon::now()->format('ymd');
@@ -52,7 +53,7 @@ class PurchaseOrderRepository implements IPurchaseOrderRepository
         return $purchaseOrder;
     }
 
-    function update(UpdatePurchaseOrderRequest $request, $id)
+    function update(PurchaseOrderRequest $request, $id)
     {
         $purchaseOrder = PurchaseOrder::findOrFail($id);
         $validatedData = $request->validated();

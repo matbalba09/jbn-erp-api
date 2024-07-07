@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateOrderRequest;
+use App\Http\Requests\OrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Models\Order;
 use App\Repositories\Interface\IOrderRepository;
@@ -48,7 +49,7 @@ class OrderController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function create(CreateOrderRequest $request)
+    public function create(OrderRequest $request)
     {
         $order = $this->orderRepository->create($request);
 
@@ -62,7 +63,7 @@ class OrderController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function update(UpdateOrderRequest $request, $id)
+    public function update(OrderRequest $request, $id)
     {
         $order = $this->orderRepository->update($request, $id);
 

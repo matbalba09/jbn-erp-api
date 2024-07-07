@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreatePurchaseRequisitionDetailRequest;
+use App\Http\Requests\PurchaseRequisitionDetailRequest;
 use App\Http\Requests\UpdatePurchaseRequisitionDetailRequest;
 use App\Models\PurchaseRequisitionDetail;
 use App\Repositories\Interface\IPurchaseRequisitionDetailRepository;
@@ -48,7 +49,7 @@ class PurchaseRequisitionDetailController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function create(CreatePurchaseRequisitionDetailRequest $request)
+    public function create(PurchaseRequisitionDetailRequest $request)
     {
         $purchaseRequisitionDetail = $this->purchaseRequisitionDetailRepository->create($request);
 
@@ -62,7 +63,7 @@ class PurchaseRequisitionDetailController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function update(UpdatePurchaseRequisitionDetailRequest $request, $id)
+    public function update(PurchaseRequisitionDetailRequest $request, $id)
     {
         $purchaseRequisitionDetail = $this->purchaseRequisitionDetailRepository->update($request, $id);
 

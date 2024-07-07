@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Helper\Helper;
+use App\Http\Requests\CategoryRequest;
 use App\Http\Requests\CreateCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use Carbon\Carbon;
@@ -24,7 +25,7 @@ class CategoryRepository implements ICategoryRepository
         return $category;
     }
 
-    function create(CreateCategoryRequest $request)
+    function create(CategoryRequest $request)
     {
         $validatedData = $request->validated();
         $validatedData['is_deleted'] = Response::FALSE;
@@ -33,7 +34,7 @@ class CategoryRepository implements ICategoryRepository
         return $category;
     }
 
-    function update(UpdateCategoryRequest $request, $id)
+    function update(CategoryRequest $request, $id)
     {
         $category = Category::findOrFail($id);
         $validatedData = $request->validated();

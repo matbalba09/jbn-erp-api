@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreatePurchaseOrderRequest;
+use App\Http\Requests\PurchaseOrderRequest;
 use App\Http\Requests\UpdatePurchaseOrderRequest;
 use App\Models\PurchaseOrder;
 use App\Repositories\Interface\IPurchaseOrderRepository;
@@ -48,7 +49,7 @@ class PurchaseOrderController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function create(CreatePurchaseOrderRequest $request)
+    public function create(PurchaseOrderRequest $request)
     {
         $purchaseOrder = $this->purchaseOrderRepository->create($request);
 
@@ -62,7 +63,7 @@ class PurchaseOrderController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function update(UpdatePurchaseOrderRequest $request, $id)
+    public function update(PurchaseOrderRequest $request, $id)
     {
         $purchaseOrder = $this->purchaseOrderRepository->update($request, $id);
 

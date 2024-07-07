@@ -6,6 +6,7 @@ use App\Helper\Helper;
 use App\Http\Requests\CreatePrsSupplierRequest;
 use App\Http\Requests\CreatePurchaseRequisitionDetailRequest;
 use App\Http\Requests\CreatePurchaseRequisitionRequest;
+use App\Http\Requests\PurchaseRequisitionRequest;
 use App\Http\Requests\UpdatePurchaseRequisitionRequest;
 use App\Models\PrsSupplier;
 use Carbon\Carbon;
@@ -32,7 +33,7 @@ class PurchaseRequisitionRepository implements IPurchaseRequisitionRepository
         return $prs;
     }
 
-    function create(CreatePurchaseRequisitionRequest $request)
+    function create(PurchaseRequisitionRequest $request)
     {
         $latestPrs = PurchaseRequisition::latest()->first();
         $dateNow = Carbon::now()->format('ymd');
@@ -92,7 +93,7 @@ class PurchaseRequisitionRepository implements IPurchaseRequisitionRepository
         return $prs->load(['customer', 'products.prs_supplier.supplier']);
     }
 
-    function update(UpdatePurchaseRequisitionRequest $request, $id)
+    function update(PurchaseRequisitionRequest $request, $id)
     {
         $prs = PurchaseRequisition::findOrFail($id);
         $validatedData = $request->validated();

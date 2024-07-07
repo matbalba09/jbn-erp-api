@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use App\Repositories\Interface\IUserRepository;
 use App\Response;
@@ -85,7 +86,7 @@ class UserController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function create(CreateUserRequest $request)
+    public function create(UserRequest $request)
     {
         $user = $this->userRepository->create($request);
 
@@ -107,7 +108,7 @@ class UserController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function update(UpdateUserRequest $request, $id)
+    public function update(UserRequest $request, $id)
     {
         $user = $this->userRepository->update($request, $id);
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreatePrsSupplierTypeRequest;
+use App\Http\Requests\PrsSupplierTypeRequest;
 use App\Http\Requests\UpdatePrsSupplierTypeRequest;
 use App\Models\PrsSupplierType;
 use App\Repositories\Interface\IPrsSupplierTypeRepository;
@@ -48,7 +49,7 @@ class PrsSupplierTypeController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function create(CreatePrsSupplierTypeRequest $request)
+    public function create(PrsSupplierTypeRequest $request)
     {
         $prsSupplierType = $this->prsSupplierTypeRepository->create($request);
 
@@ -62,7 +63,7 @@ class PrsSupplierTypeController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function update(UpdatePrsSupplierTypeRequest $request, $id)
+    public function update(PrsSupplierTypeRequest $request, $id)
     {
         $prsSupplierType = $this->prsSupplierTypeRepository->update($request, $id);
 

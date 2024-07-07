@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Helper\Helper;
 use App\Http\Requests\CreatePaymentRequest;
+use App\Http\Requests\PaymentRequest;
 use App\Http\Requests\UpdatePaymentRequest;
 use Carbon\Carbon;
 use App\Models\Payment;
@@ -24,7 +25,7 @@ class PaymentRepository implements IPaymentRepository
         return $payment;
     }
 
-    function create(CreatePaymentRequest $request)
+    function create(PaymentRequest $request)
     {
         $validatedData = $request->validated();
         $validatedData['is_deleted'] = Response::FALSE;
@@ -33,7 +34,7 @@ class PaymentRepository implements IPaymentRepository
         return $payment;
     }
 
-    function update(UpdatePaymentRequest $request, $id)
+    function update(PaymentRequest $request, $id)
     {
         $payment = Payment::findOrFail($id);
         $validatedData = $request->validated();

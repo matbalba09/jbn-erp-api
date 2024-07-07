@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateInventoryRequest;
+use App\Http\Requests\InventoryRequest;
 use App\Http\Requests\UpdateInventoryRequest;
 use App\Models\Inventory;
 use App\Repositories\Interface\IInventoryRepository;
@@ -48,7 +49,7 @@ class InventoryController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function create(CreateInventoryRequest $request)
+    public function create(InventoryRequest $request)
     {
         $inventory = $this->inventoryRepository->create($request);
 
@@ -62,7 +63,7 @@ class InventoryController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function update(UpdateInventoryRequest $request, $id)
+    public function update(InventoryRequest $request, $id)
     {
         $inventory = $this->inventoryRepository->update($request, $id);
 

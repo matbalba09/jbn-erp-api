@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Helper\Helper;
 use App\Http\Requests\CreateInventoryTransactionRequest;
+use App\Http\Requests\InventoryTransactionRequest;
 use App\Http\Requests\UpdateInventoryTransactionRequest;
 use Carbon\Carbon;
 use App\Models\InventoryTransaction;
@@ -24,7 +25,7 @@ class InventoryTransactionRepository implements IInventoryTransactionRepository
         return $inventoryTransaction;
     }
 
-    function create(CreateInventoryTransactionRequest $request)
+    function create(InventoryTransactionRequest $request)
     {
         $validatedData = $request->validated();
         $validatedData['is_deleted'] = Response::FALSE;
@@ -33,7 +34,7 @@ class InventoryTransactionRepository implements IInventoryTransactionRepository
         return $inventoryTransaction;
     }
 
-    function update(UpdateInventoryTransactionRequest $request, $id)
+    function update(InventoryTransactionRequest $request, $id)
     {
         $inventoryTransaction = InventoryTransaction::findOrFail($id);
         $validatedData = $request->validated();
