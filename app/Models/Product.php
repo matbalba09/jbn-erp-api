@@ -19,4 +19,9 @@ class Product extends Model
         'image',
         'is_deleted',
     ];
+
+    public function bom()
+    {
+        return $this->hasMany(Bom::class, 'product_id');
+    }
 }

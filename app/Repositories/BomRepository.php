@@ -8,6 +8,7 @@ use App\Http\Requests\CreateBomRequest;
 use App\Http\Requests\UpdateBomRequest;
 use Carbon\Carbon;
 use App\Models\Bom;
+use App\Models\Product;
 use App\Response;
 
 interface IBomRepository
@@ -63,7 +64,7 @@ class BomRepository implements IBomRepository
 
     function getAllBomByProductId($product_id)
     {
-        $bom = Bom::where('product_id', $product_id)->where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
+        $bom = Product::with('bom.inventory')->where('id', $product_id)->where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
         return $bom;
     }
 }

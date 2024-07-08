@@ -20,4 +20,9 @@ class Inventory extends Model
         'remarks',
         'is_deleted',
     ];
+
+    public function bom()
+    {
+        return $this->belongsTo(Bom::class, 'id');
+    }
 }
