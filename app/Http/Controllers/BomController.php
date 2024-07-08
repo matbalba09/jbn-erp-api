@@ -89,4 +89,18 @@ class BomController extends Controller
 
         return response()->json($response, $response['code']);
     }
+
+    public function getAllBomByProductId($product_id)
+    {
+        $bom = $this->bomRepository->getAllBomByProductId($product_id);
+
+        $response = [
+            'code' => Response::HTTP_SUCCESS,
+            'status' => Response::SUCCESS,
+            'message' => Response::SUCCESSFULLY_GET_BOM,
+            'data' => $bom,
+        ];
+
+        return response()->json($response, $response['code']);
+    }
 }

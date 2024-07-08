@@ -17,6 +17,8 @@ interface IBomRepository
     function create(BomRequest $request);
     function update(BomRequest $request, $id);
     function delete($id);
+
+    function getAllBomByProductId($product_id);
 }
 
 class BomRepository implements IBomRepository
@@ -56,6 +58,12 @@ class BomRepository implements IBomRepository
         $bom = Bom::findOrFail($id);
         $bom->delete();
 
+        return $bom;
+    }
+
+    function getAllBomByProductId($product_id)
+    {
+        $bom = Bom::where('product_id', $product_id)->where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
         return $bom;
     }
 }

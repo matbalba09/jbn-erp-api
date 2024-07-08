@@ -198,6 +198,8 @@ Route::prefix('v1')->group(function () {
         Route::post('create', [BomController::class, 'create']);
         Route::put('update/{id}', [BomController::class, 'update']);
         Route::delete('delete/{id}', [BomController::class, 'delete']);
+
+        Route::get('getAllBomByProductId/{product_id}', [BomController::class, 'getAllBomByProductId']);
     });
     Route::prefix('bom_type')->group(function () {
         Route::get('/', [BomTypeController::class, 'index']);
