@@ -64,7 +64,7 @@ class BomRepository implements IBomRepository
 
     function getAllBomByProductId($product_id)
     {
-        $bom = Product::with('bom.inventory')->where('id', $product_id)->where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
+        $bom = Product::with('bom.inventory')->where('id', $product_id)->where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->first();
         return $bom;
     }
 }
