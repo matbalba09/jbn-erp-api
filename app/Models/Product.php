@@ -24,4 +24,9 @@ class Product extends Model
     {
         return $this->hasMany(Bom::class, 'product_id');
     }
+
+    public function prs_details()
+    {
+        return $this->hasOne(PurchaseRequisitionDetail::class, 'product_id');
+    }
 }

@@ -24,9 +24,11 @@ class PrsSupplierItemRequest extends FormRequest
         return [
             'prs_supplier_id' => 'nullable|integer',
             'bom_id' => 'nullable|integer',
-            'quantity' => 'nullable|integer',
+            'item_name' => 'nullable|string',
+            'inventory_id' => 'nullable|integer',
             'uom' => 'nullable|string',
-            'price' => 'nullable|numeric',
+            'quantity' => 'nullable|integer',
+            'unit_price' => 'nullable|numeric',
             'is_deleted' => 'nullable|integer',
         ];
     }

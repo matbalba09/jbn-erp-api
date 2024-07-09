@@ -15,9 +15,11 @@ return new class extends Migration
             $table->id();
             $table->integer('prs_supplier_id')->nullable();
             $table->integer('bom_id')->nullable();
-            $table->integer('quantity')->nullable();
+            $table->string('item_name')->nullable();
+            $table->integer('inventory_id')->nullable();
             $table->string('uom')->nullable();
-            $table->decimal('price', 10, 2)->nullable();
+            $table->integer('quantity')->nullable();
+            $table->decimal('unit_price', 10, 2)->nullable();
             $table->integer('is_deleted')->nullable();
             $table->timestamps();
         });

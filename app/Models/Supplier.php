@@ -20,6 +20,6 @@ class Supplier extends Model
 
     public function prs_supplier()
     {
-        return $this->hasMany(PrsSupplier::class, 'supplier_id');
+        return $this->hasOne(PrsSupplier::class, 'supplier_id');
     }
 }

@@ -31,4 +31,9 @@ class Bom extends Model
     {
         return $this->belongsTo(Inventory::class, 'inventory_id');
     }
+
+    public function prs_supplier_item()
+    {
+        return $this->hasOne(PrsSupplierItem::class, 'id');
+    }
 }

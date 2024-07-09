@@ -21,7 +21,7 @@ class PurchaseRequisitionDetail extends Model
         'is_deleted',
     ];
 
-    protected $with = ['prs_supplier.supplier'];
+    // protected $with = ['prs_supplier.supplier'];
 
     public function prs()
     {
@@ -31,5 +31,10 @@ class PurchaseRequisitionDetail extends Model
     public function prs_supplier()
     {
         return $this->hasMany(PrsSupplier::class, 'prs_detail_id');
+    }
+    
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id');
     }
 }

@@ -63,7 +63,7 @@ class PurchaseRequisitionController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function update(PurchaseRequisitionRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $prs = $this->prsRepository->update($request, $id);
 

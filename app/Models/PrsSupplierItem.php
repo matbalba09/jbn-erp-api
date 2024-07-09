@@ -12,9 +12,21 @@ class PrsSupplierItem extends Model
     protected $fillable = [
         'prs_supplier_id',
         'bom_id',
-        'quantity',
+        'item_name',
+        'inventory_id',
         'uom',
-        'price',
+        'quantity',
+        'unit_price',
         'is_deleted',
     ];
+
+    public function prs_supplier()
+    {
+        return $this->belongsTo(PrsSupplier::class, 'prs_supplier_id');
+    }
+
+    public function bom()
+    {
+        return $this->belongsTo(Bom::class, 'bom_id');
+    }
 }

@@ -12,7 +12,10 @@ class PrsSupplier extends Model
     protected $fillable = [
         'prs_detail_id',
         'supplier_id',
-        'prs_supplier_type_id',
+        'name',
+        'uom',
+        'quantity',
+        'unit_price',
         'is_deleted',
     ];
 
@@ -24,5 +27,10 @@ class PrsSupplier extends Model
     public function supplier()
     {
         return $this->belongsTo(Supplier::class, 'supplier_id');
+    }
+    
+    public function prs_supplier_item()
+    {
+        return $this->hasOne(PrsSupplierItem::class, 'prs_supplier_id');
     }
 }
