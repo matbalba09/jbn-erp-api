@@ -29,6 +29,6 @@ class Bom extends Model
 
     public function inventory()
     {
-        return $this->hasOne(Inventory::class, 'id');
+        return $this->belongsTo(Inventory::class, 'inventory_id');
     }
 }
