@@ -142,7 +142,6 @@ class PurchaseRequisitionRepository implements IPurchaseRequisitionRepository
         if ($prsDetails) {
             foreach ($prsDetails as $detail) {
                 $prsDetailData = PurchaseRequisitionDetail::where('prs_id', $prs->id)
-                    ->where('product_id', $detail['product_id'])
                     ->first();
 
                 $prsDetailData->fill([
@@ -153,6 +152,7 @@ class PurchaseRequisitionRepository implements IPurchaseRequisitionRepository
                     'unit_price' => isset($detail['unit_price']) ? $detail['unit_price'] : null,
                     'total_price' => isset($detail['total_price']) ? $detail['total_price'] : null,
                     'remarks' => isset($detail['remarks']) ? $detail['remarks'] : null,
+                    'is_deleted' => Response::FALSE,
                 ]);
                 $prsDetailData->save();
 
@@ -160,16 +160,30 @@ class PurchaseRequisitionRepository implements IPurchaseRequisitionRepository
                     foreach ($detail['prs_suppliers'] as $supplier) {
                         if (!empty($supplier)) {
                             $prsSupplierData = PrsSupplier::where('prs_detail_id', $prsDetailData->id)
+                                ->where('supplier_id', $supplier['supplier_id'])
                                 ->first();
 
                             if ($prsSupplierData) {
                                 $prsSupplierData->fill([
-                                    'prs_detail_id' => isset($supplier['prs_detail_id']) ? $supplier['prs_detail_id'] : null,
+                                    'prs_detail_id' => $prsDetailData->id,
                                     'supplier_id' => isset($supplier['supplier_id']) ? $supplier['supplier_id'] : null,
                                     'name' => isset($supplier['name']) ? $supplier['name'] : null,
                                     'uom' => isset($supplier['uom']) ? $supplier['uom'] : null,
                                     'quantity' => isset($supplier['quantity']) ? $supplier['quantity'] : null,
                                     'unit_price' => isset($supplier['unit_price']) ? $supplier['unit_price'] : null,
+                                    'is_deleted' => Response::FALSE,
+                                ]);
+                                $prsSupplierData->save();
+                            } else {
+                                $prsSupplierData = new PrsSupplier();
+                                $prsSupplierData->fill([
+                                    'prs_detail_id' => $prsDetailData->id,
+                                    'supplier_id' => isset($supplier['supplier_id']) ? $supplier['supplier_id'] : null,
+                                    'name' => isset($supplier['name']) ? $supplier['name'] : null,
+                                    'uom' => isset($supplier['uom']) ? $supplier['uom'] : null,
+                                    'quantity' => isset($supplier['quantity']) ? $supplier['quantity'] : null,
+                                    'unit_price' => isset($supplier['unit_price']) ? $supplier['unit_price'] : null,
+                                    'is_deleted' => Response::FALSE,
                                 ]);
                                 $prsSupplierData->save();
                             }
@@ -190,6 +204,20 @@ class PurchaseRequisitionRepository implements IPurchaseRequisitionRepository
                                                 'uom' => isset($item['uom']) ? $item['uom'] : null,
                                                 'quantity' => isset($item['quantity']) ? $item['quantity'] : null,
                                                 'unit_price' => isset($item['unit_price']) ? $item['unit_price'] : null,
+                                                'is_deleted' => Response::FALSE,
+                                            ]);
+                                            $prsSupplierItemData->save();
+                                        } else {
+                                            $prsSupplierItemData = new PrsSupplierItem();
+                                            $prsSupplierItemData->fill([
+                                                'prs_supplier_id' => $prsSupplierData->id,
+                                                'bom_id' => $item['bom_id'],
+                                                'item_name' => $item['item_name'],
+                                                'inventory_id' => $item['inventory_id'],
+                                                'uom' => $item['uom'],
+                                                'quantity' => $item['quantity'],
+                                                'unit_price' => $item['unit_price'],
+                                                'is_deleted' => Response::FALSE,
                                             ]);
                                             $prsSupplierItemData->save();
                                         }
