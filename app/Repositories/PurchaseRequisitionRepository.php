@@ -146,10 +146,6 @@ class PurchaseRequisitionRepository implements IPurchaseRequisitionRepository
                     ->first();
 
                 $prsDetailData->fill([
-                    // 'name' => $detail['name'],
-                    // 'uom' => $detail['uom'],
-                    // 'quantity' => $detail['quantity'],
-                    // 'unit_price' => $detail['unit_price'],
                     'product_id' => isset($detail['product_id']) ? $detail['product_id'] : null,
                     'name' => isset($detail['name']) ? $detail['name'] : null,
                     'uom' => isset($detail['uom']) ? $detail['uom'] : null,
@@ -160,64 +156,44 @@ class PurchaseRequisitionRepository implements IPurchaseRequisitionRepository
                 ]);
                 $prsDetailData->save();
 
-                if (isset($detail['prs_suppliers'])) {
+                if (isset($detail['prs_suppliers']) && !empty($detail['prs_suppliers'])) {
                     foreach ($detail['prs_suppliers'] as $supplier) {
-                        $prsSupplierData = PrsSupplier::where('prs_detail_id', $prsDetailData->id)
-                            ->first();
+                        if (!empty($supplier)) {
+                            $prsSupplierData = PrsSupplier::where('prs_detail_id', $prsDetailData->id)
+                                ->first();
 
-                        $prsSupplierData->fill([
-                            // 'supplier_id' => $supplier['supplier_id'],
-                            // 'name' => $supplier['name'],
-                            // 'uom' => $supplier['uom'],
-                            // 'quantity' => $supplier['quantity'],
-                            // 'unit_price' => $supplier['unit_price'],
-                            'prs_detail_id' => isset($supplier['prs_detail_id']) ? $supplier['prs_detail_id'] : null,
-                            'supplier_id' => isset($supplier['supplier_id']) ? $supplier['supplier_id'] : null,
-                            'name' => isset($supplier['name']) ? $supplier['name'] : null,
-                            'uom' => isset($supplier['uom']) ? $supplier['uom'] : null,
-                            'quantity' => isset($supplier['quantity']) ? $supplier['quantity'] : null,
-                            'unit_price' => isset($supplier['unit_price']) ? $supplier['unit_price'] : null,
-                        ]);
-                        $prsSupplierData->save();
+                            if ($prsSupplierData) {
+                                $prsSupplierData->fill([
+                                    'prs_detail_id' => isset($supplier['prs_detail_id']) ? $supplier['prs_detail_id'] : null,
+                                    'supplier_id' => isset($supplier['supplier_id']) ? $supplier['supplier_id'] : null,
+                                    'name' => isset($supplier['name']) ? $supplier['name'] : null,
+                                    'uom' => isset($supplier['uom']) ? $supplier['uom'] : null,
+                                    'quantity' => isset($supplier['quantity']) ? $supplier['quantity'] : null,
+                                    'unit_price' => isset($supplier['unit_price']) ? $supplier['unit_price'] : null,
+                                ]);
+                                $prsSupplierData->save();
+                            }
 
-                        if (isset($supplier['prs_supplier_items']) && !empty($supplier['prs_supplier_items'])) {
-                            foreach ($supplier['prs_supplier_items'] as $item) {
-                                if (!empty($item)) {
-                                    $prsSupplierItemData = PrsSupplierItem::where('prs_supplier_id', $prsSupplierData->id)
-                                        ->where('bom_id', $item['bom_id'])
-                                        ->first();
+                            if (isset($supplier['prs_supplier_items']) && !empty($supplier['prs_supplier_items'])) {
+                                foreach ($supplier['prs_supplier_items'] as $item) {
+                                    if (!empty($item)) {
+                                        $prsSupplierItemData = PrsSupplierItem::where('prs_supplier_id', $prsSupplierData->id)
+                                            ->where('bom_id', $item['bom_id'])
+                                            ->first();
 
-                                    if ($prsSupplierItemData) {
-                                        $prsSupplierItemData->fill([
-                                            // 'item_name' => isset($item['item_name']) ? $item['item_name'] : null,
-                                            // 'inventory_id' => isset($item['inventory_id']) ? $item['inventory_id'] : null,
-                                            // 'uom' => isset($item['uom']) ? $item['uom'] : null,
-                                            // 'quantity' => isset($item['quantity']) ? $item['quantity'] : null,
-                                            // 'unit_price' => isset($item['unit_price']) ? $item['unit_price'] : null,
-                                            // 'bom_id' => isset($item['bom_id']) ? $item['bom_id'] : null,
-                                            'prs_supplier_id' => isset($item['prs_supplier_id']) ? $item['prs_supplier_id'] : null,
-                                            'bom_id' => isset($item['bom_id']) ? $item['bom_id'] : null,
-                                            'item_name' => isset($item['item_name']) ? $item['item_name'] : null,
-                                            'inventory_id' => isset($item['inventory_id']) ? $item['inventory_id'] : null,
-                                            'uom' => isset($item['uom']) ? $item['uom'] : null,
-                                            'quantity' => isset($item['quantity']) ? $item['quantity'] : null,
-                                            'unit_price' => isset($item['unit_price']) ? $item['unit_price'] : null,
-                                        ]);
-                                        $prsSupplierItemData->save();
+                                        if ($prsSupplierItemData) {
+                                            $prsSupplierItemData->fill([
+                                                'prs_supplier_id' => isset($item['prs_supplier_id']) ? $item['prs_supplier_id'] : null,
+                                                'bom_id' => isset($item['bom_id']) ? $item['bom_id'] : null,
+                                                'item_name' => isset($item['item_name']) ? $item['item_name'] : null,
+                                                'inventory_id' => isset($item['inventory_id']) ? $item['inventory_id'] : null,
+                                                'uom' => isset($item['uom']) ? $item['uom'] : null,
+                                                'quantity' => isset($item['quantity']) ? $item['quantity'] : null,
+                                                'unit_price' => isset($item['unit_price']) ? $item['unit_price'] : null,
+                                            ]);
+                                            $prsSupplierItemData->save();
+                                        }
                                     }
-                                    // else {
-                                    //     $prsSupplierItemData = new PrsSupplierItem();
-                                    //     $prsSupplierItemData->prs_supplier_id = $prsSupplierData->id;
-                                    //     $prsSupplierItemData->fill([
-                                    //         'item_name' => isset($item['item_name']) ? $item['item_name'] : null,
-                                    //         'inventory_id' => isset($item['inventory_id']) ? $item['inventory_id'] : null,
-                                    //         'uom' => isset($item['uom']) ? $item['uom'] : null,
-                                    //         'quantity' => isset($item['quantity']) ? $item['quantity'] : null,
-                                    //         'unit_price' => isset($item['unit_price']) ? $item['unit_price'] : null,
-                                    //         'bom_id' => isset($item['bom_id']) ? $item['bom_id'] : null,
-                                    //     ]);
-                                    //     $prsSupplierItemData->save();
-                                    // }
                                 }
                             }
                         }
@@ -225,7 +201,6 @@ class PurchaseRequisitionRepository implements IPurchaseRequisitionRepository
                 }
             }
         }
-
         return $prs->load(['customer', 'prs_details.prs_supplier.prs_supplier_item']);
     }
 
