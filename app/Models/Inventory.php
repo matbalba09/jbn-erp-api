@@ -15,6 +15,7 @@ class Inventory extends Model
         'item_name',
         'reorder_level',
         'qty_on_hand',
+        'reorder_qty',
         'item_type',
         'uom',
         'remarks',

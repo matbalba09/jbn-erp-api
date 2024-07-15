@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('item_name')->nullable();
             $table->string('reorder_level')->nullable();
             $table->integer('qty_on_hand')->nullable();
+            $table->integer('reorder_qty')->nullable();
             $table->string('item_type')->nullable();
             $table->string('uom')->nullable();
             $table->string('remarks')->nullable();

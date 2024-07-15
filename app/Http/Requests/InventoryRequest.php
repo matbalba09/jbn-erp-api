@@ -27,6 +27,7 @@ class InventoryRequest extends FormRequest
             'item_name' => 'nullable|string',
             'reorder_level' => 'nullable|string',
             'qty_on_hand' => 'nullable|integer',
+            'reorder_qty' => 'nullable|integer',
             'item_type' => 'nullable|string',
             'uom' => 'nullable|string',
             'remarks' => 'nullable|string',
