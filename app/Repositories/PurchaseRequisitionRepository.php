@@ -136,7 +136,9 @@ class PurchaseRequisitionRepository implements IPurchaseRequisitionRepository
 
     function update(Request $request, $id)
     {
-        $prs = PurchaseRequisition::find($id);
+        $prs = PurchaseRequisition::findOrFail($id);
+        $prs->status = $request->input('status');
+        $prs->save();
 
         $prsDetails = $request->input('prs_details');
         if ($prsDetails) {
