@@ -13,23 +13,23 @@ use Illuminate\Http\Request;
 
 class PrsDetailController extends Controller
 {
-    private IPrsDetailRepository $purchaseRequisitionDetailRepository;
+    private IPrsDetailRepository $prsDetailRepository;
 
-    public function __construct(IPrsDetailRepository $purchaseRequisitionDetailRepository)
+    public function __construct(IPrsDetailRepository $prsDetailRepository)
     {
-        $this->purchaseRequisitionDetailRepository = $purchaseRequisitionDetailRepository;
+        $this->prsDetailRepository = $prsDetailRepository;
     }
 
     public function index()
     {
-        $purchaseRequisitionDetails = $this->purchaseRequisitionDetailRepository->getAll();
+        $prsDetails = $this->prsDetailRepository->getAll();
 
         $response = [
             'code' => Response::HTTP_SUCCESS,
             'status' => Response::SUCCESS,
             'message' => Response::SUCCESSFULLY_GET_ALL_PRS_DETAILS,
             'count' => PrsDetail::count(),
-            'data' => $purchaseRequisitionDetails,
+            'data' => $prsDetails,
         ];
 
         return response()->json($response, $response['code']);
@@ -37,13 +37,13 @@ class PrsDetailController extends Controller
 
     public function getById($id)
     {
-        $purchaseRequisitionDetail = $this->purchaseRequisitionDetailRepository->getById($id);
+        $prsDetail = $this->prsDetailRepository->getById($id);
 
         $response = [
             'code' => Response::HTTP_SUCCESS,
             'status' => Response::SUCCESS,
             'message' => Response::SUCCESSFULLY_GET_PRS_DETAIL,
-            'data' => $purchaseRequisitionDetail,
+            'data' => $prsDetail,
         ];
 
         return response()->json($response, $response['code']);
@@ -51,13 +51,13 @@ class PrsDetailController extends Controller
 
     public function create(PrsDetailRequest $request)
     {
-        $purchaseRequisitionDetail = $this->purchaseRequisitionDetailRepository->create($request);
+        $prsDetail = $this->prsDetailRepository->create($request);
 
         $response = [
             'code' => Response::HTTP_SUCCESS_POST,
             'status' => Response::SUCCESS,
             'message' => Response::SUCCESSFULLY_CREATED_PRS_DETAIL,
-            'data' => $purchaseRequisitionDetail,
+            'data' => $prsDetail,
         ];
 
         return response()->json($response, $response['code']);
@@ -65,13 +65,13 @@ class PrsDetailController extends Controller
 
     public function update(PrsDetailRequest $request, $id)
     {
-        $purchaseRequisitionDetail = $this->purchaseRequisitionDetailRepository->update($request, $id);
+        $prsDetail = $this->prsDetailRepository->update($request, $id);
 
         $response = [
             'code' => Response::HTTP_SUCCESS,
             'status' => Response::SUCCESS,
             'message' => Response::SUCCESSFULLY_UPDATED_PRS_DETAIL,
-            'data' => $purchaseRequisitionDetail,
+            'data' => $prsDetail,
         ];
 
         return response()->json($response, $response['code']);
@@ -79,7 +79,7 @@ class PrsDetailController extends Controller
 
     public function delete($id)
     {
-        $this->purchaseRequisitionDetailRepository->delete($id);
+        $this->prsDetailRepository->delete($id);
 
         $response = [
             'code' => Response::HTTP_SUCCESS_NO_RETURN,

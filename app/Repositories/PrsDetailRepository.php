@@ -23,14 +23,14 @@ class PrsDetailRepository implements IPrsDetailRepository
 {
     function getAll()
     {
-        $purchaseRequisitionDetails = PrsDetail::where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
-        return $purchaseRequisitionDetails;
+        $prsDetails = PrsDetail::where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
+        return $prsDetails;
     }
 
     function getById($id)
     {
-        $purchaseRequisitionDetail = PrsDetail::findOrFail($id);
-        return $purchaseRequisitionDetail;
+        $prsDetail = PrsDetail::findOrFail($id);
+        return $prsDetail;
     }
 
     function create(PrsDetailRequest $request)
@@ -38,24 +38,24 @@ class PrsDetailRepository implements IPrsDetailRepository
         $validatedData = $request->validated();
         $validatedData['is_deleted'] = Response::FALSE;
 
-        $purchaseRequisitionDetail = PrsDetail::create($validatedData);
-        return $purchaseRequisitionDetail;
+        $prsDetail = PrsDetail::create($validatedData);
+        return $prsDetail;
     }
 
     function update(PrsDetailRequest $request, $id)
     {
-        $purchaseRequisitionDetail = PrsDetail::findOrFail($id);
+        $prsDetail = PrsDetail::findOrFail($id);
         $validatedData = $request->validated();
-        $purchaseRequisitionDetail->update($validatedData);
+        $prsDetail->update($validatedData);
 
-        return $purchaseRequisitionDetail;
+        return $prsDetail;
     }
 
     function delete($id)
     {
-        $purchaseRequisitionDetail = PrsDetail::findOrFail($id);
-        $purchaseRequisitionDetail->delete();
+        $prsDetail = PrsDetail::findOrFail($id);
+        $prsDetail->delete();
 
-        return $purchaseRequisitionDetail;
+        return $prsDetail;
     }
 }
