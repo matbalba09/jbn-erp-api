@@ -24,6 +24,6 @@ class Customer extends Model
 
     public function prs()
     {
-        return $this->hasOne(PurchaseRequisition::class, 'id');
+        return $this->hasOne(Prs::class, 'id');
     }
 }

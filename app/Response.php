@@ -97,19 +97,19 @@ class Response
     const SUCCESSFULLY_UPDATED_PURCHASE_ORDER = 'Successfully updated purchase order';
     const SUCCESSFULLY_DELETED_PURCHASE_ORDER = 'Successfully deleted purchase order';
 
-    //PurchaseRequisitions
-    const SUCCESSFULLY_GET_ALL_PURCHASE_REQUISITIONS = 'Successfully get all purchase requisitions';
-    const SUCCESSFULLY_GET_PURCHASE_REQUISITION = 'Successfully get all purchase requisition';
-    const SUCCESSFULLY_CREATED_PURCHASE_REQUISITION = 'Successfully created purchase requisition';
-    const SUCCESSFULLY_UPDATED_PURCHASE_REQUISITION = 'Successfully updated purchase requisition';
-    const SUCCESSFULLY_DELETED_PURCHASE_REQUISITION = 'Successfully deleted purchase requisition';
+    //Prs
+    const SUCCESSFULLY_GET_ALL_PRS = 'Successfully get all prs';
+    const SUCCESSFULLY_GET_PRS = 'Successfully get all prs';
+    const SUCCESSFULLY_CREATED_PRS = 'Successfully created prs';
+    const SUCCESSFULLY_UPDATED_PRS = 'Successfully updated prs';
+    const SUCCESSFULLY_DELETED_PRS = 'Successfully deleted prs';
 
-    //PurchaseRequisitionDetails
-    const SUCCESSFULLY_GET_ALL_PURCHASE_REQUISITION_DETAILS = 'Successfully get all purchase requisition details';
-    const SUCCESSFULLY_GET_PURCHASE_REQUISITION_DETAIL = 'Successfully get all purchase requisition detail';
-    const SUCCESSFULLY_CREATED_PURCHASE_REQUISITION_DETAIL = 'Successfully created purchase requisition detail';
-    const SUCCESSFULLY_UPDATED_PURCHASE_REQUISITION_DETAIL = 'Successfully updated purchase requisition detail';
-    const SUCCESSFULLY_DELETED_PURCHASE_REQUISITION_DETAIL = 'Successfully deleted purchase requisition detail';
+    //PrsDetails
+    const SUCCESSFULLY_GET_ALL_PRS_DETAILS = 'Successfully get all prs details';
+    const SUCCESSFULLY_GET_PRS_DETAIL = 'Successfully get all prs detail';
+    const SUCCESSFULLY_CREATED_PRS_DETAIL = 'Successfully created prs detail';
+    const SUCCESSFULLY_UPDATED_PRS_DETAIL = 'Successfully updated prs detail';
+    const SUCCESSFULLY_DELETED_PRS_DETAIL = 'Successfully deleted prs detail';
 
     //Quotations
     const SUCCESSFULLY_GET_ALL_QUOTATIONS = 'Successfully get all quotations';

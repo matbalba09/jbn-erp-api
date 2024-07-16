@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PurchaseRequisition extends Model
+class Prs extends Model
 {
     use HasFactory;
 
@@ -27,7 +27,7 @@ class PurchaseRequisition extends Model
 
     public function prs_details()
     {
-        return $this->hasMany(PurchaseRequisitionDetail::class, 'prs_id');
+        return $this->hasMany(PrsDetail::class, 'prs_id');
     }
     
 }

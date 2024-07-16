@@ -21,8 +21,8 @@ use App\Repositories\IProductRepository;
 use App\Repositories\IPrsSupplierRepository;
 use App\Repositories\IPrsSupplierTypeRepository;
 use App\Repositories\IPurchaseOrderRepository;
-use App\Repositories\IPurchaseRequisitionDetailRepository;
-use App\Repositories\IPurchaseRequisitionRepository;
+use App\Repositories\IPrsDetailRepository;
+use App\Repositories\IPrsRepository;
 use App\Repositories\IQuotationDetailRepository;
 use App\Repositories\IQuotationRepository;
 use App\Repositories\IRoleRepository;
@@ -42,8 +42,8 @@ use App\Repositories\PrsSupplierItemRepository;
 use App\Repositories\PrsSupplierRepository;
 use App\Repositories\PrsSupplierTypeRepository;
 use App\Repositories\PurchaseOrderRepository;
-use App\Repositories\PurchaseRequisitionDetailRepository;
-use App\Repositories\PurchaseRequisitionRepository;
+use App\Repositories\PrsDetailRepository;
+use App\Repositories\PrsRepository;
 use App\Repositories\QuotationDetailRepository;
 use App\Repositories\QuotationRepository;
 use App\Repositories\RoleRepository;
@@ -96,12 +96,12 @@ class AppServiceProvider extends ServiceProvider
             PurchaseOrderRepository::class
         );
         $this->app->bind(
-            IPurchaseRequisitionDetailRepository::class,
-            PurchaseRequisitionDetailRepository::class
+            IPrsDetailRepository::class,
+            PrsDetailRepository::class
         );
         $this->app->bind(
-            IPurchaseRequisitionRepository::class,
-            PurchaseRequisitionRepository::class
+            IPrsRepository::class,
+            PrsRepository::class
         );
         $this->app->bind(
             IQuotationDetailRepository::class,

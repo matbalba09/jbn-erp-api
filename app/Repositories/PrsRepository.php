@@ -4,32 +4,32 @@ namespace App\Repositories;
 
 use App\Helper\Helper;
 use App\Http\Requests\CreatePrsSupplierRequest;
-use App\Http\Requests\CreatePurchaseRequisitionDetailRequest;
-use App\Http\Requests\CreatePurchaseRequisitionRequest;
-use App\Http\Requests\PurchaseRequisitionRequest;
-use App\Http\Requests\UpdatePurchaseRequisitionRequest;
+use App\Http\Requests\CreatePrsDetailRequest;
+use App\Http\Requests\CreatePrsRequest;
+use App\Http\Requests\PrsRequest;
+use App\Http\Requests\UpdatePrsRequest;
 use App\Models\PrsSupplier;
 use App\Models\PrsSupplierItem;
 use Carbon\Carbon;
-use App\Models\PurchaseRequisition;
-use App\Models\PurchaseRequisitionDetail;
+use App\Models\Prs;
+use App\Models\PrsDetail;
 use App\Response;
 use Illuminate\Http\Request;
 
-interface IPurchaseRequisitionRepository
+interface IPrsRepository
 {
     function getAll();
     function getById($id);
-    function create(PurchaseRequisitionRequest $request);
+    function create(PrsRequest $request);
     function update(Request $request, $id);
     function delete($id);
 }
 
-class PurchaseRequisitionRepository implements IPurchaseRequisitionRepository
+class PrsRepository implements IPrsRepository
 {
     function getAll()
     {
-        $prs = PurchaseRequisition::with(
+        $prs = Prs::with(
             'customer',
             'prs_details.prs_supplier.supplier',
             'prs_details.prs_supplier.prs_supplier_item.bom.inventory',
@@ -41,7 +41,7 @@ class PurchaseRequisitionRepository implements IPurchaseRequisitionRepository
 
     function getById($id)
     {
-        $prs = PurchaseRequisition::with(
+        $prs = Prs::with(
             'customer',
             'prs_details.prs_supplier.supplier',
             'prs_details.prs_supplier.prs_supplier_item.bom.inventory',
@@ -52,9 +52,9 @@ class PurchaseRequisitionRepository implements IPurchaseRequisitionRepository
         return $prs;
     }
 
-    function create(PurchaseRequisitionRequest $request)
+    function create(PrsRequest $request)
     {
-        $latestPrs = PurchaseRequisition::latest()->first();
+        $latestPrs = Prs::latest()->first();
         $dateNow = Carbon::now()->format('ymd');
 
         $validatedData = $request->validated();
@@ -76,12 +76,12 @@ class PurchaseRequisitionRepository implements IPurchaseRequisitionRepository
         }
         $validatedData['is_deleted'] = Response::FALSE;
 
-        $prs = PurchaseRequisition::create($validatedData);
+        $prs = Prs::create($validatedData);
 
         $prsDetails = $request->input('prs_details');
         if ($prsDetails) {
             foreach ($prsDetails as $detail) {
-                $prsDetail = PurchaseRequisitionDetail::create([
+                $prsDetail = PrsDetail::create([
                     'prs_id' => $prs->id,
                     'product_id' => isset($detail['product_id']) ? $detail['product_id'] : null,
                     'name' => isset($detail['name']) ? $detail['name'] : null,
@@ -125,9 +125,9 @@ class PurchaseRequisitionRepository implements IPurchaseRequisitionRepository
         return $prs->load(['customer', 'prs_details']);
     }
 
-    // function update(PurchaseRequisitionRequest $request, $id)
+    // function update(PrsRequest $request, $id)
     // {
-    //     $prs = PurchaseRequisition::findOrFail($id);
+    //     $prs = Prs::findOrFail($id);
     //     $validatedData = $request->validated();
     //     $prs->update($validatedData);
 
@@ -136,12 +136,14 @@ class PurchaseRequisitionRepository implements IPurchaseRequisitionRepository
 
     function update(Request $request, $id)
     {
-        $prs = PurchaseRequisition::find($id);
+        $prs = Prs::findOrFail($id);
+        $prs->status = $request->input('status');
+        $prs->save();
 
         $prsDetails = $request->input('prs_details');
         if ($prsDetails) {
             foreach ($prsDetails as $detail) {
-                $prsDetailData = PurchaseRequisitionDetail::where('prs_id', $prs->id)
+                $prsDetailData = PrsDetail::where('prs_id', $prs->id)
                     ->first();
 
                 $prsDetailData->fill([
@@ -234,7 +236,7 @@ class PurchaseRequisitionRepository implements IPurchaseRequisitionRepository
 
     function delete($id)
     {
-        $prs = PurchaseRequisition::findOrFail($id);
+        $prs = Prs::findOrFail($id);
         $prs->delete();
 
         return $prs;

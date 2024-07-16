@@ -27,6 +27,6 @@ class Product extends Model
 
     public function prs_details()
     {
-        return $this->hasOne(PurchaseRequisitionDetail::class, 'product_id');
+        return $this->hasOne(PrsDetail::class, 'product_id');
     }
 }
