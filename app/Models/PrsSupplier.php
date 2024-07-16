@@ -21,7 +21,7 @@ class PrsSupplier extends Model
 
     public function prs_detail()
     {
-        return $this->belongsTo(PurchaseRequisitionDetail::class, 'prs_detail_id');
+        return $this->belongsTo(PrsDetail::class, 'prs_detail_id');
     }
 
     public function supplier()

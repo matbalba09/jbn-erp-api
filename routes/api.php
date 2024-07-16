@@ -17,8 +17,8 @@ use App\Http\Controllers\PrsSupplierController;
 use App\Http\Controllers\PrsSupplierItemController;
 use App\Http\Controllers\PrsSupplierTypeController;
 use App\Http\Controllers\PurchaseOrderController;
-use App\Http\Controllers\PurchaseRequisitionController;
-use App\Http\Controllers\PurchaseRequisitionDetailController;
+use App\Http\Controllers\PrsController;
+use App\Http\Controllers\PrsDetailController;
 use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\QuotationDetailController;
 use App\Http\Controllers\RoleController;
@@ -108,19 +108,19 @@ Route::prefix('v1')->group(function () {
         Route::put('update/{id}', [PurchaseOrderController::class, 'update']);
         Route::delete('delete/{id}', [PurchaseOrderController::class, 'delete']);
     });
-    Route::prefix('purchase_requisition')->group(function () {
-        Route::get('/', [PurchaseRequisitionController::class, 'index']);
-        Route::get('{id}', [PurchaseRequisitionController::class, 'getById']);
-        Route::post('create', [PurchaseRequisitionController::class, 'create']);
-        Route::put('update/{id}', [PurchaseRequisitionController::class, 'update']);
-        Route::delete('delete/{id}', [PurchaseRequisitionController::class, 'delete']);
+    Route::prefix('prs')->group(function () {
+        Route::get('/', [PrsController::class, 'index']);
+        Route::get('{id}', [PrsController::class, 'getById']);
+        Route::post('create', [PrsController::class, 'create']);
+        Route::put('update/{id}', [PrsController::class, 'update']);
+        Route::delete('delete/{id}', [PrsController::class, 'delete']);
     });
-    Route::prefix('purchase_requisition_detail')->group(function () {
-        Route::get('/', [PurchaseRequisitionDetailController::class, 'index']);
-        Route::get('{id}', [PurchaseRequisitionDetailController::class, 'getById']);
-        Route::post('create', [PurchaseRequisitionDetailController::class, 'create']);
-        Route::put('update/{id}', [PurchaseRequisitionDetailController::class, 'update']);
-        Route::delete('delete/{id}', [PurchaseRequisitionDetailController::class, 'delete']);
+    Route::prefix('prs_detail')->group(function () {
+        Route::get('/', [PrsDetailController::class, 'index']);
+        Route::get('{id}', [PrsDetailController::class, 'getById']);
+        Route::post('create', [PrsDetailController::class, 'create']);
+        Route::put('update/{id}', [PrsDetailController::class, 'update']);
+        Route::delete('delete/{id}', [PrsDetailController::class, 'delete']);
     });
     Route::prefix('quotation')->group(function () {
         Route::get('/', [QuotationController::class, 'index']);

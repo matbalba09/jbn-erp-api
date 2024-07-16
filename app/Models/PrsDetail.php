@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PurchaseRequisitionDetail extends Model
+class PrsDetail extends Model
 {
     use HasFactory;
 
@@ -25,7 +25,7 @@ class PurchaseRequisitionDetail extends Model
 
     public function prs()
     {
-        return $this->belongsTo(PurchaseRequisition::class, 'prs_id');
+        return $this->belongsTo(Prs::class, 'prs_id');
     }
     
     public function prs_supplier()
