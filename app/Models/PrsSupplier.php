@@ -29,7 +29,7 @@ class PrsSupplier extends Model
         return $this->belongsTo(Supplier::class, 'supplier_id');
     }
     
-    public function prs_supplier_item()
+    public function prs_supplier_items()
     {
         return $this->hasOne(PrsSupplierItem::class, 'prs_supplier_id');
     }

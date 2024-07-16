@@ -28,7 +28,7 @@ class PrsDetail extends Model
         return $this->belongsTo(Prs::class, 'prs_id');
     }
     
-    public function prs_supplier()
+    public function prs_suppliers()
     {
         return $this->hasMany(PrsSupplier::class, 'prs_detail_id');
     }

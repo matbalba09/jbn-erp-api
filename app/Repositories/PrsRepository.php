@@ -31,8 +31,8 @@ class PrsRepository implements IPrsRepository
     {
         $prs = Prs::with(
             'customer',
-            'prs_details.prs_supplier.supplier',
-            'prs_details.prs_supplier.prs_supplier_item.bom.inventory',
+            'prs_details.prs_suppliers.supplier',
+            'prs_details.prs_suppliers.prs_supplier_items.bom.inventory',
             'prs_details.product'
         )
             ->where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
@@ -43,8 +43,8 @@ class PrsRepository implements IPrsRepository
     {
         $prs = Prs::with(
             'customer',
-            'prs_details.prs_supplier.supplier',
-            'prs_details.prs_supplier.prs_supplier_item.bom.inventory',
+            'prs_details.prs_suppliers.supplier',
+            'prs_details.prs_suppliers.prs_supplier_items.bom.inventory',
             'prs_details.product'
         )
             ->where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')
@@ -231,7 +231,7 @@ class PrsRepository implements IPrsRepository
                 }
             }
         }
-        return $prs->load(['customer', 'prs_details.prs_supplier.prs_supplier_item']);
+        return $prs->load(['customer', 'prs_details.prs_suppliers.prs_supplier_items']);
     }
 
     function delete($id)
