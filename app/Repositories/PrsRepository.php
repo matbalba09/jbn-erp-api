@@ -158,37 +158,26 @@ class PrsRepository implements IPrsRepository
                 ]);
                 $prsDetailData->save();
 
+                $allPrsSupplier = PrsSupplier::where('prs_detail_id', $prsDetailData->id)->get();
+
+                foreach ($allPrsSupplier as $prsSupplier) {
+                    $prsSupplier->delete();
+                }
+
                 if (isset($detail['prs_suppliers']) && !empty($detail['prs_suppliers'])) {
                     foreach ($detail['prs_suppliers'] as $supplier) {
                         if (!empty($supplier)) {
-                            $prsSupplierData = PrsSupplier::where('prs_detail_id', $prsDetailData->id)
-                                ->where('supplier_id', $supplier['supplier_id'])
-                                ->first();
-
-                            if ($prsSupplierData) {
-                                $prsSupplierData->fill([
-                                    'prs_detail_id' => $prsDetailData->id,
-                                    'supplier_id' => isset($supplier['supplier_id']) ? $supplier['supplier_id'] : null,
-                                    'name' => isset($supplier['name']) ? $supplier['name'] : null,
-                                    'uom' => isset($supplier['uom']) ? $supplier['uom'] : null,
-                                    'quantity' => isset($supplier['quantity']) ? $supplier['quantity'] : null,
-                                    'unit_price' => isset($supplier['unit_price']) ? $supplier['unit_price'] : null,
-                                    'is_deleted' => Response::FALSE,
-                                ]);
-                                $prsSupplierData->save();
-                            } else {
-                                $prsSupplierData = new PrsSupplier();
-                                $prsSupplierData->fill([
-                                    'prs_detail_id' => $prsDetailData->id,
-                                    'supplier_id' => isset($supplier['supplier_id']) ? $supplier['supplier_id'] : null,
-                                    'name' => isset($supplier['name']) ? $supplier['name'] : null,
-                                    'uom' => isset($supplier['uom']) ? $supplier['uom'] : null,
-                                    'quantity' => isset($supplier['quantity']) ? $supplier['quantity'] : null,
-                                    'unit_price' => isset($supplier['unit_price']) ? $supplier['unit_price'] : null,
-                                    'is_deleted' => Response::FALSE,
-                                ]);
-                                $prsSupplierData->save();
-                            }
+                            $prsSupplierData = new PrsSupplier();
+                            $prsSupplierData->fill([
+                                'prs_detail_id' => $prsDetailData->id,
+                                'supplier_id' => isset($supplier['supplier_id']) ? $supplier['supplier_id'] : null,
+                                'name' => isset($supplier['name']) ? $supplier['name'] : null,
+                                'uom' => isset($supplier['uom']) ? $supplier['uom'] : null,
+                                'quantity' => isset($supplier['quantity']) ? $supplier['quantity'] : null,
+                                'unit_price' => isset($supplier['unit_price']) ? $supplier['unit_price'] : null,
+                                'is_deleted' => Response::FALSE,
+                            ]);
+                            $prsSupplierData->save();
 
                             if (isset($supplier['prs_supplier_items']) && !empty($supplier['prs_supplier_items'])) {
                                 foreach ($supplier['prs_supplier_items'] as $item) {
