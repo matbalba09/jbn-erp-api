@@ -24,7 +24,7 @@ class QuotationRepository implements IQuotationRepository
 {
     function getAll()
     {
-        $quotations = Quotation::with('quotation_details', 'prs')
+        $quotations = Quotation::with('quotation_details')
             ->where('is_deleted', Response::FALSE)
             ->orderBy('created_at', 'desc')->get();
         return $quotations;
@@ -32,7 +32,7 @@ class QuotationRepository implements IQuotationRepository
 
     function getById($id)
     {
-        $quotation = Quotation::with('quotation_details', 'prs')->findOrFail($id);
+        $quotation = Quotation::with('quotation_details')->findOrFail($id);
         return $quotation;
     }
 
