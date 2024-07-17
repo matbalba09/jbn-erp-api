@@ -29,4 +29,9 @@ class Product extends Model
     {
         return $this->hasOne(PrsDetail::class, 'product_id');
     }
+
+    public function quotation_details()
+    {
+        return $this->hasOne(QuotationDetail::class, 'product_id');
+    }
 }

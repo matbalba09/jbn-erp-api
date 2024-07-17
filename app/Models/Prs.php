@@ -30,4 +30,8 @@ class Prs extends Model
         return $this->hasMany(PrsDetail::class, 'prs_id');
     }
     
+    public function quotation()
+    {
+        return $this->belongsTo(Quotation::class, 'prs_no');
+    }
 }

@@ -20,6 +20,17 @@ class Quotation extends Model
         'approved_by',
         'received_by',
         'remarks',
+        'status',
         'is_deleted',
     ];
+
+    public function quotation_details()
+    {
+        return $this->hasMany(QuotationDetail::class, 'quotation_no', 'quotation_no');
+    }
+
+    public function prs()
+    {
+        return $this->hasOne(Prs::class, 'prs_no', 'prs_no');
+    }
 }

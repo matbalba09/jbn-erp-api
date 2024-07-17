@@ -125,15 +125,6 @@ class PrsRepository implements IPrsRepository
         return $prs->load(['customer', 'prs_details']);
     }
 
-    // function update(PrsRequest $request, $id)
-    // {
-    //     $prs = Prs::findOrFail($id);
-    //     $validatedData = $request->validated();
-    //     $prs->update($validatedData);
-
-    //     return $prs->load(['customer', 'prs_details']);
-    // }
-
     function update(Request $request, $id)
     {
         $prs = Prs::findOrFail($id);
@@ -158,9 +149,9 @@ class PrsRepository implements IPrsRepository
                 ]);
                 $prsDetailData->save();
 
-                $allPrsSupplier = PrsSupplier::where('prs_detail_id', $prsDetailData->id)->get();
+                $allPrsSuppliers = PrsSupplier::where('prs_detail_id', $prsDetailData->id)->get();
 
-                foreach ($allPrsSupplier as $prsSupplier) {
+                foreach ($allPrsSuppliers as $prsSupplier) {
                     $prsSupplier->delete();
                 }
 

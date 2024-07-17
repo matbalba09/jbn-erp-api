@@ -8,6 +8,7 @@ use App\Http\Requests\QuotationRequest;
 use App\Http\Requests\UpdateQuotationRequest;
 use Carbon\Carbon;
 use App\Models\Quotation;
+use App\Models\QuotationDetail;
 use App\Response;
 
 interface IQuotationRepository
@@ -23,13 +24,15 @@ class QuotationRepository implements IQuotationRepository
 {
     function getAll()
     {
-        $quotations = Quotation::where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
+        $quotations = Quotation::with('quotation_details', 'prs')
+            ->where('is_deleted', Response::FALSE)
+            ->orderBy('created_at', 'desc')->get();
         return $quotations;
     }
 
     function getById($id)
     {
-        $quotation = Quotation::findOrFail($id);
+        $quotation = Quotation::with('quotation_details', 'prs')->findOrFail($id);
         return $quotation;
     }
 
@@ -58,16 +61,56 @@ class QuotationRepository implements IQuotationRepository
         $validatedData['is_deleted'] = Response::FALSE;
 
         $quotation = Quotation::create($validatedData);
-        return $quotation;
+
+        $quotationDetails = $request->input('quotation_details');
+        if ($quotationDetails) {
+            foreach ($quotationDetails as $detail) {
+                QuotationDetail::create([
+                    'quotation_no' => $quotation->quotation_no,
+                    'product_id' => isset($detail['product_id']) ? $detail['product_id'] : null,
+                    'name' => isset($detail['name']) ? $detail['name'] : null,
+                    'uom' => isset($detail['uom']) ? $detail['uom'] : null,
+                    'quantity' => isset($detail['quantity']) ? $detail['quantity'] : null,
+                    'unit_price' => isset($detail['unit_price']) ? $detail['unit_price'] : null,
+                    'total_price' => isset($detail['total_price']) ? $detail['total_price'] : null,
+                    'is_deleted' => Response::FALSE,
+                ]);
+            }
+        }
+        return $quotation->load(['quotation_details']);
     }
 
     function update(QuotationRequest $request, $id)
     {
         $quotation = Quotation::findOrFail($id);
-        $validatedData = $request->validated();
-        $quotation->update($validatedData);
+        $quotation->status = $request->input('status');
+        $quotation->save();
 
-        return $quotation;
+        $allQuotationDetails = QuotationDetail::where('quotation_no', $quotation->quotation_no)->get();
+
+        foreach ($allQuotationDetails as $quotationDetail) {
+            $quotationDetail->delete();
+        }
+
+        $quotationDetails = $request->input('quotation_details');
+        if ($quotationDetails) {
+            foreach ($quotationDetails as $detail) {
+                
+                $quotationDetailData = new QuotationDetail();
+                $quotationDetailData->fill([
+                    'quotation_no' => $quotation->quotation_no,
+                    'product_id' => isset($detail['product_id']) ? $detail['product_id'] : null,
+                    'name' => isset($detail['name']) ? $detail['name'] : null,
+                    'uom' => isset($detail['uom']) ? $detail['uom'] : null,
+                    'quantity' => isset($detail['quantity']) ? $detail['quantity'] : null,
+                    'unit_price' => isset($detail['unit_price']) ? $detail['unit_price'] : null,
+                    'total_price' => isset($detail['total_price']) ? $detail['total_price'] : null,
+                    'is_deleted' => Response::FALSE,
+                ]);
+                $quotationDetailData->save();
+            }
+        }
+        return $quotation->load(['quotation_details']);
     }
 
     function delete($id)
