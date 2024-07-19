@@ -26,13 +26,15 @@ class OrderRepository implements IOrderRepository
 {
     function getAll()
     {
-        $orders = Order::where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
+        $orders = Order::with('customer', 'order_details.product', 'quotation.prs.prs_details.prs_suppliers')
+            ->where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
         return $orders;
     }
 
     function getById($id)
     {
-        $order = Order::findOrFail($id);
+        $order = Order::with('customer', 'order_details.product', 'quotation.prs.prs_details.prs_suppliers')
+            ->findOrFail($id);
         return $order;
     }
 
