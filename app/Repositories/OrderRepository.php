@@ -8,6 +8,7 @@ use App\Http\Requests\OrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use Carbon\Carbon;
 use App\Models\Order;
+use App\Models\OrderDetail;
 use App\Response;
 
 interface IOrderRepository
@@ -58,9 +59,24 @@ class OrderRepository implements IOrderRepository
             }
         }
         $validatedData['is_deleted'] = Response::FALSE;
-
         $order = Order::create($validatedData);
-        return $order;
+
+        $orderDetails = $request->input('order_details');
+        if ($orderDetails) {
+            foreach ($orderDetails as $detail) {
+                $orderDetail = OrderDetail::create([
+                    'order_no' => $order->order_no,
+                    'product_id' => isset($detail['product_id']) ? $detail['product_id'] : null,
+                    'uom' => isset($detail['uom']) ? $detail['uom'] : null,
+                    'quantity' => isset($detail['quantity']) ? $detail['quantity'] : null,
+                    'unit_price' => isset($detail['unit_price']) ? $detail['unit_price'] : null,
+                    'total_price' => isset($detail['total_price']) ? $detail['total_price'] : null,
+                    'remarks' => isset($detail['remarks']) ? $detail['remarks'] : null,
+                    'is_deleted' => Response::FALSE,
+                ]);
+            }
+        }
+        return $order->load(['customer', 'order_details.product', 'quotation.prs.prs_details.prs_suppliers']);
     }
 
     function update(OrderRequest $request, $id)
@@ -69,7 +85,28 @@ class OrderRepository implements IOrderRepository
         $validatedData = $request->validated();
         $order->update($validatedData);
 
-        return $order;
+        $allOrderDetails = OrderDetail::where('order_no', $order->order_no)->get();
+
+        foreach ($allOrderDetails as $orderDetail) {
+            $orderDetail->delete();
+        }
+
+        $orderDetails = $request->input('order_details');
+        if ($orderDetails) {
+            foreach ($orderDetails as $detail) {
+                $orderDetail = OrderDetail::create([
+                    'order_no' => $order->order_no,
+                    'product_id' => isset($detail['product_id']) ? $detail['product_id'] : null,
+                    'uom' => isset($detail['uom']) ? $detail['uom'] : null,
+                    'quantity' => isset($detail['quantity']) ? $detail['quantity'] : null,
+                    'unit_price' => isset($detail['unit_price']) ? $detail['unit_price'] : null,
+                    'total_price' => isset($detail['total_price']) ? $detail['total_price'] : null,
+                    'remarks' => isset($detail['remarks']) ? $detail['remarks'] : null,
+                    'is_deleted' => Response::FALSE,
+                ]);
+            }
+        }
+        return $order->load(['customer', 'order_details.product', 'quotation.prs.prs_details.prs_suppliers']);
     }
 
     function delete($id)

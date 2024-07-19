@@ -25,4 +25,14 @@ class Order extends Model
     {
         return $this->hasOne(Quotation::class, 'quotation_no', 'quotation_no');
     }
+
+    public function order_details()
+    {
+        return $this->hasMany(OrderDetail::class, 'order_no', 'order_no');
+    }
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class, 'customer_id');
+    }
 }

@@ -19,8 +19,8 @@ class CustomerSeeder extends Seeder
         Customer::insert([
             [
                 'customer_no' => 'CM2024-00001',
-                'company' => 'Our Lady Of Assumption College',
-                'contact_person' => 'Jansen O. Lirio',
+                'company' => 'De La Salle',
+                'contact_person' => 'Kars Ren',
                 'contact_no' => '09170000001',
                 'status' => 'test_status',
                 'address' => 'Tanauan City, Batangas',
