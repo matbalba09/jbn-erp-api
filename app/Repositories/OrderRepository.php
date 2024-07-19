@@ -17,6 +17,8 @@ interface IOrderRepository
     function create(OrderRequest $request);
     function update(OrderRequest $request, $id);
     function delete($id);
+    
+    function getPrsSupplierById($id);
 }
 
 class OrderRepository implements IOrderRepository
@@ -75,6 +77,13 @@ class OrderRepository implements IOrderRepository
         $order = Order::findOrFail($id);
         $order->delete();
 
+        return $order;
+    }
+
+    function getPrsSupplierById($id)
+    {
+        $order = Order::with('quotation.prs.prs_details.prs_suppliers')
+        ->findOrFail($id);
         return $order;
     }
 }

@@ -3,52 +3,52 @@
 namespace Database\Seeders;
 
 use App\Helper\Helper;
-use App\Models\Product;
+use App\Models\Bom;
 use App\Response;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ProductSeeder extends Seeder
+class BomSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Product::truncate();
-        Product::insert([
+        Bom::truncate();
+        Bom::insert([
             [
-                'product_no' => 'PRD240705-AD-001',
-                'name' => 'Tshirt Blue Large DTF',
-                'price' => 250.00,
-                'status' => 'ACTIVE',
+                'product_id' => 1,
+                'inventory_id' => 1,
+                'quantity' => 600,
+                'uom' => 'PCS',
                 'is_deleted' => Response::FALSE,
                 'created_at' => Helper::getDateNow(),
                 'updated_at' => Helper::getDateNow(),
             ],
             [
-                'product_no' => 'PRD240705-AD-002',
-                'name' => 'Tshirt Black Large DTF',
-                'price' => 200.00,
-                'status' => 'ACTIVE',
+                'product_id' => 2,
+                'inventory_id' => 2,
+                'quantity' => 750,
+                'uom' => 'PCS',
                 'is_deleted' => Response::FALSE,
                 'created_at' => Helper::getDateNow(),
                 'updated_at' => Helper::getDateNow(),
             ],
             [
-                'product_no' => 'PRD240705-AD-003',
-                'name' => 'Tshirt Red Large DTF',
-                'price' => 200.00,
-                'status' => 'ACTIVE',
+                'product_id' => 3,
+                'inventory_id' => 3,
+                'quantity' => 660,
+                'uom' => 'PCS',
                 'is_deleted' => Response::FALSE,
                 'created_at' => Helper::getDateNow(),
                 'updated_at' => Helper::getDateNow(),
             ],
             [
-                'product_no' => 'PRD240705-AD-004',
-                'name' => 'Tshirt Pink Large DTF',
-                'price' => 300.00,
-                'status' => 'ACTIVE',
+                'product_id' => 4,
+                'inventory_id' => 4,
+                'quantity' => 800,
+                'uom' => 'PCS',
                 'is_deleted' => Response::FALSE,
                 'created_at' => Helper::getDateNow(),
                 'updated_at' => Helper::getDateNow(),

@@ -59,6 +59,20 @@ class CustomerSeeder extends Seeder
                 'created_at' => Helper::getDateNow(),
                 'updated_at' => Helper::getDateNow(),
             ],
+            [
+                'customer_no' => 'CM2024-00004',
+                'company' => 'Zhi Yi Technologies',
+                'contact_person' => 'Shaila Gain Madrid',
+                'contact_no' => '09170000004',
+                'status' => '',
+                'address' => 'Sto.Tomas Batangas',
+                'entry_by' => 1,
+                'entry_date' => Helper::getDateNow(),
+                'remarks' => 'test',
+                'is_deleted' => Response::FALSE,
+                'created_at' => Helper::getDateNow(),
+                'updated_at' => Helper::getDateNow(),
+            ],
         ]);
     }
 }
