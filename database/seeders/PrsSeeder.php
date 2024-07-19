@@ -131,6 +131,10 @@ class PrsSeeder extends Seeder
             [
                 'prs_detail_id' => 1,
                 'supplier_id' => 1,
+                'name' => 'Nicolette Printing',
+                'uom' => 'PCS',
+                'quantity' => 150,
+                'unit_price' => 10.5,
                 'is_deleted' => Response::FALSE,
                 'created_at' => Helper::getDateNow(),
                 'updated_at' => Helper::getDateNow(),
@@ -138,6 +142,10 @@ class PrsSeeder extends Seeder
             [
                 'prs_detail_id' => 2,
                 'supplier_id' => 2,
+                'name' => 'Ivan Publishing',
+                'uom' => 'PCS',
+                'quantity' => 100,
+                'unit_price' => 10.5,
                 'is_deleted' => Response::FALSE,
                 'created_at' => Helper::getDateNow(),
                 'updated_at' => Helper::getDateNow(),
@@ -145,6 +153,10 @@ class PrsSeeder extends Seeder
             [
                 'prs_detail_id' => 3,
                 'supplier_id' => 3,
+                'name' => 'Gain Trading',
+                'uom' => 'PCS',
+                'quantity' => 150,
+                'unit_price' => 10,
                 'is_deleted' => Response::FALSE,
                 'created_at' => Helper::getDateNow(),
                 'updated_at' => Helper::getDateNow(),
@@ -152,6 +164,10 @@ class PrsSeeder extends Seeder
             [
                 'prs_detail_id' => 4,
                 'supplier_id' => 4,
+                'name' => 'Kars Printing Inc.',
+                'uom' => 'PCS',
+                'quantity' => 120,
+                'unit_price' => 10.5,
                 'is_deleted' => Response::FALSE,
                 'created_at' => Helper::getDateNow(),
                 'updated_at' => Helper::getDateNow(),
