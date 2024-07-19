@@ -95,9 +95,7 @@ class QuotationRepository implements IQuotationRepository
         $quotationDetails = $request->input('quotation_details');
         if ($quotationDetails) {
             foreach ($quotationDetails as $detail) {
-                
-                $quotationDetailData = new QuotationDetail();
-                $quotationDetailData->fill([
+                QuotationDetail::create([
                     'quotation_no' => $quotation->quotation_no,
                     'product_id' => isset($detail['product_id']) ? $detail['product_id'] : null,
                     'name' => isset($detail['name']) ? $detail['name'] : null,
@@ -107,7 +105,6 @@ class QuotationRepository implements IQuotationRepository
                     'total_price' => isset($detail['total_price']) ? $detail['total_price'] : null,
                     'is_deleted' => Response::FALSE,
                 ]);
-                $quotationDetailData->save();
             }
         }
         return $quotation->load(['quotation_details']);
