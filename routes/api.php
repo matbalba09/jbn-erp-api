@@ -86,6 +86,8 @@ Route::prefix('v1')->group(function () {
         Route::post('create', [OrderController::class, 'create']);
         Route::put('update/{id}', [OrderController::class, 'update']);
         Route::delete('delete/{id}', [OrderController::class, 'delete']);
+
+        Route::get('getPrsSupplierByOrderId/{id}', [OrderController::class, 'getPrsSupplierByOrderId']);
     });
     Route::prefix('order_detail')->group(function () {
         Route::get('/', [OrderDetailController::class, 'index']);

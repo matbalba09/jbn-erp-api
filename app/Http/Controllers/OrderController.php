@@ -89,4 +89,18 @@ class OrderController extends Controller
 
         return response()->json($response, $response['code']);
     }
+
+    public function getPrsSupplierByOrderId($id)
+    {
+        $order = $this->orderRepository->getPrsSupplierByOrderId($id);
+
+        $response = [
+            'code' => Response::HTTP_SUCCESS,
+            'status' => Response::SUCCESS,
+            'message' => Response::SUCCESSFULLY_GET_ORDER,
+            'data' => $order,
+        ];
+
+        return response()->json($response, $response['code']);
+    }
 }

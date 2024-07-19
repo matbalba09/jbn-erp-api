@@ -17,8 +17,8 @@ interface IOrderRepository
     function create(OrderRequest $request);
     function update(OrderRequest $request, $id);
     function delete($id);
-    
-    function getPrsSupplierById($id);
+
+    function getPrsSupplierByOrderId($id);
 }
 
 class OrderRepository implements IOrderRepository
@@ -80,10 +80,18 @@ class OrderRepository implements IOrderRepository
         return $order;
     }
 
-    function getPrsSupplierById($id)
+    function getPrsSupplierByOrderId($id)
     {
         $order = Order::with('quotation.prs.prs_details.prs_suppliers')
-        ->findOrFail($id);
-        return $order;
+            ->findOrFail($id);
+
+        $prsSuppliers = [];
+        foreach ($order->quotation->prs->prs_details as $prsDetail) {
+            $prsSuppliers[] = $prsDetail->prs_suppliers;
+        }
+
+        $prsSuppliers = collect($prsSuppliers)->flatten()->groupBy('supplier_id');
+
+        return $prsSuppliers;
     }
 }

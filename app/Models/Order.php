@@ -20,4 +20,9 @@ class Order extends Model
         'remarks',
         'is_deleted',
     ];
+
+    public function quotation()
+    {
+        return $this->hasOne(Quotation::class, 'quotation_no', 'quotation_no');
+    }
 }
