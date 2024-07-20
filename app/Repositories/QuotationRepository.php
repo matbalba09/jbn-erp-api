@@ -32,7 +32,7 @@ class QuotationRepository implements IQuotationRepository
 
     function getById($id)
     {
-        $quotation = Quotation::with('quotation_details')->findOrFail($id);
+        $quotation = Quotation::with('quotation_details', 'prs.customer')->findOrFail($id);
         return $quotation;
     }
 
