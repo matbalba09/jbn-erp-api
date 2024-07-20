@@ -24,7 +24,7 @@ class QuotationRepository implements IQuotationRepository
 {
     function getAll()
     {
-        $quotations = Quotation::with('quotation_details')
+        $quotations = Quotation::with('quotation_details', 'prs.customer')
             ->where('is_deleted', Response::FALSE)
             ->orderBy('created_at', 'desc')->get();
         return $quotations;
