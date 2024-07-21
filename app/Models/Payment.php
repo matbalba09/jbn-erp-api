@@ -16,6 +16,7 @@ class Payment extends Model
         'amount',
         'description',
         'documents',
+        'status',
         'is_deleted',
     ];
 }
