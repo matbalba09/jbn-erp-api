@@ -23,7 +23,9 @@ class PaymentRequest extends FormRequest
     {
         return [
             'order_no' => 'nullable|string',
-            'date' => 'nullable|string',
+            'issued_date' => 'nullable|string',
+            'ref_no' => 'nullable|string',
+            'paid_date' => 'nullable|string',
             'payment_method' => 'nullable|string',
             'amount' => 'nullable|numeric',
             'description' => 'nullable|string',
