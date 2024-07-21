@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateOrderRequest;
 use Carbon\Carbon;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Models\Payment;
 use App\Response;
 
 interface IOrderRepository
@@ -63,10 +64,27 @@ class OrderRepository implements IOrderRepository
         $validatedData['is_deleted'] = Response::FALSE;
         $order = Order::create($validatedData);
 
+        $payments = $request->input('payment_details');
+        if ($payments) {
+            foreach ($payments as $detail) {
+                Payment::create([
+                    'order_no' => $order->order_no,
+                    'issued_date' => isset($detail['issued_date']) ? $detail['issued_date'] : null,
+                    'ref_no' => isset($detail['ref_no']) ? $detail['ref_no'] : null,
+                    'paid_date' => isset($detail['paid_date']) ? $detail['paid_date'] : null,
+                    'payment_method' => isset($detail['payment_method']) ? $detail['payment_method'] : null,
+                    'amount' => isset($detail['amount']) ? $detail['amount'] : null,
+                    'description' => isset($detail['description']) ? $detail['description'] : null,
+                    'documents' => isset($detail['documents']) ? $detail['documents'] : null,
+                    'status' => isset($detail['status']) ? $detail['status'] : null,
+                    'is_deleted' => Response::FALSE,
+                ]);
+            }
+        }
         $orderDetails = $request->input('order_details');
         if ($orderDetails) {
             foreach ($orderDetails as $detail) {
-                $orderDetail = OrderDetail::create([
+                OrderDetail::create([
                     'order_no' => $order->order_no,
                     'product_id' => isset($detail['product_id']) ? $detail['product_id'] : null,
                     'uom' => isset($detail['uom']) ? $detail['uom'] : null,
@@ -78,7 +96,7 @@ class OrderRepository implements IOrderRepository
                 ]);
             }
         }
-        return $order->load(['customer', 'order_details.product', 'quotation.prs.prs_details.prs_suppliers']);
+        return $order->load(['customer', 'payment_details', 'order_details.product', 'quotation.prs.prs_details.prs_suppliers']);
     }
 
     function update(OrderRequest $request, $id)
