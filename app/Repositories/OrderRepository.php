@@ -27,14 +27,14 @@ class OrderRepository implements IOrderRepository
 {
     function getAll()
     {
-        $orders = Order::with('customer', 'order_details.product', 'quotation.prs.prs_details.prs_suppliers')
+        $orders = Order::with('customer', 'payment_details', 'order_details.product', 'quotation.prs.prs_details.prs_suppliers')
             ->where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
         return $orders;
     }
 
     function getById($id)
     {
-        $order = Order::with('customer', 'order_details.product', 'quotation.prs.prs_details.prs_suppliers')
+        $order = Order::with('customer', 'payment_details', 'order_details.product', 'quotation.prs.prs_details.prs_suppliers')
             ->findOrFail($id);
         return $order;
     }
@@ -106,9 +106,31 @@ class OrderRepository implements IOrderRepository
         $order->update($validatedData);
 
         $allOrderDetails = OrderDetail::where('order_no', $order->order_no)->get();
+        $allPayments = Payment::where('order_no', $order->order_no)->get();
 
         foreach ($allOrderDetails as $orderDetail) {
             $orderDetail->delete();
+        }
+        foreach ($allPayments as $payment) {
+            $payment->delete();
+        }
+        
+        $payments = $request->input('payment_details');
+        if ($payments) {
+            foreach ($payments as $detail) {
+                Payment::create([
+                    'order_no' => $order->order_no,
+                    'issued_date' => isset($detail['issued_date']) ? $detail['issued_date'] : null,
+                    'ref_no' => isset($detail['ref_no']) ? $detail['ref_no'] : null,
+                    'paid_date' => isset($detail['paid_date']) ? $detail['paid_date'] : null,
+                    'payment_method' => isset($detail['payment_method']) ? $detail['payment_method'] : null,
+                    'amount' => isset($detail['amount']) ? $detail['amount'] : null,
+                    'description' => isset($detail['description']) ? $detail['description'] : null,
+                    'documents' => isset($detail['documents']) ? $detail['documents'] : null,
+                    'status' => isset($detail['status']) ? $detail['status'] : null,
+                    'is_deleted' => Response::FALSE,
+                ]);
+            }
         }
 
         $orderDetails = $request->input('order_details');
@@ -126,7 +148,7 @@ class OrderRepository implements IOrderRepository
                 ]);
             }
         }
-        return $order->load(['customer', 'order_details.product', 'quotation.prs.prs_details.prs_suppliers']);
+        return $order->load(['customer', 'payment_details', 'order_details.product', 'quotation.prs.prs_details.prs_suppliers']);
     }
 
     function delete($id)
