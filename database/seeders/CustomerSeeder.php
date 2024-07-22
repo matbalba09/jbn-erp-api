@@ -19,8 +19,8 @@ class CustomerSeeder extends Seeder
         Customer::insert([
             [
                 'customer_no' => 'CM2024-00001',
-                'company' => 'De La Salle',
-                'contact_person' => 'Kars Ren',
+                'company' => 'Our Lady OLAC',
+                'contact_person' => 'Jans En',
                 'contact_no' => '09170000001',
                 'status' => 'test_status',
                 'address' => 'Tanauan City, Batangas',
