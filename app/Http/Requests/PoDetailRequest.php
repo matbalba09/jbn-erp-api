@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PurchaseOrderRequest extends FormRequest
+class PoDetailRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,13 +22,13 @@ class PurchaseOrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'po_no' => 'nullable|string',
-            'prs_id' => 'nullable|integer',
-            'order_no' => 'nullable|string',
-            'supplier_id' => 'nullable|integer',
-            'status' => 'nullable|string',
-            'po_date' => 'nullable|string',
+            'inventory_id' => 'nullable|integer',
             'remarks' => 'nullable|string',
+            'name' => 'nullable|string',
+            'uom' => 'nullable|string',
+            'qty' => 'nullable|integer',
+            'unit_price' => 'nullable|numeric',
+            'total_price' => 'nullable|numeric',
             'is_deleted' => 'nullable|integer',
         ];
     }

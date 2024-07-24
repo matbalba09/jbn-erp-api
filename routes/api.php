@@ -16,7 +16,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PrsSupplierController;
 use App\Http\Controllers\PrsSupplierItemController;
 use App\Http\Controllers\PrsSupplierTypeController;
-use App\Http\Controllers\PurchaseOrderController;
+use App\Http\Controllers\PoController;
+use App\Http\Controllers\PoDetailController;
 use App\Http\Controllers\PrsController;
 use App\Http\Controllers\PrsDetailController;
 use App\Http\Controllers\QuotationController;
@@ -103,12 +104,19 @@ Route::prefix('v1')->group(function () {
         Route::put('update/{id}', [ProductController::class, 'update']);
         Route::delete('delete/{id}', [ProductController::class, 'delete']);
     });
-    Route::prefix('purchase_order')->group(function () {
-        Route::get('/', [PurchaseOrderController::class, 'index']);
-        Route::get('{id}', [PurchaseOrderController::class, 'getById']);
-        Route::post('create', [PurchaseOrderController::class, 'create']);
-        Route::put('update/{id}', [PurchaseOrderController::class, 'update']);
-        Route::delete('delete/{id}', [PurchaseOrderController::class, 'delete']);
+    Route::prefix('po')->group(function () {
+        Route::get('/', [PoController::class, 'index']);
+        Route::get('{id}', [PoController::class, 'getById']);
+        Route::post('create', [PoController::class, 'create']);
+        Route::put('update/{id}', [PoController::class, 'update']);
+        Route::delete('delete/{id}', [PoController::class, 'delete']);
+    });
+    Route::prefix('po_detail')->group(function () {
+        Route::get('/', [PoDetailController::class, 'index']);
+        Route::get('{id}', [PoDetailController::class, 'getById']);
+        Route::post('create', [PoDetailController::class, 'create']);
+        Route::put('update/{id}', [PoDetailController::class, 'update']);
+        Route::delete('delete/{id}', [PoDetailController::class, 'delete']);
     });
     Route::prefix('prs')->group(function () {
         Route::get('/', [PrsController::class, 'index']);

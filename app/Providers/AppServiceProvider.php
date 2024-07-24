@@ -20,7 +20,7 @@ use App\Repositories\IProductCategoryRepository;
 use App\Repositories\IProductRepository;
 use App\Repositories\IPrsSupplierRepository;
 use App\Repositories\IPrsSupplierTypeRepository;
-use App\Repositories\IPurchaseOrderRepository;
+use App\Repositories\IPoRepository;
 use App\Repositories\IPrsDetailRepository;
 use App\Repositories\IPrsRepository;
 use App\Repositories\IQuotationDetailRepository;
@@ -31,17 +31,19 @@ use App\Repositories\ISupplierRepository;
 use App\Repositories\IUserRepository;
 use App\Repositories\InventoryTransactionRepository;
 use App\Repositories\InventoryRepository;
+use App\Repositories\IPoDetailRepository;
 use App\Repositories\IPrsSupplierItemRepository;
 use App\Repositories\OrderDetailRepository;
 use App\Repositories\OrderRepository;
 use App\Repositories\PaymentRepository;
+use App\Repositories\PoDetailRepository;
 use App\Repositories\ProductAttributeRepository;
 use App\Repositories\ProductCategoryRepository;
 use App\Repositories\ProductRepository;
 use App\Repositories\PrsSupplierItemRepository;
 use App\Repositories\PrsSupplierRepository;
 use App\Repositories\PrsSupplierTypeRepository;
-use App\Repositories\PurchaseOrderRepository;
+use App\Repositories\PoRepository;
 use App\Repositories\PrsDetailRepository;
 use App\Repositories\PrsRepository;
 use App\Repositories\QuotationDetailRepository;
@@ -92,8 +94,12 @@ class AppServiceProvider extends ServiceProvider
             ProductRepository::class
         );
         $this->app->bind(
-            IPurchaseOrderRepository::class,
-            PurchaseOrderRepository::class
+            IPoRepository::class,
+            PoRepository::class
+        );
+        $this->app->bind(
+            IPoDetailRepository::class,
+            PoDetailRepository::class
         );
         $this->app->bind(
             IPrsDetailRepository::class,

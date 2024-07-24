@@ -11,15 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('purchase_orders', function (Blueprint $table) {
+        Schema::create('pos', function (Blueprint $table) {
             $table->id();
             $table->string('po_no')->nullable();
-            $table->integer('prs_id')->nullable();
-            $table->string('order_no')->nullable();
             $table->integer('supplier_id')->nullable();
-            $table->string('status')->nullable();
+            $table->string('order_no')->nullable();
             $table->string('po_date')->nullable();
+            $table->string('status')->nullable();
             $table->string('remarks')->nullable();
+            $table->string('ship_to')->nullable();
+            $table->string('delivery_date')->nullable();
+            $table->string('payment_terms')->nullable();
+            $table->integer('requested_by')->nullable();
+            $table->integer('approved_by')->nullable();
+            $table->string('received_by')->nullable();
             $table->integer('is_deleted')->nullable();
             $table->timestamps();
         });
@@ -30,6 +35,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('purchase_orders');
+        Schema::dropIfExists('pos');
     }
 };

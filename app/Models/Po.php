@@ -5,18 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PurchaseOrder extends Model
+class Po extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'po_no',
-        'prs_id',
-        'order_no',
         'supplier_id',
-        'status',
+        'order_no',
         'po_date',
+        'status',
         'remarks',
+        'ship_to',
+        'delivery_date',
+        'payment_terms',
+        'requested_by',
+        'approved_by',
+        'received_by',
         'is_deleted',
     ];
 }

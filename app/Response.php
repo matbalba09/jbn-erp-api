@@ -91,11 +91,18 @@ class Response
     const SUCCESSFULLY_DELETED_PRODUCT = 'Successfully deleted product';
 
     //PurchaseOrders
-    const SUCCESSFULLY_GET_ALL_PURCHASE_ORDERS = 'Successfully get all purchase orders';
-    const SUCCESSFULLY_GET_PURCHASE_ORDER = 'Successfully get all purchase order';
-    const SUCCESSFULLY_CREATED_PURCHASE_ORDER = 'Successfully created purchase order';
-    const SUCCESSFULLY_UPDATED_PURCHASE_ORDER = 'Successfully updated purchase order';
-    const SUCCESSFULLY_DELETED_PURCHASE_ORDER = 'Successfully deleted purchase order';
+    const SUCCESSFULLY_GET_ALL_PO = 'Successfully get all purchase orders';
+    const SUCCESSFULLY_GET_PO = 'Successfully get all purchase order';
+    const SUCCESSFULLY_CREATED_PO = 'Successfully created purchase order';
+    const SUCCESSFULLY_UPDATED_PO = 'Successfully updated purchase order';
+    const SUCCESSFULLY_DELETED_PO = 'Successfully deleted purchase order';
+
+    //PurchaseOrderDetails
+    const SUCCESSFULLY_GET_ALL_PO_DETAILS = 'Successfully get all purchase order details';
+    const SUCCESSFULLY_GET_PO_DETAIL = 'Successfully get all purchase order detail';
+    const SUCCESSFULLY_CREATED_PO_DETAIL = 'Successfully created purchase order detail';
+    const SUCCESSFULLY_UPDATED_PO_DETAIL = 'Successfully updated purchase order detail';
+    const SUCCESSFULLY_DELETED_PO_DETAIL = 'Successfully deleted purchase order detail';
 
     //Prs
     const SUCCESSFULLY_GET_ALL_PRS = 'Successfully get all prs';
