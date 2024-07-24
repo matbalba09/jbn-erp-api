@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('remarks')->nullable();
             $table->string('name')->nullable();
             $table->string('uom')->nullable();
-            $table->integer('qty')->nullable();
+            $table->integer('quantity')->nullable();
             $table->decimal('unit_price', 10, 2)->nullable();
             $table->decimal('total_price', 10, 2)->nullable();
             $table->integer('is_deleted')->nullable();

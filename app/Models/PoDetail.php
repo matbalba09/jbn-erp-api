@@ -14,7 +14,7 @@ class PoDetail extends Model
         'remarks',
         'name',
         'uom',
-        'qty',
+        'quantity',
         'unit_price',
         'total_price',
         'is_deleted',

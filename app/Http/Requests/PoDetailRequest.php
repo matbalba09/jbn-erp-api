@@ -26,7 +26,7 @@ class PoDetailRequest extends FormRequest
             'remarks' => 'nullable|string',
             'name' => 'nullable|string',
             'uom' => 'nullable|string',
-            'qty' => 'nullable|integer',
+            'quantity' => 'nullable|integer',
             'unit_price' => 'nullable|numeric',
             'total_price' => 'nullable|numeric',
             'is_deleted' => 'nullable|integer',
