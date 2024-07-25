@@ -22,6 +22,7 @@ class PoDetailRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'po_no' => 'nullable|string',
             'inventory_id' => 'nullable|integer',
             'remarks' => 'nullable|string',
             'name' => 'nullable|string',

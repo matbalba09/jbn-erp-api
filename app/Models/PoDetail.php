@@ -10,6 +10,7 @@ class PoDetail extends Model
     use HasFactory;
 
     protected $fillable = [
+        'po_no',
         'inventory_id',
         'remarks',
         'name',
@@ -19,4 +20,9 @@ class PoDetail extends Model
         'total_price',
         'is_deleted',
     ];
+
+    public function inventory()
+    {
+        return $this->belongsTo(Po::class, 'inventory_id');
+    }
 }

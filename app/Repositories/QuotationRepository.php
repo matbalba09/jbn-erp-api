@@ -83,8 +83,8 @@ class QuotationRepository implements IQuotationRepository
     function update(QuotationRequest $request, $id)
     {
         $quotation = Quotation::findOrFail($id);
-        $quotation->status = $request->input('status');
-        $quotation->save();
+        $validatedData = $request->validated();
+        $quotation->update($validatedData);
 
         $allQuotationDetails = QuotationDetail::where('quotation_no', $quotation->quotation_no)->get();
 

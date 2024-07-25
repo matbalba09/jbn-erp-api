@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('po_details', function (Blueprint $table) {
             $table->id();
+            $table->string('po_no')->nullable();
             $table->integer('inventory_id')->nullable();
             $table->string('remarks')->nullable();
             $table->string('name')->nullable();

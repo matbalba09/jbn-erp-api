@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             OrderSeeder::class,
             PrsSeeder::class,
             PaymentSeeder::class,
+            PoSeeder::class,
         ]);
     }
 }

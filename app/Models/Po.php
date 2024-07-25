@@ -24,4 +24,19 @@ class Po extends Model
         'received_by',
         'is_deleted',
     ];
+
+    public function po_details()
+    {
+        return $this->hasMany(PoDetail::class, 'po_no', 'po_no');
+    }
+
+    public function supplier()
+    {
+        return $this->hasOne(Supplier::class, 'id');
+    }
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class, 'order_no', 'order_no');
+    }
 }
