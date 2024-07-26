@@ -10,10 +10,12 @@ class InventoryTransaction extends Model
     use HasFactory;
 
     protected $fillable = [
+        'inventory_id',
         'quantity',
         'image',
         'flow',
         'remarks',
+        'documents',
         'is_deleted',
     ];
 }

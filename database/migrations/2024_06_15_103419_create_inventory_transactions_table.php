@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('inventory_transactions', function (Blueprint $table) {
             $table->id();
+            $table->integer('inventory_id')->nullable();
             $table->integer('quantity')->nullable();
             $table->string('image')->nullable();
             $table->string('flow')->nullable();
             $table->string('remarks')->nullable();
+            $table->string('documents')->nullable();
             $table->integer('is_deleted')->nullable();
             $table->timestamps();
         });

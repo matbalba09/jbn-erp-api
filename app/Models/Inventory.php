@@ -22,8 +22,20 @@ class Inventory extends Model
         'is_deleted',
     ];
 
+    protected $appends = ['quantity'];
+
+    public function getQuantityAttribute()
+    {
+        return $this->inventory_transactions->sum('quantity');
+    }
+
     public function bom()
     {
         return $this->hasOne(Bom::class, 'inventory_id');
+    }
+
+    public function inventory_transactions()
+    {
+        return $this->hasMany(InventoryTransaction::class, 'inventory_id');
     }
 }

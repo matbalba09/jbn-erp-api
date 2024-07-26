@@ -23,13 +23,13 @@ class InventoryRepository implements IInventoryRepository
 {
     function getAll()
     {
-        $inventories = Inventory::where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
+        $inventories = Inventory::with('inventory_transactions')->where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
         return $inventories;
     }
 
     function getById($id)
     {
-        $inventory = Inventory::findOrFail($id);
+        $inventory = Inventory::with('inventory_transactions')->findOrFail($id);
         return $inventory;
     }
 

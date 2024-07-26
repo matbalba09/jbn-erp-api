@@ -22,10 +22,12 @@ class InventoryTransactionRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'inventory_id' => 'nullable|integer',
             'quantity' => 'nullable|integer',
             'image' => 'nullable|string',
             'flow' => 'nullable|string',
             'remarks' => 'nullable|string',
+            'documents' => 'nullable|string',
             'is_deleted' => 'nullable|integer',
         ];
     }
