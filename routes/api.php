@@ -80,6 +80,8 @@ Route::prefix('v1')->group(function () {
         Route::post('create', [InventoryTransactionController::class, 'create']);
         Route::put('update/{id}', [InventoryTransactionController::class, 'update']);
         Route::delete('delete/{id}', [InventoryTransactionController::class, 'delete']);
+
+        Route::get('getFiles/{id}', [InventoryTransactionController::class, 'getFiles']);
     });
     Route::prefix('order')->group(function () {
         Route::get('/', [OrderController::class, 'index']);

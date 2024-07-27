@@ -68,6 +68,7 @@ class Response
     const SUCCESSFULLY_CREATED_INVENTORY_TRANSACTION = 'Successfully created inventory transaction';
     const SUCCESSFULLY_UPDATED_INVENTORY_TRANSACTION = 'Successfully updated inventory transaction';
     const SUCCESSFULLY_DELETED_INVENTORY_TRANSACTION = 'Successfully deleted inventory transaction';
+    const SUCCESSFULLY_GET_INVENTORY_TRANSACTION_FILES = 'Successfully get all inventory transaction files';
 
     //Orders
     const SUCCESSFULLY_GET_ALL_ORDERS = 'Successfully get all orders';

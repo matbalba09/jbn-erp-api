@@ -24,10 +24,12 @@ class InventoryTransactionRequest extends FormRequest
         return [
             'inventory_id' => 'nullable|integer',
             'quantity' => 'nullable|integer',
-            'image' => 'nullable|string',
+            'image' => 'nullable|array',
+            'image.*' => 'file',
             'flow' => 'nullable|string',
             'remarks' => 'nullable|string',
-            'documents' => 'nullable|string',
+            'documents' => 'nullable|array',
+            'documents.*' => 'file',
             'is_deleted' => 'nullable|integer',
         ];
     }

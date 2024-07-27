@@ -3,12 +3,12 @@
 namespace App\Repositories;
 
 use App\Helper\Helper;
-use App\Http\Requests\CreateInventoryTransactionRequest;
 use App\Http\Requests\InventoryTransactionRequest;
-use App\Http\Requests\UpdateInventoryTransactionRequest;
-use Carbon\Carbon;
+use App\Models\Inventory;
 use App\Models\InventoryTransaction;
 use App\Response;
+use Illuminate\Support\Facades\Storage;
+
 
 interface IInventoryTransactionRepository
 {
@@ -17,6 +17,7 @@ interface IInventoryTransactionRepository
     function create(InventoryTransactionRequest $request);
     function update(InventoryTransactionRequest $request, $id);
     function delete($id);
+    function getFiles($id);
 }
 
 class InventoryTransactionRepository implements IInventoryTransactionRepository
@@ -38,6 +39,34 @@ class InventoryTransactionRepository implements IInventoryTransactionRepository
         $validatedData = $request->validated();
         $validatedData['is_deleted'] = Response::FALSE;
 
+        if ($request->hasFile('image')) {
+            $files = $request->file('image');
+            $file_paths = [];
+            $file_path_string = '';
+
+            foreach ($files as $file) {
+                $file_path = Storage::disk('shared_folder')->putFile("files", $file);
+                $file_paths[] = $file_path;
+                $file_path_string .= $file_path . ',';
+            }
+            $file_path_string = rtrim($file_path_string, ',');
+            $validatedData['image'] = $file_path_string;
+        }
+
+        if ($request->hasFile('documents')) {
+            $files = $request->file('documents');
+            $file_paths = [];
+            $file_path_string = '';
+
+            foreach ($files as $file) {
+                $file_path = Storage::disk('shared_folder')->putFile("files", $file);
+                $file_paths[] = $file_path;
+                $file_path_string .= $file_path . ',';
+            }
+            $file_path_string = rtrim($file_path_string, ',');
+            $validatedData['documents'] = $file_path_string;
+        }
+
         $inventoryTransaction = InventoryTransaction::create($validatedData);
         return $inventoryTransaction;
     }
@@ -46,8 +75,44 @@ class InventoryTransactionRepository implements IInventoryTransactionRepository
     {
         $inventoryTransaction = InventoryTransaction::findOrFail($id);
         $validatedData = $request->validated();
-        $inventoryTransaction->update($validatedData);
 
+        if ($request->hasFile('image')) {
+            $files = $request->file('image');
+            $file_paths = [];
+            $file_path_string = '';
+    
+            if ($inventoryTransaction->image) {
+                $file_path_string = $inventoryTransaction->image . ',';
+            }
+    
+            foreach ($files as $file) {
+                $file_path = Storage::disk('shared_folder')->putFile("files", $file);
+                $file_paths[] = $file_path;
+                $file_path_string .= $file_path . ',';
+            }
+            $file_path_string = rtrim($file_path_string, ',');
+            $validatedData['image'] = $file_path_string;
+        }
+
+        if ($request->hasFile('documents')) {
+            $files = $request->file('documents');
+            $file_paths = [];
+            $file_path_string = '';
+    
+            if ($inventoryTransaction->documents) {
+                $file_path_string = $inventoryTransaction->documents . ',';
+            }
+    
+            foreach ($files as $file) {
+                $file_path = Storage::disk('shared_folder')->putFile("files", $file);
+                $file_paths[] = $file_path;
+                $file_path_string .= $file_path . ',';
+            }
+            $file_path_string = rtrim($file_path_string, ',');
+            $validatedData['documents'] = $file_path_string;
+        }
+        
+        $inventoryTransaction->update($validatedData);
         return $inventoryTransaction;
     }
 
@@ -57,5 +122,44 @@ class InventoryTransactionRepository implements IInventoryTransactionRepository
         $inventoryTransaction->delete();
 
         return $inventoryTransaction;
+    }
+
+    function getFiles($id)
+    {
+        $inventoryTransaction = InventoryTransaction::findOrFail($id);
+        if ($inventoryTransaction->image) {
+            $filePaths = explode(',', $inventoryTransaction->image);
+            $base64Files = [];
+            $disk = Storage::disk('shared_folder');
+
+            foreach ($filePaths as $filePath) {
+                if ($disk->exists($filePath)) {
+                    $fileContent = $disk->get($filePath);
+                    $base64File = base64_encode($fileContent);
+                    $base64Files[] = $base64File;
+                }
+            }
+            $result['image'] = $base64Files;
+        } else {
+            $result['image'] = null;
+        }
+
+        if ($inventoryTransaction->documents) {
+            $filePaths = explode(',', $inventoryTransaction->documents);
+            $base64Files = [];
+            $disk = Storage::disk('shared_folder');
+
+            foreach ($filePaths as $filePath) {
+                if ($disk->exists($filePath)) {
+                    $fileContent = $disk->get($filePath);
+                    $base64File = base64_encode($fileContent);
+                    $base64Files[] = $base64File;
+                }
+            }
+            $result['documents'] = $base64Files;
+        } else {
+            $result['documents'] = null;
+        }
+        return $result;
     }
 }

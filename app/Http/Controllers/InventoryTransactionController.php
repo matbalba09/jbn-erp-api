@@ -89,4 +89,18 @@ class InventoryTransactionController extends Controller
 
         return response()->json($response, $response['code']);
     }
+
+    public function getFiles($id)
+    {
+        $inventoryTransaction = $this->inventoryTransactionRepository->getFiles($id);
+
+        $response = [
+            'code' => Response::HTTP_SUCCESS,
+            'status' => Response::SUCCESS,
+            'message' => Response::SUCCESSFULLY_GET_INVENTORY_TRANSACTION_FILES,
+            'data' => $inventoryTransaction,
+        ];
+
+        return response()->json($response, $response['code']);
+    }
 }
