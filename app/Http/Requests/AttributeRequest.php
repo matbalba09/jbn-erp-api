@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProductAttributeRequest extends FormRequest
+class AttributeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,8 +22,11 @@ class ProductAttributeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'product_id' => 'nullable|integer',
-            'attribute_id' => 'nullable|integer',
+            'attribute_no' => 'nullable|string',
+            'attribute_name' => 'nullable|string',
+            'attribute_value' => 'nullable|string',
+            'remarks' => 'nullable|string',
+            'is_deleted' => 'nullable|integer',
         ];
     }
 }

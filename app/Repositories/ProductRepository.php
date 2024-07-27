@@ -23,13 +23,13 @@ class ProductRepository implements IProductRepository
 {
     function getAll()
     {
-        $products = Product::where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
+        $products = Product::with('product_attributes.attribute')->where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
         return $products;
     }
 
     function getById($id)
     {
-        $product = Product::findOrFail($id);
+        $product = Product::with('product_attributes.attribute')->findOrFail($id);
         return $product;
     }
 

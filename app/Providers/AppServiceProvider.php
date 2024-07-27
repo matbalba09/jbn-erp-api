@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
+use App\Repositories\AttributeRepository;
 use App\Repositories\BomRepository;
 use App\Repositories\BomTypeRepository;
 use App\Repositories\CategoryRepository;
 use App\Repositories\CustomerRepository;
+use App\Repositories\IAttributeRepository;
 use App\Repositories\IBomRepository;
 use App\Repositories\IBomTypeRepository;
 use App\Repositories\ICategoryRepository;
@@ -132,6 +134,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             ICategoryRepository::class,
             CategoryRepository::class
+        );
+        $this->app->bind(
+            IAttributeRepository::class,
+            AttributeRepository::class
         );
         $this->app->bind(
             IProductAttributeRepository::class,

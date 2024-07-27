@@ -23,13 +23,13 @@ class ProductAttributeRepository implements IProductAttributeRepository
 {
     function getAll()
     {
-        $productAttributes = ProductAttribute::where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
+        $productAttributes = ProductAttribute::with('product', 'attribute')->where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
         return $productAttributes;
     }
 
     function getById($id)
     {
-        $productAttribute = ProductAttribute::findOrFail($id);
+        $productAttribute = ProductAttribute::with('product', 'attribute')->findOrFail($id);
         return $productAttribute;
     }
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AttributeController;
 use App\Http\Controllers\BomController;
 use App\Http\Controllers\BomTypeController;
 use App\Http\Controllers\CategoryController;
@@ -182,6 +183,13 @@ Route::prefix('v1')->group(function () {
         Route::post('create', [ProductAttributeController::class, 'create']);
         Route::put('update/{id}', [ProductAttributeController::class, 'update']);
         Route::delete('delete/{id}', [ProductAttributeController::class, 'delete']);
+    });
+    Route::prefix('attribute')->group(function () {
+        Route::get('/', [AttributeController::class, 'index']);
+        Route::get('{id}', [AttributeController::class, 'getById']);
+        Route::post('create', [AttributeController::class, 'create']);
+        Route::put('update/{id}', [AttributeController::class, 'update']);
+        Route::delete('delete/{id}', [AttributeController::class, 'delete']);
     });
     Route::prefix('product_category')->group(function () {
         Route::get('/', [ProductCategoryController::class, 'index']);

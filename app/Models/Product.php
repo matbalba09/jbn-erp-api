@@ -34,4 +34,9 @@ class Product extends Model
     {
         return $this->hasOne(QuotationDetail::class, 'product_id');
     }
+
+    public function product_attributes()
+    {
+        return $this->hasMany(ProductAttribute::class, 'product_id', 'id');
+    }
 }
