@@ -18,7 +18,7 @@ class CustomerSeeder extends Seeder
         Customer::truncate();
         Customer::insert([
             [
-                'customer_no' => 'CM2024-00001',
+                'customer_no' => 'CUS240727-SR-001',
                 'company' => 'Our Lady OLAC',
                 'contact_person' => 'Jans En',
                 'contact_no' => '09170000001',
@@ -32,7 +32,7 @@ class CustomerSeeder extends Seeder
                 'updated_at' => Helper::getDateNow(),
             ],
             [
-                'customer_no' => 'CM2024-00002',
+                'customer_no' => 'CUS240727-SR-002',
                 'company' => 'Magnolia',
                 'contact_person' => 'Karen Ferrer',
                 'contact_no' => '09170000002',
@@ -46,7 +46,7 @@ class CustomerSeeder extends Seeder
                 'updated_at' => Helper::getDateNow(),
             ],
             [
-                'customer_no' => 'CM2024-00003',
+                'customer_no' => 'CUS240727-SR-003',
                 'company' => 'BINI PH',
                 'contact_person' => 'Ivan Matthew E. Ferrer',
                 'contact_no' => '09170000003',
@@ -60,7 +60,7 @@ class CustomerSeeder extends Seeder
                 'updated_at' => Helper::getDateNow(),
             ],
             [
-                'customer_no' => 'CM2024-00004',
+                'customer_no' => 'CUS240727-SR-004',
                 'company' => 'Zhi Yi Technologies',
                 'contact_person' => 'Shaila Gain Madrid',
                 'contact_no' => '09170000004',
