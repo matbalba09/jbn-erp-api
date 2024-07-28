@@ -87,4 +87,19 @@ class AttributeController extends Controller
 
         return response()->json($response, $response['code']);
     }
+
+    public function getAllUniqueAttributeName()
+    {
+        $attributes = $this->attributeRepository->getAllUniqueAttributeName();
+
+        $response = [
+            'code' => Response::HTTP_SUCCESS,
+            'status' => Response::SUCCESS,
+            'message' => Response::SUCCESSFULLY_GET_ALL_UNIQUE_ATTRIBUTE_NAMES,
+            'count' => Attribute::count(),
+            'data' => $attributes,
+        ];
+
+        return response()->json($response, $response['code']);
+    }
 }

@@ -15,6 +15,8 @@ interface IAttributeRepository
     function create(AttributeRequest $request);
     function update(AttributeRequest $request, $id);
     function delete($id);
+
+    function getAllUniqueAttributeName();
 }
 
 class AttributeRepository implements IAttributeRepository
@@ -66,5 +68,16 @@ class AttributeRepository implements IAttributeRepository
         $attribute->delete();
 
         return $attribute;
+    }
+
+    function getAllUniqueAttributeName()
+    {
+        $attributes = Attribute::where('is_deleted', Response::FALSE)
+            ->select('attribute_name')
+            ->distinct()
+            ->orderBy('attribute_name', 'asc')
+            ->get();
+
+        return $attributes;
     }
 }

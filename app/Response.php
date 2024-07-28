@@ -174,6 +174,8 @@ class Response
     const SUCCESSFULLY_CREATED_ATTRIBUTE = 'Successfully created attribute';
     const SUCCESSFULLY_UPDATED_ATTRIBUTE = 'Successfully updated attribute';
     const SUCCESSFULLY_DELETED_ATTRIBUTE = 'Successfully deleted attribute';
+    
+    const SUCCESSFULLY_GET_ALL_UNIQUE_ATTRIBUTE_NAMES = 'Successfully get all unique attribute names';
 
     //ProductCategory
     const SUCCESSFULLY_GET_ALL_PRODUCT_CATEGORIES = 'Successfully get all product categories';

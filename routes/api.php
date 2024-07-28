@@ -186,10 +186,12 @@ Route::prefix('v1')->group(function () {
     });
     Route::prefix('attribute')->group(function () {
         Route::get('/', [AttributeController::class, 'index']);
+        Route::get('getAllUniqueAttributeName', [AttributeController::class, 'getAllUniqueAttributeName']);
         Route::get('{id}', [AttributeController::class, 'getById']);
         Route::post('create', [AttributeController::class, 'create']);
         Route::put('update/{id}', [AttributeController::class, 'update']);
         Route::delete('delete/{id}', [AttributeController::class, 'delete']);
+
     });
     Route::prefix('product_category')->group(function () {
         Route::get('/', [ProductCategoryController::class, 'index']);
