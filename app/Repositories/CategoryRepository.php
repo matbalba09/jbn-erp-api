@@ -35,7 +35,18 @@ class CategoryRepository implements ICategoryRepository
 
     function create(CategoryRequest $request)
     {
+        $latest = Category::orderBy('id', 'desc')->first();
         $validatedData = $request->validated();
+        $randomNumber = Helper::generateRandomNumber(8);
+
+        if (!$latest) {
+            $initialBase36 = Helper::decimalToBase36(1);
+            $validatedData['category_no'] = $initialBase36 . $randomNumber;
+        } else {
+            $initialBase36 = Helper::decimalToBase36($latest->id + 1);
+            $validatedData['category_no'] = $initialBase36 . $randomNumber;
+        }
+
         $validatedData['is_deleted'] = Response::FALSE;
 
         $category = Category::create($validatedData);

@@ -23,6 +23,7 @@ class SupplierRequest extends FormRequest
     {
         return [
             'name' => 'nullable|string',
+            'supplier_no' => 'nullable|string',
             'email' => 'nullable|string',
             'address' => 'nullable|string',
             'contact_no' => 'nullable|string',

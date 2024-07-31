@@ -19,6 +19,7 @@ class SupplierSeeder extends Seeder
         Supplier::insert([
             [
                 'name' => 'Nicolette Printing',
+                'supplier_no' => '00188494780',
                 'email' => 'nicprint@gmail.com',
                 'address' => 'test_address_01',
                 'contact_no' => '09550000001',
@@ -29,6 +30,7 @@ class SupplierSeeder extends Seeder
             ],
             [
                 'name' => 'Ivan Publishing',
+                'supplier_no' => '00265075270',
                 'email' => 'ivan@gmail.com',
                 'address' => 'test_address_02',
                 'contact_no' => '09550000002',
@@ -39,6 +41,7 @@ class SupplierSeeder extends Seeder
             ],
             [
                 'name' => 'Gain Trading',
+                'supplier_no' => '00386145194',
                 'email' => 'gaintrading@gmail.com',
                 'address' => 'test_address_03',
                 'contact_no' => '09550000003',
@@ -49,6 +52,7 @@ class SupplierSeeder extends Seeder
             ],
             [
                 'name' => 'Kars Printing Inc.',
+                'supplier_no' => '00427069441',
                 'email' => 'karsprints@gmail.com',
                 'address' => 'test_address_04',
                 'contact_no' => '09550000004',

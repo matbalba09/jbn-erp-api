@@ -23,6 +23,7 @@ class CategoryRequest extends FormRequest
     {
         return [
             'name' => 'nullable|string',
+            'category_no' => 'nullable|string',
             'parent_category_id' => 'nullable|integer',
             'is_deleted' => 'nullable|integer',
         ];

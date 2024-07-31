@@ -35,7 +35,18 @@ class SupplierRepository implements ISupplierRepository
 
     function create(SupplierRequest $request)
     {
+        $latest = Supplier::orderBy('id', 'desc')->first();
         $validatedData = $request->validated();
+        $randomNumber = Helper::generateRandomNumber(8);
+
+        if (!$latest) {
+            $initialBase36 = Helper::decimalToBase36(1);
+            $validatedData['supplier_no'] = $initialBase36 . $randomNumber;
+        } else {
+            $initialBase36 = Helper::decimalToBase36($latest->id + 1);
+            $validatedData['supplier_no'] = $initialBase36 . $randomNumber;
+        }
+
         $validatedData['is_deleted'] = Response::FALSE;
 
         $supplier = Supplier::create($validatedData);
