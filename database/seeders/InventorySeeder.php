@@ -20,7 +20,7 @@ class InventorySeeder extends Seeder
         Inventory::insert([
             [
                 'stock_no' => 'test_stock_no_01',
-                'item_code' => 'test_item_code_01',
+                'item_code' => '00100258912',
                 'item_name' => 'test_item_name_01',
                 'reorder_level' => 'test_reorder_level_01',
                 'qty_on_hand' => 100,
@@ -34,7 +34,7 @@ class InventorySeeder extends Seeder
             ],
             [
                 'stock_no' => 'test_stock_no_02',
-                'item_code' => 'test_item_code_02',
+                'item_code' => '00276089235',
                 'item_name' => 'test_item_name_02',
                 'reorder_level' => 'test_reorder_level_02',
                 'qty_on_hand' => 150,
@@ -48,7 +48,7 @@ class InventorySeeder extends Seeder
             ],
             [
                 'stock_no' => 'test_stock_no_03',
-                'item_code' => 'test_item_code_03',
+                'item_code' => '00351664322',
                 'item_name' => 'test_item_name_03',
                 'reorder_level' => 'test_reorder_level_03',
                 'qty_on_hand' => 120,
@@ -62,7 +62,7 @@ class InventorySeeder extends Seeder
             ],
             [
                 'stock_no' => 'test_stock_no_04',
-                'item_code' => 'test_item_code_04',
+                'item_code' => '00430203847',
                 'item_name' => 'test_item_name_04',
                 'reorder_level' => 'test_reorder_level_04',
                 'qty_on_hand' => 100,

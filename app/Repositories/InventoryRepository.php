@@ -35,7 +35,18 @@ class InventoryRepository implements IInventoryRepository
 
     function create(InventoryRequest $request)
     {
+        $latest = Inventory::orderBy('id', 'desc')->first();
         $validatedData = $request->validated();
+        $randomNumber = Helper::generateRandomNumber(8);
+
+        if (!$latest) {
+            $initialBase36 = Helper::decimalToBase36(1);
+            $validatedData['item_code'] = $initialBase36 . $randomNumber;
+        } else {
+            $initialBase36 = Helper::decimalToBase36($latest->id + 1);
+            $validatedData['item_code'] = $initialBase36 . $randomNumber;
+        }
+
         $validatedData['is_deleted'] = Response::FALSE;
 
         $inventory = Inventory::create($validatedData);
