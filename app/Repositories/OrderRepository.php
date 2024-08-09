@@ -77,6 +77,9 @@ class OrderRepository implements IOrderRepository
                     'description' => isset($detail['description']) ? $detail['description'] : null,
                     'documents' => isset($detail['documents']) ? $detail['documents'] : null,
                     'status' => isset($detail['status']) ? $detail['status'] : null,
+                    'check_no' => isset($detail['check_no']) ? $detail['check_no'] : null,
+                    'bank_name' => isset($detail['bank_name']) ? $detail['bank_name'] : null,
+                    'verified' => isset($detail['verified']) ? $detail['verified'] : null,
                     'is_deleted' => Response::FALSE,
                 ]);
             }
@@ -128,6 +131,9 @@ class OrderRepository implements IOrderRepository
                     'description' => isset($detail['description']) ? $detail['description'] : null,
                     'documents' => isset($detail['documents']) ? $detail['documents'] : null,
                     'status' => isset($detail['status']) ? $detail['status'] : null,
+                    'check_no' => isset($detail['check_no']) ? $detail['check_no'] : null,
+                    'bank_name' => isset($detail['bank_name']) ? $detail['bank_name'] : null,
+                    'verified' => isset($detail['verified']) ? $detail['verified'] : null,
                     'is_deleted' => Response::FALSE,
                 ]);
             }

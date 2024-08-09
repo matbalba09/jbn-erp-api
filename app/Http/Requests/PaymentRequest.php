@@ -31,6 +31,9 @@ class PaymentRequest extends FormRequest
             'description' => 'nullable|string',
             'documents' => 'nullable|string',
             'status' => 'nullable|string',
+            'check_no' => 'nullable|string',
+            'bank_name' => 'nullable|string',
+            'verified' => 'nullable|integer',
             'is_deleted' => 'nullable|integer',
         ];
     }

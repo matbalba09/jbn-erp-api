@@ -19,6 +19,9 @@ class Payment extends Model
         'description',
         'documents',
         'status',
+        'check_no',
+        'bank_name',
+        'verified',
         'is_deleted',
     ];
 }

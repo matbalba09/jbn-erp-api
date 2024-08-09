@@ -22,6 +22,9 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->string('documents')->nullable();
             $table->string('status')->nullable();
+            $table->string('check_no')->nullable();
+            $table->string('bank_name')->nullable();
+            $table->integer('verified')->nullable();
             $table->integer('is_deleted')->nullable();
             $table->timestamps();
         });
