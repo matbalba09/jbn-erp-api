@@ -5,9 +5,15 @@ use App\Http\Controllers\BomController;
 use App\Http\Controllers\BomTypeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\FinancePoController;
+use App\Http\Controllers\FinanceSoController;
 use App\Http\Controllers\HeartbeatController;
 use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\InventoryJoController;
+use App\Http\Controllers\InventoryPoController;
 use App\Http\Controllers\InventoryTransactionController;
+use App\Http\Controllers\JoController;
+use App\Http\Controllers\JoDetailController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderDetailController;
 use App\Http\Controllers\PaymentController;
@@ -19,11 +25,20 @@ use App\Http\Controllers\PrsSupplierItemController;
 use App\Http\Controllers\PrsSupplierTypeController;
 use App\Http\Controllers\PoController;
 use App\Http\Controllers\PoDetailController;
+use App\Http\Controllers\ProductionController;
+use App\Http\Controllers\ProductionDetailController;
+use App\Http\Controllers\ProductionJoController;
 use App\Http\Controllers\PrsController;
 use App\Http\Controllers\PrsDetailController;
+use App\Http\Controllers\PurchasePoController;
+use App\Http\Controllers\PurchasePrsController;
+use App\Http\Controllers\QualityPoController;
 use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\QuotationDetailController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SalesPrsController;
+use App\Http\Controllers\SalesQuotationController;
+use App\Http\Controllers\SalesSoController;
 use App\Http\Controllers\ServiceTypeController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
@@ -236,6 +251,128 @@ Route::prefix('v1')->group(function () {
         Route::post('create', [PrsSupplierItemController::class, 'create']);
         Route::put('update/{id}', [PrsSupplierItemController::class, 'update']);
         Route::delete('delete/{id}', [PrsSupplierItemController::class, 'delete']);
+    });
+
+    //PHASE 3
+    
+    Route::prefix('finance_po')->group(function () {
+        Route::get('/', [FinancePoController::class, 'index']);
+        Route::get('{id}', [FinancePoController::class, 'getById']);
+        Route::post('create', [FinancePoController::class, 'create']);
+        Route::put('update/{id}', [FinancePoController::class, 'update']);
+        Route::delete('delete/{id}', [FinancePoController::class, 'delete']);
+    });
+
+    Route::prefix('finance_so')->group(function () {
+        Route::get('/', [FinanceSoController::class, 'index']);
+        Route::get('{id}', [FinanceSoController::class, 'getById']);
+        Route::post('create', [FinanceSoController::class, 'create']);
+        Route::put('update/{id}', [FinanceSoController::class, 'update']);
+        Route::delete('delete/{id}', [FinanceSoController::class, 'delete']);
+    });
+
+    Route::prefix('inventory_jo')->group(function () {
+        Route::get('/', [InventoryJoController::class, 'index']);
+        Route::get('{id}', [InventoryJoController::class, 'getById']);
+        Route::post('create', [InventoryJoController::class, 'create']);
+        Route::put('update/{id}', [InventoryJoController::class, 'update']);
+        Route::delete('delete/{id}', [InventoryJoController::class, 'delete']);
+    });
+
+    Route::prefix('inventory_po')->group(function () {
+        Route::get('/', [InventoryPoController::class, 'index']);
+        Route::get('{id}', [InventoryPoController::class, 'getById']);
+        Route::post('create', [InventoryPoController::class, 'create']);
+        Route::put('update/{id}', [InventoryPoController::class, 'update']);
+        Route::delete('delete/{id}', [InventoryPoController::class, 'delete']);
+    });
+
+    Route::prefix('jo')->group(function () {
+        Route::get('/', [JoController::class, 'index']);
+        Route::get('{id}', [JoController::class, 'getById']);
+        Route::post('create', [JoController::class, 'create']);
+        Route::put('update/{id}', [JoController::class, 'update']);
+        Route::delete('delete/{id}', [JoController::class, 'delete']);
+    });
+
+    Route::prefix('jo_detail')->group(function () {
+        Route::get('/', [JoDetailController::class, 'index']);
+        Route::get('{id}', [JoDetailController::class, 'getById']);
+        Route::post('create', [JoDetailController::class, 'create']);
+        Route::put('update/{id}', [JoDetailController::class, 'update']);
+        Route::delete('delete/{id}', [JoDetailController::class, 'delete']);
+    });
+
+    Route::prefix('production')->group(function () {
+        Route::get('/', [ProductionController::class, 'index']);
+        Route::get('{id}', [ProductionController::class, 'getById']);
+        Route::post('create', [ProductionController::class, 'create']);
+        Route::put('update/{id}', [ProductionController::class, 'update']);
+        Route::delete('delete/{id}', [ProductionController::class, 'delete']);
+    });
+
+    Route::prefix('production_detail')->group(function () {
+        Route::get('/', [ProductionDetailController::class, 'index']);
+        Route::get('{id}', [ProductionDetailController::class, 'getById']);
+        Route::post('create', [ProductionDetailController::class, 'create']);
+        Route::put('update/{id}', [ProductionDetailController::class, 'update']);
+        Route::delete('delete/{id}', [ProductionDetailController::class, 'delete']);
+    });
+
+    Route::prefix('production_jo')->group(function () {
+        Route::get('/', [ProductionJoController::class, 'index']);
+        Route::get('{id}', [ProductionJoController::class, 'getById']);
+        Route::post('create', [ProductionJoController::class, 'create']);
+        Route::put('update/{id}', [ProductionJoController::class, 'update']);
+        Route::delete('delete/{id}', [ProductionJoController::class, 'delete']);
+    });
+
+    Route::prefix('purchase_po')->group(function () {
+        Route::get('/', [PurchasePoController::class, 'index']);
+        Route::get('{id}', [PurchasePoController::class, 'getById']);
+        Route::post('create', [PurchasePoController::class, 'create']);
+        Route::put('update/{id}', [PurchasePoController::class, 'update']);
+        Route::delete('delete/{id}', [PurchasePoController::class, 'delete']);
+    });
+
+    Route::prefix('purchase_prs')->group(function () {
+        Route::get('/', [PurchasePrsController::class, 'index']);
+        Route::get('{id}', [PurchasePrsController::class, 'getById']);
+        Route::post('create', [PurchasePrsController::class, 'create']);
+        Route::put('update/{id}', [PurchasePrsController::class, 'update']);
+        Route::delete('delete/{id}', [PurchasePrsController::class, 'delete']);
+    });
+
+    Route::prefix('quality_po')->group(function () {
+        Route::get('/', [QualityPoController::class, 'index']);
+        Route::get('{id}', [QualityPoController::class, 'getById']);
+        Route::post('create', [QualityPoController::class, 'create']);
+        Route::put('update/{id}', [QualityPoController::class, 'update']);
+        Route::delete('delete/{id}', [QualityPoController::class, 'delete']);
+    });
+
+    Route::prefix('sales_prs')->group(function () {
+        Route::get('/', [SalesPrsController::class, 'index']);
+        Route::get('{id}', [SalesPrsController::class, 'getById']);
+        Route::post('create', [SalesPrsController::class, 'create']);
+        Route::put('update/{id}', [SalesPrsController::class, 'update']);
+        Route::delete('delete/{id}', [SalesPrsController::class, 'delete']);
+    });
+
+    Route::prefix('sales_quotation')->group(function () {
+        Route::get('/', [SalesQuotationController::class, 'index']);
+        Route::get('{id}', [SalesQuotationController::class, 'getById']);
+        Route::post('create', [SalesQuotationController::class, 'create']);
+        Route::put('update/{id}', [SalesQuotationController::class, 'update']);
+        Route::delete('delete/{id}', [SalesQuotationController::class, 'delete']);
+    });
+
+    Route::prefix('sales_so')->group(function () {
+        Route::get('/', [SalesSoController::class, 'index']);
+        Route::get('{id}', [SalesSoController::class, 'getById']);
+        Route::post('create', [SalesSoController::class, 'create']);
+        Route::put('update/{id}', [SalesSoController::class, 'update']);
+        Route::delete('delete/{id}', [SalesSoController::class, 'delete']);
     });
 
     Route::group(['middleware' => ['auth:sanctum']], function () {

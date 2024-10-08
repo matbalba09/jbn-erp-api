@@ -218,4 +218,111 @@ class Response
     const SUCCESSFULLY_CREATED_PRS_SUPPLIER_ITEM = 'Successfully created prs supplier item';
     const SUCCESSFULLY_UPDATED_PRS_SUPPLIER_ITEM = 'Successfully updated prs supplier item';
     const SUCCESSFULLY_DELETED_PRS_SUPPLIER_ITEM = 'Successfully deleted prs supplier item';
+
+    //PHASE 3
+
+    //FinancePo
+    const SUCCESSFULLY_GET_ALL_FINANCE_PO = 'Successfully get all finance po';
+    const SUCCESSFULLY_GET_FINANCE_PO = 'Successfully get finance po';
+    const SUCCESSFULLY_CREATED_FINANCE_PO = 'Successfully created finance po';
+    const SUCCESSFULLY_UPDATED_FINANCE_PO = 'Successfully updated finance po';
+    const SUCCESSFULLY_DELETED_FINANCE_PO = 'Successfully deleted finance po';
+
+    //FinanceSo
+    const SUCCESSFULLY_GET_ALL_FINANCE_SO = 'Successfully get all finance so';
+    const SUCCESSFULLY_GET_FINANCE_SO = 'Successfully get finance so';
+    const SUCCESSFULLY_CREATED_FINANCE_SO = 'Successfully created finance so';
+    const SUCCESSFULLY_UPDATED_FINANCE_SO = 'Successfully updated finance so';
+    const SUCCESSFULLY_DELETED_FINANCE_SO = 'Successfully deleted finance so';
+
+    //InventoryJo
+    const SUCCESSFULLY_GET_ALL_INVENTORY_JO = 'Successfully get all inventory jo';
+    const SUCCESSFULLY_GET_INVENTORY_JO = 'Successfully get inventory jo';
+    const SUCCESSFULLY_CREATED_INVENTORY_JO = 'Successfully created inventory jo';
+    const SUCCESSFULLY_UPDATED_INVENTORY_JO = 'Successfully updated inventory jo';
+    const SUCCESSFULLY_DELETED_INVENTORY_JO = 'Successfully deleted inventory jo';
+
+    //InventoryPo
+    const SUCCESSFULLY_GET_ALL_INVENTORY_PO = 'Successfully get all inventory po';
+    const SUCCESSFULLY_GET_INVENTORY_PO = 'Successfully get inventory po';
+    const SUCCESSFULLY_CREATED_INVENTORY_PO = 'Successfully created inventory po';
+    const SUCCESSFULLY_UPDATED_INVENTORY_PO = 'Successfully updated inventory po';
+    const SUCCESSFULLY_DELETED_INVENTORY_PO = 'Successfully deleted inventory po';
+
+    //Jo
+    const SUCCESSFULLY_GET_ALL_JO = 'Successfully get all jo';
+    const SUCCESSFULLY_GET_JO = 'Successfully get jo';
+    const SUCCESSFULLY_CREATED_JO = 'Successfully created jo';
+    const SUCCESSFULLY_UPDATED_JO = 'Successfully updated jo';
+    const SUCCESSFULLY_DELETED_JO = 'Successfully deleted jo';
+
+    //JoDetail
+    const SUCCESSFULLY_GET_ALL_JO_DETAILS = 'Successfully get all jo details';
+    const SUCCESSFULLY_GET_JO_DETAIL = 'Successfully get jo detail';
+    const SUCCESSFULLY_CREATED_JO_DETAIL = 'Successfully created jo detail';
+    const SUCCESSFULLY_UPDATED_JO_DETAIL = 'Successfully updated jo detail';
+    const SUCCESSFULLY_DELETED_JO_DETAIL = 'Successfully deleted jo detail';
+
+    //Production
+    const SUCCESSFULLY_GET_ALL_PRODUCTIONS = 'Successfully get all productions';
+    const SUCCESSFULLY_GET_PRODUCTION = 'Successfully get production';
+    const SUCCESSFULLY_CREATED_PRODUCTION = 'Successfully created production';
+    const SUCCESSFULLY_UPDATED_PRODUCTION = 'Successfully updated production';
+    const SUCCESSFULLY_DELETED_PRODUCTION = 'Successfully deleted production';
+
+    //ProductionDetail
+    const SUCCESSFULLY_GET_ALL_PRODUCTION_DETAILS = 'Successfully get all production details';
+    const SUCCESSFULLY_GET_PRODUCTION_DETAIL = 'Successfully get production detail';
+    const SUCCESSFULLY_CREATED_PRODUCTION_DETAIL = 'Successfully created production detail';
+    const SUCCESSFULLY_UPDATED_PRODUCTION_DETAIL = 'Successfully updated production detail';
+    const SUCCESSFULLY_DELETED_PRODUCTION_DETAIL = 'Successfully deleted production detail';
+
+    //ProductionJo
+    const SUCCESSFULLY_GET_ALL_PRODUCTION_JO = 'Successfully get all production jo';
+    const SUCCESSFULLY_GET_PRODUCTION_JO = 'Successfully get production jo';
+    const SUCCESSFULLY_CREATED_PRODUCTION_JO = 'Successfully created production jo';
+    const SUCCESSFULLY_UPDATED_PRODUCTION_JO = 'Successfully updated production jo';
+    const SUCCESSFULLY_DELETED_PRODUCTION_JO = 'Successfully deleted production jo';
+
+    //PurchasePo
+    const SUCCESSFULLY_GET_ALL_PURCHASE_PO = 'Successfully get all purchase po';
+    const SUCCESSFULLY_GET_PURCHASE_PO = 'Successfully get purchase po';
+    const SUCCESSFULLY_CREATED_PURCHASE_PO = 'Successfully created purchase po';
+    const SUCCESSFULLY_UPDATED_PURCHASE_PO = 'Successfully updated purchase po';
+    const SUCCESSFULLY_DELETED_PURCHASE_PO = 'Successfully deleted purchase po';
+
+    //PurchasePrs
+    const SUCCESSFULLY_GET_ALL_PURCHASE_PRS = 'Successfully get all purchase prs';
+    const SUCCESSFULLY_GET_PURCHASE_PRS = 'Successfully get purchase prs';
+    const SUCCESSFULLY_CREATED_PURCHASE_PRS = 'Successfully created purchase prs';
+    const SUCCESSFULLY_UPDATED_PURCHASE_PRS = 'Successfully updated purchase prs';
+    const SUCCESSFULLY_DELETED_PURCHASE_PRS = 'Successfully deleted purchase prs';
+
+    //QualityPo
+    const SUCCESSFULLY_GET_ALL_QUALITY_PO = 'Successfully get all quality po';
+    const SUCCESSFULLY_GET_QUALITY_PO = 'Successfully get quality po';
+    const SUCCESSFULLY_CREATED_QUALITY_PO = 'Successfully created quality po';
+    const SUCCESSFULLY_UPDATED_QUALITY_PO = 'Successfully updated quality po';
+    const SUCCESSFULLY_DELETED_QUALITY_PO = 'Successfully deleted quality po';
+
+    //SalesPrs
+    const SUCCESSFULLY_GET_ALL_SALES_PRS = 'Successfully get all sales prs';
+    const SUCCESSFULLY_GET_SALES_PRS = 'Successfully get sales prs';
+    const SUCCESSFULLY_CREATED_SALES_PRS = 'Successfully created sales prs';
+    const SUCCESSFULLY_UPDATED_SALES_PRS = 'Successfully updated sales prs';
+    const SUCCESSFULLY_DELETED_SALES_PRS = 'Successfully deleted sales prs';
+
+    //SalesQuotation
+    const SUCCESSFULLY_GET_ALL_SALES_QUOTATIONS = 'Successfully get all sales quotations';
+    const SUCCESSFULLY_GET_SALES_QUOTATION = 'Successfully get sales quotation';
+    const SUCCESSFULLY_CREATED_SALES_QUOTATION = 'Successfully created sales quotation';
+    const SUCCESSFULLY_UPDATED_SALES_QUOTATION = 'Successfully updated sales quotation';
+    const SUCCESSFULLY_DELETED_SALES_QUOTATION = 'Successfully deleted sales quotation';
+
+    //SalesSo
+    const SUCCESSFULLY_GET_ALL_SALES_SO = 'Successfully get all sales so';
+    const SUCCESSFULLY_GET_SALES_SO = 'Successfully get sales so';
+    const SUCCESSFULLY_CREATED_SALES_SO = 'Successfully created sales so';
+    const SUCCESSFULLY_UPDATED_SALES_SO = 'Successfully updated sales so';
+    const SUCCESSFULLY_DELETED_SALES_SO = 'Successfully deleted sales so';
 }
