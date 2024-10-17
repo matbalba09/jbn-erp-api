@@ -325,4 +325,32 @@ class Response
     const SUCCESSFULLY_CREATED_SALES_SO = 'Successfully created sales so';
     const SUCCESSFULLY_UPDATED_SALES_SO = 'Successfully updated sales so';
     const SUCCESSFULLY_DELETED_SALES_SO = 'Successfully deleted sales so';
+
+    //LaborCost
+    const SUCCESSFULLY_GET_ALL_LABOR_COSTS = 'Successfully get all labor costs';
+    const SUCCESSFULLY_GET_LABOR_COST = 'Successfully get labor cost';
+    const SUCCESSFULLY_CREATED_LABOR_COST = 'Successfully created labor cost';
+    const SUCCESSFULLY_UPDATED_LABOR_COST = 'Successfully updated labor cost';
+    const SUCCESSFULLY_DELETED_LABOR_COST = 'Successfully deleted labor cost';
+
+    //ProductLaborCost
+    const SUCCESSFULLY_GET_ALL_PRODUCT_LABOR_COSTS = 'Successfully get all product labor costs';
+    const SUCCESSFULLY_GET_PRODUCT_LABOR_COST = 'Successfully get product labor cost';
+    const SUCCESSFULLY_CREATED_PRODUCT_LABOR_COST = 'Successfully created product labor cost';
+    const SUCCESSFULLY_UPDATED_PRODUCT_LABOR_COST = 'Successfully updated product labor cost';
+    const SUCCESSFULLY_DELETED_PRODUCT_LABOR_COST = 'Successfully deleted product labor cost';
+
+    //ProductLaborCost
+    const SUCCESSFULLY_GET_ALL_RAW_MATERIALS = 'Successfully get all raw materials';
+    const SUCCESSFULLY_GET_RAW_MATERIAL = 'Successfully get raw material';
+    const SUCCESSFULLY_CREATED_RAW_MATERIAL = 'Successfully created raw material';
+    const SUCCESSFULLY_UPDATED_RAW_MATERIAL = 'Successfully updated raw material';
+    const SUCCESSFULLY_DELETED_RAW_MATERIAL = 'Successfully deleted raw material';
+    
+    //Checklist
+    const SUCCESSFULLY_GET_ALL_CHECKLISTS = 'Successfully get all checklists';
+    const SUCCESSFULLY_GET_CHECKLIST = 'Successfully get checklist';
+    const SUCCESSFULLY_CREATED_CHECKLIST = 'Successfully created checklist';
+    const SUCCESSFULLY_UPDATED_CHECKLIST = 'Successfully updated checklist';
+    const SUCCESSFULLY_DELETED_CHECKLIST = 'Successfully deleted checklist';
 }

@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('jos', function (Blueprint $table) {
             $table->id();
+            $table->integer('jo_no')->nullable();
+            $table->integer('po_no')->nullable();
+            $table->integer('so_no')->nullable();
+            $table->string('shipment_date')->nullable();
+            $table->string('business_operation')->nullable();
+            $table->string('oic')->nullable();
+            $table->string('status')->nullable();
+            $table->string('production_date')->nullable();
+            $table->integer('is_deleted')->nullable();
             $table->timestamps();
         });
     }

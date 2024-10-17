@@ -4,6 +4,7 @@ use App\Http\Controllers\AttributeController;
 use App\Http\Controllers\BomController;
 use App\Http\Controllers\BomTypeController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ChecklistController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\FinancePoController;
 use App\Http\Controllers\FinanceSoController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\InventoryPoController;
 use App\Http\Controllers\InventoryTransactionController;
 use App\Http\Controllers\JoController;
 use App\Http\Controllers\JoDetailController;
+use App\Http\Controllers\LaborCostController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderDetailController;
 use App\Http\Controllers\PaymentController;
@@ -28,6 +30,7 @@ use App\Http\Controllers\PoDetailController;
 use App\Http\Controllers\ProductionController;
 use App\Http\Controllers\ProductionDetailController;
 use App\Http\Controllers\ProductionJoController;
+use App\Http\Controllers\ProductLaborCostController;
 use App\Http\Controllers\PrsController;
 use App\Http\Controllers\PrsDetailController;
 use App\Http\Controllers\PurchasePoController;
@@ -35,6 +38,7 @@ use App\Http\Controllers\PurchasePrsController;
 use App\Http\Controllers\QualityPoController;
 use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\QuotationDetailController;
+use App\Http\Controllers\RawMaterialController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SalesPrsController;
 use App\Http\Controllers\SalesQuotationController;
@@ -373,6 +377,38 @@ Route::prefix('v1')->group(function () {
         Route::post('create', [SalesSoController::class, 'create']);
         Route::put('update/{id}', [SalesSoController::class, 'update']);
         Route::delete('delete/{id}', [SalesSoController::class, 'delete']);
+    });
+
+    Route::prefix('labor_cost')->group(function () {
+        Route::get('/', [LaborCostController::class, 'index']);
+        Route::get('{id}', [LaborCostController::class, 'getById']);
+        Route::post('create', [LaborCostController::class, 'create']);
+        Route::put('update/{id}', [LaborCostController::class, 'update']);
+        Route::delete('delete/{id}', [LaborCostController::class, 'delete']);
+    });
+
+    Route::prefix('product_labor_cost')->group(function () {
+        Route::get('/', [ProductLaborCostController::class, 'index']);
+        Route::get('{id}', [ProductLaborCostController::class, 'getById']);
+        Route::post('create', [ProductLaborCostController::class, 'create']);
+        Route::put('update/{id}', [ProductLaborCostController::class, 'update']);
+        Route::delete('delete/{id}', [ProductLaborCostController::class, 'delete']);
+    });
+
+    Route::prefix('raw_material')->group(function () {
+        Route::get('/', [RawMaterialController::class, 'index']);
+        Route::get('{id}', [RawMaterialController::class, 'getById']);
+        Route::post('create', [RawMaterialController::class, 'create']);
+        Route::put('update/{id}', [RawMaterialController::class, 'update']);
+        Route::delete('delete/{id}', [RawMaterialController::class, 'delete']);
+    });
+    
+    Route::prefix('checklist')->group(function () {
+        Route::get('/', [ChecklistController::class, 'index']);
+        Route::get('{id}', [ChecklistController::class, 'getById']);
+        Route::post('create', [ChecklistController::class, 'create']);
+        Route::put('update/{id}', [ChecklistController::class, 'update']);
+        Route::delete('delete/{id}', [ChecklistController::class, 'delete']);
     });
 
     Route::group(['middleware' => ['auth:sanctum']], function () {

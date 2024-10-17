@@ -5,19 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Jo extends Model
+class ProductLaborCost extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'jo_no',
-        'po_no',
-        'so_no',
-        'shipment_date',
-        'business_operation',
-        'oic',
-        'status',
-        'production_date',
+        'product_id',
+        'labor_cost_id',
         'is_deleted'
     ];
 }

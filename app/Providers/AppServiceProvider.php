@@ -6,6 +6,7 @@ use App\Repositories\AttributeRepository;
 use App\Repositories\BomRepository;
 use App\Repositories\BomTypeRepository;
 use App\Repositories\CategoryRepository;
+use App\Repositories\ChecklistRepository;
 use App\Repositories\CustomerRepository;
 use App\Repositories\FinancePoRepository;
 use App\Repositories\FinanceSoRepository;
@@ -13,6 +14,7 @@ use App\Repositories\IAttributeRepository;
 use App\Repositories\IBomRepository;
 use App\Repositories\IBomTypeRepository;
 use App\Repositories\ICategoryRepository;
+use App\Repositories\IChecklistRepository;
 use App\Repositories\ICustomerRepository;
 use App\Repositories\IFinancePoRepository;
 use App\Repositories\IFinanceSoRepository;
@@ -22,6 +24,7 @@ use App\Repositories\IInventoryTransactionRepository;
 use App\Repositories\IInventoryRepository;
 use App\Repositories\IJoDetailRepository;
 use App\Repositories\IJoRepository;
+use App\Repositories\ILaborCostRepository;
 use App\Repositories\InventoryJoRepository;
 use App\Repositories\InventoryPoRepository;
 use App\Repositories\IOrderDetailRepository;
@@ -47,15 +50,18 @@ use App\Repositories\IPoDetailRepository;
 use App\Repositories\IProductionDetailRepository;
 use App\Repositories\IProductionJoRepository;
 use App\Repositories\IProductionRepository;
+use App\Repositories\IProductLaborCostRepository;
 use App\Repositories\IPrsSupplierItemRepository;
 use App\Repositories\IPurchasePoRepository;
 use App\Repositories\IPurchasePrsRepository;
 use App\Repositories\IQualityPoRepository;
+use App\Repositories\IRawMaterialRepository;
 use App\Repositories\ISalesPrsRepository;
 use App\Repositories\ISalesQuotationRepository;
 use App\Repositories\ISalesSoRepository;
 use App\Repositories\JoDetailRepository;
 use App\Repositories\JoRepository;
+use App\Repositories\LaborCostRepository;
 use App\Repositories\OrderDetailRepository;
 use App\Repositories\OrderRepository;
 use App\Repositories\PaymentRepository;
@@ -70,6 +76,7 @@ use App\Repositories\PoRepository;
 use App\Repositories\ProductionDetailRepository;
 use App\Repositories\ProductionJoRepository;
 use App\Repositories\ProductionRepository;
+use App\Repositories\ProductLaborCostRepository;
 use App\Repositories\PrsDetailRepository;
 use App\Repositories\PrsRepository;
 use App\Repositories\PurchasePoRepository;
@@ -77,6 +84,7 @@ use App\Repositories\PurchasePrsRepository;
 use App\Repositories\QualityPoRepository;
 use App\Repositories\QuotationDetailRepository;
 use App\Repositories\QuotationRepository;
+use App\Repositories\RawMaterialRepository;
 use App\Repositories\RoleRepository;
 use App\Repositories\SalesPrsRepository;
 use App\Repositories\SalesQuotationRepository;
@@ -258,6 +266,22 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             ISalesSoRepository::class,
             SalesSoRepository::class
+        );
+        $this->app->bind(
+            ILaborCostRepository::class,
+            LaborCostRepository::class
+        );
+        $this->app->bind(
+            IProductLaborCostRepository::class,
+            ProductLaborCostRepository::class
+        );
+        $this->app->bind(
+            IRawMaterialRepository::class,
+            RawMaterialRepository::class
+        );
+        $this->app->bind(
+            IChecklistRepository::class,
+            ChecklistRepository::class
         );
     }
 
