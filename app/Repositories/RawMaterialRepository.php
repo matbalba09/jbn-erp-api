@@ -17,6 +17,8 @@ interface IRawMaterialRepository
     function create(RawMaterialRequest $request);
     function update(RawMaterialRequest $request, $id);
     function delete($id);
+
+    function getByMakerMaterialColorSize(RawMaterialRequest $request);
 }
 
 class RawMaterialRepository implements IRawMaterialRepository
@@ -57,5 +59,22 @@ class RawMaterialRepository implements IRawMaterialRepository
         $rawMaterial->delete();
 
         return $rawMaterial;
+    }
+
+    function getByMakerMaterialColorSize(RawMaterialRequest $request)
+    {
+        $validatedData = $request->validated();
+
+        $rawMaterial = RawMaterial::where('maker', $validatedData['maker'])
+            ->where('material', $validatedData['material'])
+            ->where('color', $validatedData['color'])
+            ->where('size', $validatedData['size'])
+            ->first();
+
+        if ($rawMaterial != null) {
+            return $rawMaterial;
+        }else{
+            return null;
+        }
     }
 }

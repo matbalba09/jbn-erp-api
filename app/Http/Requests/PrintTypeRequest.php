@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RawMaterialRequest extends FormRequest
+class PrintTypeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,11 +22,12 @@ class RawMaterialRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'maker' => 'nullable|string',
+            'print' => 'nullable|string',
             'material' => 'nullable|string',
-            'color' => 'nullable|string',
             'size' => 'nullable|string',
             'price' => 'nullable|numeric',
+            'description' => 'nullable|string',
+            'remarks' => 'nullable|string',
             'is_deleted' => 'nullable|integer',
         ];
     }

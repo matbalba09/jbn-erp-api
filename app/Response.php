@@ -353,4 +353,11 @@ class Response
     const SUCCESSFULLY_CREATED_CHECKLIST = 'Successfully created checklist';
     const SUCCESSFULLY_UPDATED_CHECKLIST = 'Successfully updated checklist';
     const SUCCESSFULLY_DELETED_CHECKLIST = 'Successfully deleted checklist';
+
+    //PrintType
+    const SUCCESSFULLY_GET_ALL_PRINT_TYPES = 'Successfully get all print types';
+    const SUCCESSFULLY_GET_PRINT_TYPE = 'Successfully get print type';
+    const SUCCESSFULLY_CREATED_PRINT_TYPE = 'Successfully created print type';
+    const SUCCESSFULLY_UPDATED_PRINT_TYPE = 'Successfully updated print type';
+    const SUCCESSFULLY_DELETED_PRINT_TYPE = 'Successfully deleted print type';
 }

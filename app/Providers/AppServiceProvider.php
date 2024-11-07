@@ -47,6 +47,7 @@ use App\Repositories\IUserRepository;
 use App\Repositories\InventoryTransactionRepository;
 use App\Repositories\InventoryRepository;
 use App\Repositories\IPoDetailRepository;
+use App\Repositories\IPrintTypeRepository;
 use App\Repositories\IProductionDetailRepository;
 use App\Repositories\IProductionJoRepository;
 use App\Repositories\IProductionRepository;
@@ -73,6 +74,7 @@ use App\Repositories\PrsSupplierItemRepository;
 use App\Repositories\PrsSupplierRepository;
 use App\Repositories\PrsSupplierTypeRepository;
 use App\Repositories\PoRepository;
+use App\Repositories\PrintTypeRepository;
 use App\Repositories\ProductionDetailRepository;
 use App\Repositories\ProductionJoRepository;
 use App\Repositories\ProductionRepository;
@@ -282,6 +284,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             IChecklistRepository::class,
             ChecklistRepository::class
+        );
+        $this->app->bind(
+            IPrintTypeRepository::class,
+            PrintTypeRepository::class
         );
     }
 

@@ -27,6 +27,7 @@ use App\Http\Controllers\PrsSupplierItemController;
 use App\Http\Controllers\PrsSupplierTypeController;
 use App\Http\Controllers\PoController;
 use App\Http\Controllers\PoDetailController;
+use App\Http\Controllers\PrintTypeController;
 use App\Http\Controllers\ProductionController;
 use App\Http\Controllers\ProductionDetailController;
 use App\Http\Controllers\ProductionJoController;
@@ -401,6 +402,8 @@ Route::prefix('v1')->group(function () {
         Route::post('create', [RawMaterialController::class, 'create']);
         Route::put('update/{id}', [RawMaterialController::class, 'update']);
         Route::delete('delete/{id}', [RawMaterialController::class, 'delete']);
+
+        Route::post('getByMakerMaterialColorSize', [RawMaterialController::class, 'getByMakerMaterialColorSize']);
     });
     
     Route::prefix('checklist')->group(function () {
@@ -409,6 +412,16 @@ Route::prefix('v1')->group(function () {
         Route::post('create', [ChecklistController::class, 'create']);
         Route::put('update/{id}', [ChecklistController::class, 'update']);
         Route::delete('delete/{id}', [ChecklistController::class, 'delete']);
+    });
+
+    Route::prefix('print_type')->group(function () {
+        Route::get('/', [PrintTypeController::class, 'index']);
+        Route::get('{id}', [PrintTypeController::class, 'getById']);
+        Route::post('create', [PrintTypeController::class, 'create']);
+        Route::put('update/{id}', [PrintTypeController::class, 'update']);
+        Route::delete('delete/{id}', [PrintTypeController::class, 'delete']);
+
+        Route::post('getByPrintSize', [PrintTypeController::class, 'getByPrintSize']);
     });
 
     Route::group(['middleware' => ['auth:sanctum']], function () {

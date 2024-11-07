@@ -5,16 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class RawMaterial extends Model
+class PrintType extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'maker',
+        'print',
         'material',
-        'color',
         'size',
         'price',
+        'description',
+        'remarks',
         'is_deleted',
     ];
 }

@@ -89,4 +89,26 @@ class RawMaterialController extends Controller
 
         return response()->json($response, $response['code']);
     }
+
+    public function getByMakerMaterialColorSize(RawMaterialRequest $request)
+    {
+        $rawMaterial = $this->rawMaterialRepository->getByMakerMaterialColorSize($request);
+
+        if ($rawMaterial != null) {
+            $response = [
+                'code' => Response::HTTP_SUCCESS,
+                'status' => Response::SUCCESS,
+                'message' => Response::SUCCESSFULLY_GET_RAW_MATERIAL,
+                'data' => $rawMaterial,
+            ];
+            return response()->json($response, $response['code']);
+        } else {
+            $response = [
+                'code' => Response::HTTP_NOT_FOUND,
+                'status' => Response::FAIL,
+                'message' => Response::HTTP_NOT_FOUND,
+            ];
+            return response()->json($response, $response['code']);
+        }
+    }
 }

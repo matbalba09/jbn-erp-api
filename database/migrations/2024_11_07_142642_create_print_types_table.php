@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('raw_materials', function (Blueprint $table) {
+        Schema::create('print_types', function (Blueprint $table) {
             $table->id();
-            $table->string('maker')->nullable();
+            $table->string('print')->nullable();
             $table->string('material')->nullable();
-            $table->string('color')->nullable();
             $table->string('size')->nullable();
             $table->decimal('price', 10, 2)->nullable();
+            $table->string('description')->nullable();
+            $table->string('remarks')->nullable();
             $table->integer('is_deleted')->nullable();
             $table->timestamps();
         });
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('raw_materials');
+        Schema::dropIfExists('print_types');
     }
 };
