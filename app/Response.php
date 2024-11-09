@@ -360,4 +360,11 @@ class Response
     const SUCCESSFULLY_CREATED_PRINT_TYPE = 'Successfully created print type';
     const SUCCESSFULLY_UPDATED_PRINT_TYPE = 'Successfully updated print type';
     const SUCCESSFULLY_DELETED_PRINT_TYPE = 'Successfully deleted print type';
+
+    //ItemRequisition
+    const SUCCESSFULLY_GET_ALL_ITEM_REQUISITIONS = 'Successfully get all item requisitions';
+    const SUCCESSFULLY_GET_ITEM_REQUISITION = 'Successfully get item requisition';
+    const SUCCESSFULLY_CREATED_ITEM_REQUISITION = 'Successfully created item requisition';
+    const SUCCESSFULLY_UPDATED_ITEM_REQUISITION = 'Successfully updated item requisition';
+    const SUCCESSFULLY_DELETED_ITEM_REQUISITION = 'Successfully deleted item requisition';
 }

@@ -22,6 +22,7 @@ use App\Repositories\IInventoryJoRepository;
 use App\Repositories\IInventoryPoRepository;
 use App\Repositories\IInventoryTransactionRepository;
 use App\Repositories\IInventoryRepository;
+use App\Repositories\IItemRequisitionRepository;
 use App\Repositories\IJoDetailRepository;
 use App\Repositories\IJoRepository;
 use App\Repositories\ILaborCostRepository;
@@ -53,6 +54,7 @@ use App\Repositories\IProductionJoRepository;
 use App\Repositories\IProductionRepository;
 use App\Repositories\IProductLaborCostRepository;
 use App\Repositories\IPrsSupplierItemRepository;
+use App\Repositories\IPrsV2Repository;
 use App\Repositories\IPurchasePoRepository;
 use App\Repositories\IPurchasePrsRepository;
 use App\Repositories\IQualityPoRepository;
@@ -60,6 +62,8 @@ use App\Repositories\IRawMaterialRepository;
 use App\Repositories\ISalesPrsRepository;
 use App\Repositories\ISalesQuotationRepository;
 use App\Repositories\ISalesSoRepository;
+use App\Repositories\ISupplierV2Repository;
+use App\Repositories\ItemRequisitionRepository;
 use App\Repositories\JoDetailRepository;
 use App\Repositories\JoRepository;
 use App\Repositories\LaborCostRepository;
@@ -81,6 +85,7 @@ use App\Repositories\ProductionRepository;
 use App\Repositories\ProductLaborCostRepository;
 use App\Repositories\PrsDetailRepository;
 use App\Repositories\PrsRepository;
+use App\Repositories\PrsV2Repository;
 use App\Repositories\PurchasePoRepository;
 use App\Repositories\PurchasePrsRepository;
 use App\Repositories\QualityPoRepository;
@@ -93,6 +98,7 @@ use App\Repositories\SalesQuotationRepository;
 use App\Repositories\SalesSoRepository;
 use App\Repositories\ServiceTypeRepository;
 use App\Repositories\SupplierRepository;
+use App\Repositories\SupplierV2Repository;
 use App\Repositories\UserRepository;
 use Illuminate\Support\ServiceProvider;
 
@@ -288,6 +294,18 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             IPrintTypeRepository::class,
             PrintTypeRepository::class
+        );
+        $this->app->bind(
+            IPrsV2Repository::class,
+            PrsV2Repository::class
+        );
+        $this->app->bind(
+            IItemRequisitionRepository::class,
+            ItemRequisitionRepository::class
+        );
+        $this->app->bind(
+            ISupplierV2Repository::class,
+            SupplierV2Repository::class
         );
     }
 

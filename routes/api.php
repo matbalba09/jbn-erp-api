@@ -34,6 +34,7 @@ use App\Http\Controllers\ProductionJoController;
 use App\Http\Controllers\ProductLaborCostController;
 use App\Http\Controllers\PrsController;
 use App\Http\Controllers\PrsDetailController;
+use App\Http\Controllers\PrsV2Controller;
 use App\Http\Controllers\PurchasePoController;
 use App\Http\Controllers\PurchasePrsController;
 use App\Http\Controllers\QualityPoController;
@@ -257,6 +258,13 @@ Route::prefix('v1')->group(function () {
         Route::put('update/{id}', [PrsSupplierItemController::class, 'update']);
         Route::delete('delete/{id}', [PrsSupplierItemController::class, 'delete']);
     });
+    Route::prefix('prs_v2')->group(function () {
+        Route::get('/', [PrsV2Controller::class, 'index']);
+        Route::get('{id}', [PrsV2Controller::class, 'getById']);
+        Route::post('create', [PrsV2Controller::class, 'create']);
+        Route::put('update/{id}', [PrsV2Controller::class, 'update']);
+        Route::delete('delete/{id}', [PrsV2Controller::class, 'delete']);
+    });
 
     //PHASE 3
     
@@ -423,6 +431,8 @@ Route::prefix('v1')->group(function () {
 
         Route::post('getByPrintSize', [PrintTypeController::class, 'getByPrintSize']);
     });
+
+
 
     Route::group(['middleware' => ['auth:sanctum']], function () {
     });
