@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('remarks')->nullable();
             $table->integer('quantity')->nullable();
             $table->decimal('selling_price', 10, 2)->nullable();
+            $table->integer('supplier_id')->nullable();
             $table->integer('is_deleted')->nullable();
             $table->timestamps();
         });

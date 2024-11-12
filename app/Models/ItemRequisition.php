@@ -22,6 +22,12 @@ class ItemRequisition extends Model
         'remarks',
         'quantity',
         'selling_price',
+        'supplier_id',
         'is_deleted',
     ];
+
+    public function supplier_v2()
+    {
+        return $this->belongsTo(SupplierV2::class, 'supplier_id');
+    }
 }

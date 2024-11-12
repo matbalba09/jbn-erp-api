@@ -9,6 +9,7 @@ use App\Http\Requests\UpdatePrsV2Request;
 use App\Models\ItemRequisition;
 use Carbon\Carbon;
 use App\Models\PrsV2;
+use App\Models\SupplierV2;
 use App\Response;
 
 interface IPrsV2Repository
@@ -24,14 +25,15 @@ class PrsV2Repository implements IPrsV2Repository
 {
     function getAll()
     {
-        $prsV2 = PrsV2::with('customer', 'item_requisitions')
-        ->where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
+        $prsV2 = PrsV2::with('customer', 'item_requisitions.supplier_v2')
+            ->where('is_deleted', Response::FALSE)
+            ->orderBy('created_at', 'desc')->get();
         return $prsV2;
     }
 
     function getById($id)
     {
-        $prsV2 = PrsV2::with('customer', 'item_requisitions')->findOrFail($id);
+        $prsV2 = PrsV2::with('customer', 'item_requisitions.supplier_v2')->findOrFail($id);
         return $prsV2;
     }
 
@@ -77,12 +79,27 @@ class PrsV2Repository implements IPrsV2Repository
                     'remarks' => isset($detail['remarks']) ? $detail['remarks'] : null,
                     'quantity' => isset($detail['quantity']) ? $detail['quantity'] : null,
                     'selling_price' => isset($detail['selling_price']) ? $detail['selling_price'] : null,
+                    'supplier_id' => isset($detail['supplier_id']) ? $detail['supplier_id'] : null,
                     'is_deleted' => Response::FALSE,
                 ]);
+
+                if (isset($detail['supplier'])) {
+                    foreach ($detail['supplier'] as $supplier) {
+                        $supplierV2 = SupplierV2::create([
+                            'supplier_name' => isset($supplier['supplier_name']) ? $supplier['supplier_name'] : null,
+                            'uom' => isset($supplier['uom']) ? $supplier['uom'] : null,
+                            'quantity' => isset($supplier['quantity']) ? $supplier['quantity'] : null,
+                            'price' => isset($supplier['price']) ? $supplier['price'] : null,
+                            'operation' => isset($supplier['operation']) ? $supplier['operation'] : null,
+                            'remarks' => isset($supplier['remarks']) ? $supplier['remarks'] : null,
+                            'is_deleted' => Response::FALSE,
+                        ]);
+                    }
+                    $itemRequisition->update(['supplier_id' => $supplierV2->id]);
+                }
             }
         }
-        return $prsV2->load(['customer', 'item_requisitions']);
-
+        return $prsV2->load(['customer', 'item_requisitions.supplier_v2']);
     }
 
     function update(PrsV2Request $request, $id)
