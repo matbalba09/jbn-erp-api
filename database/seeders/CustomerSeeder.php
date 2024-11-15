@@ -20,7 +20,7 @@ class CustomerSeeder extends Seeder
             [
                 'customer_no' => 'CUS240727-SR-001',
                 'company' => 'Our Lady OLAC',
-                'contact_person' => 'Jans En',
+                'contact_person' => 'Navi Gates',
                 'contact_no' => '09170000001',
                 'status' => 'test_status',
                 'address' => 'Tanauan City, Batangas',
@@ -34,7 +34,7 @@ class CustomerSeeder extends Seeder
             [
                 'customer_no' => 'CUS240727-SR-002',
                 'company' => 'Magnolia',
-                'contact_person' => 'Karen Ferrer',
+                'contact_person' => 'John Blue',
                 'contact_no' => '09170000002',
                 'status' => 'test_status',
                 'address' => 'Metro Manila',
