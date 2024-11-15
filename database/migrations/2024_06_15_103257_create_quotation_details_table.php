@@ -14,12 +14,18 @@ return new class extends Migration
         Schema::create('quotation_details', function (Blueprint $table) {
             $table->id();
             $table->string('quotation_no')->nullable();
-            $table->integer('product_id')->nullable();
-            $table->string('name')->nullable();
-            $table->string('uom')->nullable();
+            $table->integer('prs_id')->nullable();
+            $table->string('item_name')->nullable();
+            $table->string('maker')->nullable();
+            $table->string('material')->nullable();
+            $table->string('color')->nullable();
+            $table->string('size')->nullable();
+            $table->string('print')->nullable();
+            $table->string('print_size')->nullable();
+            $table->string('design_url')->nullable();
+            $table->string('remarks')->nullable();
             $table->integer('quantity')->nullable();
-            $table->decimal('unit_price', 10, 2)->nullable();
-            $table->decimal('total_price', 10, 2)->nullable();
+            $table->decimal('selling_price', 10, 2)->nullable();
             $table->integer('is_deleted')->nullable();
             $table->timestamps();
         });

@@ -11,12 +11,18 @@ class QuotationDetail extends Model
 
     protected $fillable = [
         'quotation_no',
-        'product_id',
-        'name',
-        'uom',
+        'prs_id',
+        'item_name',
+        'maker',
+        'material',
+        'color',
+        'size',
+        'print',
+        'print_size',
+        'design_url',
+        'remarks',
         'quantity',
-        'unit_price',
-        'total_price',
+        'selling_price',
         'is_deleted',
     ];
 

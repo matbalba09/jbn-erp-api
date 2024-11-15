@@ -67,12 +67,18 @@ class QuotationRepository implements IQuotationRepository
             foreach ($quotationDetails as $detail) {
                 QuotationDetail::create([
                     'quotation_no' => $quotation->quotation_no,
-                    'product_id' => isset($detail['product_id']) ? $detail['product_id'] : null,
-                    'name' => isset($detail['name']) ? $detail['name'] : null,
-                    'uom' => isset($detail['uom']) ? $detail['uom'] : null,
+                    'prs_id' => isset($detail['prs_id']) ? $detail['prs_id'] : null,
+                    'item_name' => isset($detail['item_name']) ? $detail['item_name'] : null,
+                    'maker' => isset($detail['maker']) ? $detail['maker'] : null,
+                    'material' => isset($detail['material']) ? $detail['material'] : null,
+                    'color' => isset($detail['color']) ? $detail['color'] : null,
+                    'size' => isset($detail['size']) ? $detail['size'] : null,
+                    'print' => isset($detail['print']) ? $detail['print'] : null,
+                    'print_size' => isset($detail['print_size']) ? $detail['print_size'] : null,
+                    'design_url' => isset($detail['design_url']) ? $detail['design_url'] : null,
+                    'remarks' => isset($detail['remarks']) ? $detail['remarks'] : null,
                     'quantity' => isset($detail['quantity']) ? $detail['quantity'] : null,
-                    'unit_price' => isset($detail['unit_price']) ? $detail['unit_price'] : null,
-                    'total_price' => isset($detail['total_price']) ? $detail['total_price'] : null,
+                    'selling_price' => isset($detail['selling_price']) ? $detail['selling_price'] : null,
                     'is_deleted' => Response::FALSE,
                 ]);
             }
@@ -97,12 +103,18 @@ class QuotationRepository implements IQuotationRepository
             foreach ($quotationDetails as $detail) {
                 QuotationDetail::create([
                     'quotation_no' => $quotation->quotation_no,
-                    'product_id' => isset($detail['product_id']) ? $detail['product_id'] : null,
-                    'name' => isset($detail['name']) ? $detail['name'] : null,
-                    'uom' => isset($detail['uom']) ? $detail['uom'] : null,
+                    'prs_id' => isset($detail['prs_id']) ? $detail['prs_id'] : null,
+                    'item_name' => isset($detail['item_name']) ? $detail['item_name'] : null,
+                    'maker' => isset($detail['maker']) ? $detail['maker'] : null,
+                    'material' => isset($detail['material']) ? $detail['material'] : null,
+                    'color' => isset($detail['color']) ? $detail['color'] : null,
+                    'size' => isset($detail['size']) ? $detail['size'] : null,
+                    'print' => isset($detail['print']) ? $detail['print'] : null,
+                    'print_size' => isset($detail['print_size']) ? $detail['print_size'] : null,
+                    'design_url' => isset($detail['design_url']) ? $detail['design_url'] : null,
+                    'remarks' => isset($detail['remarks']) ? $detail['remarks'] : null,
                     'quantity' => isset($detail['quantity']) ? $detail['quantity'] : null,
-                    'unit_price' => isset($detail['unit_price']) ? $detail['unit_price'] : null,
-                    'total_price' => isset($detail['total_price']) ? $detail['total_price'] : null,
+                    'selling_price' => isset($detail['selling_price']) ? $detail['selling_price'] : null,
                     'is_deleted' => Response::FALSE,
                 ]);
             }
