@@ -83,10 +83,10 @@ class PrsV2Repository implements IPrsV2Repository
                 ]);
 
                 // Check if suppliers are provided for this item requisition
-                if (isset($detail['supplier']) && is_array($detail['supplier'])) {
+                if (isset($detail['suppliers']) && is_array($detail['suppliers'])) {
                     $supplierData = [];
 
-                    foreach ($detail['supplier'] as $supplier) {
+                    foreach ($detail['suppliers'] as $supplier) {
                         // Create each supplier if it doesn’t already exist
                         $supplierV2 = SupplierV2::create([
                             'supplier_name' => $supplier['supplier_name'] ?? null,
