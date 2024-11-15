@@ -16,6 +16,7 @@ class Quotation extends Model
         'description',
         'valid_until',
         'total_price',
+        'discount_price',
         'requested_by',
         'approved_by',
         'received_by',
@@ -31,6 +32,6 @@ class Quotation extends Model
 
     public function prs()
     {
-        return $this->hasOne(Prs::class, 'prs_no', 'prs_no');
+        return $this->hasOne(PrsV2::class, 'prs_no', 'prs_no');
     }
 }

@@ -28,6 +28,7 @@ class QuotationRequest extends FormRequest
             'description' => 'nullable|string',
             'valid_until' => 'nullable|string',
             'total_price' => 'nullable|numeric',
+            'discount_price' => 'nullable|numeric',
             'requested_by' => 'nullable|integer',
             'approved_by' => 'nullable|integer',
             'received_by' => 'nullable|string',
