@@ -27,14 +27,14 @@ class OrderRepository implements IOrderRepository
 {
     function getAll()
     {
-        $orders = Order::with('customer', 'payment_details', 'order_details.product', 'quotation.prs.prs_details.prs_suppliers')
+        $orders = Order::with('customer', 'payment_details', 'order_details', 'quotation.prs')
             ->where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
         return $orders;
     }
 
     function getById($id)
     {
-        $order = Order::with('customer', 'payment_details', 'order_details.product', 'quotation.prs.prs_details.prs_suppliers')
+        $order = Order::with('customer', 'payment_details', 'order_details', 'quotation.prs')
             ->findOrFail($id);
         return $order;
     }
@@ -89,17 +89,22 @@ class OrderRepository implements IOrderRepository
             foreach ($orderDetails as $detail) {
                 OrderDetail::create([
                     'order_no' => $order->order_no,
-                    'product_id' => isset($detail['product_id']) ? $detail['product_id'] : null,
-                    'uom' => isset($detail['uom']) ? $detail['uom'] : null,
-                    'quantity' => isset($detail['quantity']) ? $detail['quantity'] : null,
-                    'unit_price' => isset($detail['unit_price']) ? $detail['unit_price'] : null,
-                    'total_price' => isset($detail['total_price']) ? $detail['total_price'] : null,
+                    'item_name' => isset($detail['item_name']) ? $detail['item_name'] : null,
+                    'maker' => isset($detail['maker']) ? $detail['maker'] : null,
+                    'material' => isset($detail['material']) ? $detail['material'] : null,
+                    'color' => isset($detail['color']) ? $detail['color'] : null,
+                    'size' => isset($detail['size']) ? $detail['size'] : null,
+                    'print' => isset($detail['print']) ? $detail['print'] : null,
+                    'print_size' => isset($detail['print_size']) ? $detail['print_size'] : null,
+                    'design_url' => isset($detail['design_url']) ? $detail['design_url'] : null,
                     'remarks' => isset($detail['remarks']) ? $detail['remarks'] : null,
+                    'quantity' => isset($detail['quantity']) ? $detail['quantity'] : null,
+                    'selling_price' => isset($detail['selling_price']) ? $detail['selling_price'] : null,
                     'is_deleted' => Response::FALSE,
                 ]);
             }
         }
-        return $order->load(['customer', 'payment_details', 'order_details.product', 'quotation.prs.prs_details.prs_suppliers']);
+        return $order->load(['customer', 'payment_details', 'order_details', 'quotation.prs']);
     }
 
     function update(OrderRequest $request, $id)
@@ -144,17 +149,22 @@ class OrderRepository implements IOrderRepository
             foreach ($orderDetails as $detail) {
                 $orderDetail = OrderDetail::create([
                     'order_no' => $order->order_no,
-                    'product_id' => isset($detail['product_id']) ? $detail['product_id'] : null,
-                    'uom' => isset($detail['uom']) ? $detail['uom'] : null,
-                    'quantity' => isset($detail['quantity']) ? $detail['quantity'] : null,
-                    'unit_price' => isset($detail['unit_price']) ? $detail['unit_price'] : null,
-                    'total_price' => isset($detail['total_price']) ? $detail['total_price'] : null,
+                    'item_name' => isset($detail['item_name']) ? $detail['item_name'] : null,
+                    'maker' => isset($detail['maker']) ? $detail['maker'] : null,
+                    'material' => isset($detail['material']) ? $detail['material'] : null,
+                    'color' => isset($detail['color']) ? $detail['color'] : null,
+                    'size' => isset($detail['size']) ? $detail['size'] : null,
+                    'print' => isset($detail['print']) ? $detail['print'] : null,
+                    'print_size' => isset($detail['print_size']) ? $detail['print_size'] : null,
+                    'design_url' => isset($detail['design_url']) ? $detail['design_url'] : null,
                     'remarks' => isset($detail['remarks']) ? $detail['remarks'] : null,
+                    'quantity' => isset($detail['quantity']) ? $detail['quantity'] : null,
+                    'selling_price' => isset($detail['selling_price']) ? $detail['selling_price'] : null,
                     'is_deleted' => Response::FALSE,
                 ]);
             }
         }
-        return $order->load(['customer', 'payment_details', 'order_details.product', 'quotation.prs.prs_details.prs_suppliers']);
+        return $order->load(['customer', 'payment_details', 'order_details', 'quotation.prs']);
     }
 
     function delete($id)

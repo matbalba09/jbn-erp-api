@@ -23,12 +23,17 @@ class OrderDetailRequest extends FormRequest
     {
         return [
             'order_no' => 'nullable|string',
-            'product_id' => 'nullable|integer',
-            'uom' => 'nullable|string',
-            'quantity' => 'nullable|integer',
-            'unit_price' => 'nullable|numeric',
-            'total_price' => 'nullable|numeric',
+            'item_name' => 'nullable|string',
+            'maker' => 'nullable|string',
+            'material' => 'nullable|string',
+            'color' => 'nullable|string',
+            'size' => 'nullable|string',
+            'print' => 'nullable|string',
+            'print_size' => 'nullable|string',
+            'design_url' => 'nullable|string',
             'remarks' => 'nullable|string',
+            'quantity' => 'nullable|integer',
+            'selling_price' => 'nullable|numeric',
             'is_deleted' => 'nullable|integer',
         ];
     }
