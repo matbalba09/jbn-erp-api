@@ -50,6 +50,24 @@ class UserSeeder extends Seeder
                 'created_at' => Helper::getDateNow(),
                 'updated_at' => Helper::getDateNow(),
             ],
+            [
+                'name' => 'inventory',
+                'username' => 'inventory',
+                'email' => 'inventory@gmail.com',
+                'password' => Hash::make('inventory'),
+                'is_deleted' => Response::FALSE,
+                'created_at' => Helper::getDateNow(),
+                'updated_at' => Helper::getDateNow(),
+            ],
+            [
+                'name' => 'production',
+                'username' => 'production',
+                'email' => 'production@gmail.com',
+                'password' => Hash::make('production'),
+                'is_deleted' => Response::FALSE,
+                'created_at' => Helper::getDateNow(),
+                'updated_at' => Helper::getDateNow(),
+            ],
         ]);
 
         $users = User::all();
