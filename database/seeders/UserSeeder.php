@@ -21,6 +21,8 @@ class UserSeeder extends Seeder
         $adminRole = Role::find(1);
         $salesRole = Role::find(2);
         $procurementRole = Role::find(3);
+        $inventoryRole = Role::find(4);
+        $productionRole = Role::find(5);
 
         User::insert([
             [
@@ -73,7 +75,9 @@ class UserSeeder extends Seeder
         $users = User::all();
         $adminUser = $users->first();
         $salesUser = $users->skip(1)->first();
-        $procurementUser = $users->last();
+        $procurementUser = $users->skip(2)->first();
+        $inventoryUser = $users->skip(3)->first();
+        $productionUser = $users->last();
 
         $adminUser->roles()->attach($adminRole);
         // $adminUser->roles()->attach([$adminRole->id, $salesRole->id, $procurementRole->id]);
@@ -82,5 +86,7 @@ class UserSeeder extends Seeder
 
         $salesUser->roles()->attach($salesRole);
         $procurementUser->roles()->attach($procurementRole);
+        $inventoryUser->roles()->attach($inventoryRole);
+        $productionUser->roles()->attach($productionRole);
     }
 }
