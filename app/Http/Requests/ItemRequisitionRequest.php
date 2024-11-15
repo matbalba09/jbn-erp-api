@@ -34,7 +34,6 @@ class ItemRequisitionRequest extends FormRequest
             'remarks' => 'nullable|string',
             'quantity' => 'nullable|integer',
             'selling_price' => 'nullable|numeric',
-            'supplier_id' => 'nullable|integer',
             'is_deleted' => 'nullable|integer',
         ];
     }

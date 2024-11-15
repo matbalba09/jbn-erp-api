@@ -20,4 +20,10 @@ class SupplierV2 extends Model
         'remarks',
         'is_deleted',
     ];
+
+    public function item_requisitions()
+    {
+        return $this->belongsToMany(ItemRequisition::class, 'item_requisition_supplier_v2')
+                    ->using(ItemRequisitionSupplierV2::class); // Specify pivot model
+    }
 }

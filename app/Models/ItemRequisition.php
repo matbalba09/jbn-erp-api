@@ -22,12 +22,21 @@ class ItemRequisition extends Model
         'remarks',
         'quantity',
         'selling_price',
-        'supplier_id',
         'is_deleted',
     ];
 
-    public function supplier_v2()
+    public function prs_v2()
     {
-        return $this->belongsTo(SupplierV2::class, 'supplier_id');
+        return $this->belongsTo(PrsV2::class, 'prs_v2_id');
+    }
+
+    // public function suppliers()
+    // {
+    //     return $this->belongsToMany(SupplierV2::class, 'supplier_id');
+    // }
+
+    public function suppliers()
+    {
+        return $this->belongsToMany(SupplierV2::class, 'item_requisition_supplier_v2');
     }
 }
