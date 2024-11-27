@@ -18,6 +18,8 @@ class Order extends Model
         'entry_by',
         'entry_date',
         'remarks',
+        'discount_price',
+        'total_price',
         'is_deleted',
     ];
 

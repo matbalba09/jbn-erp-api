@@ -30,6 +30,8 @@ class OrderRequest extends FormRequest
             'entry_by' => 'nullable|string',
             'entry_date' => 'nullable|string',
             'remarks' => 'nullable|string',
+            'discount_price' => 'nullable|numeric',
+            'total_price' => 'nullable|numeric',
             'is_deleted' => 'nullable|integer',
         ];
     }
