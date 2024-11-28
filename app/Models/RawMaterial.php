@@ -17,4 +17,10 @@ class RawMaterial extends Model
         'price',
         'is_deleted',
     ];
+
+    // public function po_details()
+    // {
+    //     return $this->belongsToMany(PoDetail::class, 'po_detail_raw_material')
+    //         ->using(PoDetailRawMaterial::class); // Specify pivot model
+    // }
 }

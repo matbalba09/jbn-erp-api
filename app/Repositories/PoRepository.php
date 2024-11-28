@@ -7,6 +7,9 @@ use App\Http\Requests\PoRequest;
 use Carbon\Carbon;
 use App\Models\Po;
 use App\Models\PoDetail;
+use App\Models\PrintMaterial;
+use App\Models\RawMaterial;
+use App\Models\RawMaterialV2;
 use App\Response;
 
 interface IPoRepository
@@ -69,24 +72,56 @@ class PoRepository implements IPoRepository
 
             $po = Po::create($data);
 
-            $poDetails = isset($data['po_details']) ? $data['po_details'] : [];
-            if ($poDetails) {
-                foreach ($poDetails as $detail) {
-                    PoDetail::create([
-                        'po_no' => $po->po_no,
-                        'inventory_id' => isset($detail['inventory_id']) ? $detail['inventory_id'] : null,
-                        'remarks' => isset($detail['remarks']) ? $detail['remarks'] : null,
-                        'name' => isset($detail['name']) ? $detail['name'] : null,
-                        'uom' => isset($detail['uom']) ? $detail['uom'] : null,
-                        'quantity' => isset($detail['quantity']) ? $detail['quantity'] : null,
-                        'unit_price' => isset($detail['unit_price']) ? $detail['unit_price'] : null,
-                        'total_price' => isset($detail['total_price']) ? $detail['total_price'] : null,
-                        'is_deleted' => Response::FALSE,
-                    ]);
+            $poDetailData = $data['po_details'] ?? null;
+            if ($poDetailData) {
+                $poDetail = PoDetail::create([
+                    'po_no' => $po->po_no,
+                    'inventory_id' => $poDetailData['inventory_id'] ?? null,
+                    'remarks' => $poDetailData['remarks'] ?? null,
+                    'name' => $poDetailData['name'] ?? null,
+                    'uom' => $poDetailData['uom'] ?? null,
+                    'quantity' => $poDetailData['quantity'] ?? null,
+                    'unit_price' => $poDetailData['unit_price'] ?? null,
+                    'total_price' => $poDetailData['total_price'] ?? null,
+                    'is_deleted' => Response::FALSE,
+                ]);
+
+                if (isset($poDetailData['raw_materials']) && is_array($poDetailData['raw_materials'])) {
+                    foreach ($poDetailData['raw_materials'] as $rawMaterialDetail) {
+                        $rawMaterial = RawMaterialV2::create([
+                            'maker' => $rawMaterialDetail['maker'] ?? null,
+                            'material' => $rawMaterialDetail['material'] ?? null,
+                            'color' => $rawMaterialDetail['color'] ?? null,
+                            'size' => $rawMaterialDetail['size'] ?? null,
+                            'uom' => $rawMaterialDetail['uom'] ?? null,
+                            'quantity' => $rawMaterialDetail['quantity'] ?? null,
+                            'unit_price' => $rawMaterialDetail['unit_price'] ?? null,
+                            'total_price' => $rawMaterialDetail['total_price'] ?? null,
+                            'remarks' => $rawMaterialDetail['remarks'] ?? null,
+                            'is_deleted' => Response::FALSE,
+                        ]);
+                        $poDetail->raw_materials()->attach($rawMaterial->id);
+                    }
+                }
+
+                if (isset($poDetailData['print_materials']) && is_array($poDetailData['print_materials'])) {
+                    foreach ($poDetailData['print_materials'] as $printMaterialDetail) {
+                        $printMaterial = PrintMaterial::create([
+                            'print' => $printMaterialDetail['print'] ?? null,
+                            'color' => $printMaterialDetail['color'] ?? null,
+                            'size' => $printMaterialDetail['size'] ?? null,
+                            'uom' => $printMaterialDetail['uom'] ?? null,
+                            'quantity' => $printMaterialDetail['quantity'] ?? null,
+                            'unit_price' => $printMaterialDetail['unit_price'] ?? null,
+                            'total_price' => $printMaterialDetail['total_price'] ?? null,
+                            'remarks' => $printMaterialDetail['remarks'] ?? null,
+                            'is_deleted' => Response::FALSE,
+                        ]);
+                        $poDetail->print_materials()->attach($printMaterial->id);
+                    }
                 }
             }
-
-            $result[] = $po->load(['po_details']);
+            $result[] = $po->load(['po_details.raw_materials', 'po_details.print_materials']);
         }
         return $result;
     }

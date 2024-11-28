@@ -27,7 +27,7 @@ class Po extends Model
 
     public function po_details()
     {
-        return $this->hasMany(PoDetail::class, 'po_no', 'po_no');
+        return $this->hasOne(PoDetail::class, 'po_no', 'po_no');
     }
 
     public function supplier()
