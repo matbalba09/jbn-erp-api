@@ -21,8 +21,6 @@ return new class extends Migration
             $table->string('entry_by')->nullable();
             $table->string('entry_date')->nullable();
             $table->string('remarks')->nullable();
-            $table->decimal('discount_price', 10, 2)->nullable();
-            $table->decimal('total_price', 10, 2)->nullable();
             $table->integer('is_deleted')->nullable();
             $table->timestamps();
         });
