@@ -25,13 +25,13 @@ class PoRepository implements IPoRepository
 {
     function getAll()
     {
-        $po = Po::with('po_details.inventory', 'supplier', 'order')->where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
+        $po = Po::with('po_details.inventory', 'supplier', 'order', 'po_details.raw_materials', 'po_details.print_materials')->where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
         return $po;
     }
 
     function getById($id)
     {
-        $po = Po::with('po_details.inventory', 'supplier', 'order')->findOrFail($id);
+        $po = Po::with('po_details.inventory', 'supplier', 'order', 'po_details.raw_materials', 'po_details.print_materials')->findOrFail($id);
         return $po;
     }
 

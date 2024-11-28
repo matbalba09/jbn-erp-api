@@ -21,6 +21,11 @@ class PoDetail extends Model
         'is_deleted',
     ];
 
+    public function inventory()
+    {
+        return $this->belongsTo(Po::class, 'inventory_id');
+    }
+
     public function raw_materials()
     {
         return $this->belongsToMany(RawMaterialV2::class, 'po_detail_raw_material');
