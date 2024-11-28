@@ -27,14 +27,14 @@ class OrderRepository implements IOrderRepository
 {
     function getAll()
     {
-        $orders = Order::with('customer', 'payment_details', 'order_details', 'quotation.prs.item_requisitions')
+        $orders = Order::with('customer', 'payment_details', 'order_details', 'quotation.prs.item_requisitions.suppliers')
             ->where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
         return $orders;
     }
 
     function getById($id)
     {
-        $order = Order::with('customer', 'payment_details', 'order_details', 'quotation.prs.item_requisitions')
+        $order = Order::with('customer', 'payment_details', 'order_details', 'quotation.prs.item_requisitions.suppliers')
             ->findOrFail($id);
         return $order;
     }
