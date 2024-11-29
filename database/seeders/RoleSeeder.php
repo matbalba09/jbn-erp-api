@@ -35,6 +35,18 @@ class RoleSeeder extends Seeder
                 'created_at' => Helper::getDateNow(),
                 'updated_at' => Helper::getDateNow(),
             ],
+            [
+                'name' => 'inventory',
+                'is_deleted' => Response::FALSE,
+                'created_at' => Helper::getDateNow(),
+                'updated_at' => Helper::getDateNow(),
+            ],
+            [
+                'name' => 'production',
+                'is_deleted' => Response::FALSE,
+                'created_at' => Helper::getDateNow(),
+                'updated_at' => Helper::getDateNow(),
+            ],
         ]);
     }
 }
