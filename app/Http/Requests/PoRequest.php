@@ -23,7 +23,7 @@ class PoRequest extends FormRequest
     {
         return [
             'po_no' => 'nullable|string',
-            'supplier_id' => 'nullable|integer',
+            'supplier_name' => 'nullable|string',
             'order_no' => 'nullable|string',
             'po_date' => 'nullable|string',
             'status' => 'nullable|string',

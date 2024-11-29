@@ -7,6 +7,7 @@ use App\Http\Requests\PoRequest;
 use Carbon\Carbon;
 use App\Models\Po;
 use App\Models\PoDetail;
+use App\Models\PoPayment;
 use App\Models\PrintMaterial;
 use App\Models\RawMaterial;
 use App\Models\RawMaterialV2;
@@ -25,13 +26,13 @@ class PoRepository implements IPoRepository
 {
     function getAll()
     {
-        $po = Po::with('po_details.inventory', 'supplier', 'order', 'po_details.raw_materials', 'po_details.print_materials')->where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
+        $po = Po::with('payment_details', 'po_details.inventory', 'order', 'po_details.raw_materials', 'po_details.print_materials')->where('is_deleted', Response::FALSE)->orderBy('created_at', 'desc')->get();
         return $po;
     }
 
     function getById($id)
     {
-        $po = Po::with('po_details.inventory', 'supplier', 'order', 'po_details.raw_materials', 'po_details.print_materials')->findOrFail($id);
+        $po = Po::with('payment_details', 'po_details.inventory', 'order', 'po_details.raw_materials', 'po_details.print_materials')->findOrFail($id);
         return $po;
     }
 
@@ -59,7 +60,7 @@ class PoRepository implements IPoRepository
                 }
             }
 
-            $data['supplier_id'] = isset($data['supplier_id']) ? $data['supplier_id'] : null;
+            $data['supplier_name'] = isset($data['supplier_name']) ? $data['supplier_name'] : null;
             $data['po_date'] = isset($data['po_date']) ? $data['po_date'] : null;
             $data['status'] = isset($data['status']) ? $data['status'] : null;
             $data['remarks'] = isset($data['remarks']) ? $data['remarks'] : null;
@@ -121,7 +122,28 @@ class PoRepository implements IPoRepository
                     }
                 }
             }
-            $result[] = $po->load(['po_details.raw_materials', 'po_details.print_materials']);
+            
+            $payments = $data['payment_details'] ?? null;
+            if ($payments) {
+                foreach ($payments as $detail) {
+                    PoPayment::create([
+                        'po_no' => $po->po_no,
+                        'issued_date' => $detail['issued_date'] ?? null,
+                        'ref_no' => $detail['ref_no'] ?? null,
+                        'paid_date' => $detail['paid_date'] ?? null,
+                        'payment_method' => $detail['payment_method'] ?? null,
+                        'amount' => $detail['amount'] ?? null,
+                        'description' => $detail['description'] ?? null,
+                        'documents' => $detail['documents'] ?? null,
+                        'status' => $detail['status'] ?? null,
+                        'check_no' => $detail['check_no'] ?? null,
+                        'bank_name' => $detail['bank_name'] ?? null,
+                        'verified' => $detail['verified'] ?? null,
+                        'is_deleted' => Response::FALSE,
+                    ]);
+                }
+            }
+            $result[] = $po->load(['payment_details', 'po_details.raw_materials', 'po_details.print_materials']);
         }
         return $result;
     }

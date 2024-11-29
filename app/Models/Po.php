@@ -11,7 +11,7 @@ class Po extends Model
 
     protected $fillable = [
         'po_no',
-        'supplier_id',
+        'supplier_name',
         'order_no',
         'po_date',
         'status',
@@ -30,13 +30,18 @@ class Po extends Model
         return $this->hasOne(PoDetail::class, 'po_no', 'po_no');
     }
 
-    public function supplier()
-    {
-        return $this->hasOne(Supplier::class, 'id', 'supplier_id');
-    }
+    // public function supplier()
+    // {
+    //     return $this->hasOne(Supplier::class, 'id', 'supplier_id');
+    // }
 
     public function order()
     {
         return $this->belongsTo(Order::class, 'order_no', 'order_no');
+    }
+
+    public function payment_details()
+    {
+        return $this->hasMany(PoPayment::class, 'po_no', 'po_no');
     }
 }

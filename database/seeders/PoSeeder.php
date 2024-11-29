@@ -20,7 +20,7 @@ class PoSeeder extends Seeder
         Po::insert([
             [
                 'po_no' => 'POR240725-PR-001',
-                'supplier_id' => 1,
+                'supplier_name' => 'supplier_01',
                 'order_no' => 'ORD240719-SR-001',
                 'po_date' => Helper::getDateNow(),
                 'status' => 'test_status',
@@ -37,7 +37,7 @@ class PoSeeder extends Seeder
             ],
             [
                 'po_no' => 'POR240725-PR-002',
-                'supplier_id' => 2,
+                'supplier_name' => 'supplier_02',
                 'order_no' => 'ORD240719-SR-002',
                 'po_date' => Helper::getDateNow(),
                 'status' => 'test_status',
@@ -54,7 +54,7 @@ class PoSeeder extends Seeder
             ],
             [
                 'po_no' => 'POR240725-PR-003',
-                'supplier_id' => 3,
+                'supplier_name' => 'supplier_03',
                 'order_no' => 'ORD240719-SR-003',
                 'po_date' => Helper::getDateNow(),
                 'status' => 'test_status',
@@ -71,7 +71,7 @@ class PoSeeder extends Seeder
             ],
             [
                 'po_no' => 'POR240725-PR-004',
-                'supplier_id' => 4,
+                'supplier_name' => 'supplier_04',
                 'order_no' => 'ORD240719-SR-004',
                 'po_date' => Helper::getDateNow(),
                 'status' => 'test_status',
