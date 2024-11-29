@@ -132,7 +132,7 @@ Route::prefix('v1')->group(function () {
         Route::get('/', [PoController::class, 'index']);
         Route::get('{id}', [PoController::class, 'getById']);
         Route::post('create', [PoController::class, 'create']);
-        Route::put('update/{id}', [PoController::class, 'update']);
+        Route::put('update', [PoController::class, 'update']);
         Route::delete('delete/{id}', [PoController::class, 'delete']);
     });
     Route::prefix('po_detail')->group(function () {

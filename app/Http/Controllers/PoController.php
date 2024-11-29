@@ -61,9 +61,9 @@ class PoController extends Controller
         return response()->json($response, $response['code']);
     }
 
-    public function update(PoRequest $request, $id)
+    public function update(PoRequest $request)
     {
-        $po = $this->poRepository->update($request, $id);
+        $po = $this->poRepository->update($request);
 
         $response = [
             'code' => Response::HTTP_SUCCESS,

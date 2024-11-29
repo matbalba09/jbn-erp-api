@@ -18,7 +18,7 @@ interface IPoRepository
     function getAll();
     function getById($id);
     function create(PoRequest $request);
-    function update(PoRequest $request, $id);
+    function update(PoRequest $request);
     function delete($id);
 }
 
@@ -148,68 +148,84 @@ class PoRepository implements IPoRepository
         return $result;
     }
 
-    function update(PoRequest $request, $id)
+    function update(PoRequest $request)
     {
-        $po = Po::findOrFail($id);
-        $validatedData = $request->validated();
-        $po->update($validatedData);
+        $result = [];
+        $pos = $request->input('pos');
 
-        $poDetail = PoDetail::where('po_no', $po->po_no)->first();
-        $poDetails = $request->input('po_details');
-        $poDetail->update([
-            'po_no' => $poDetails['po_no'] ?? $poDetail->po_no,
-            'inventory_id' => $poDetails['inventory_id'] ?? $poDetail->inventory_id,
-            'remarks' => $poDetails['remarks'] ?? $poDetail->remarks,
-            'name' => $poDetails['name'] ?? $poDetail->name,
-            'uom' => $poDetails['uom'] ?? $poDetail->uom,
-            'quantity' => $poDetails['quantity'] ?? $poDetail->quantity,
-            'unit_price' => $poDetails['unit_price'] ?? $poDetail->unit_price,
-            'total_price' => $poDetails['total_price'] ?? $poDetail->total_price,
-            'is_deleted' => Response::FALSE,
-        ]);
+        foreach ($pos as $data) {
+            $po = Po::findOrFail($data['id']);
+            $po->update([
+                'supplier_name' => $data['supplier_name'] ?? $po->supplier_name, 
+                'order_no' => $data['order_no'] ?? $po->order_no, 
+                'po_date' => $data['po_date'] ?? $po->po_date, 
+                'status' => $data['status'] ?? $po->status, 
+                'remarks' => $data['remarks'] ?? $po->remarks, 
+                'ship_to' => $data['ship_to'] ?? $po->ship_to, 
+                'delivery_date' => $data['delivery_date'] ?? $po->delivery_date, 
+                'payment_terms' => $data['payment_terms'] ?? $po->payment_terms, 
+                'requested_by' => $data['requested_by'] ?? $po->requested_by, 
+                'approved_by' => $data['approved_by'] ?? $po->approved_by, 
+                'received_by' => $data['received_by'] ?? $po->received_by, 
+            ]);
 
-        if (isset($poDetails['raw_materials']) && is_array($poDetails['raw_materials'])) {
-            $rawMaterialIds = [];
+            $poDetail = PoDetail::where('po_no', $po->po_no)->first();
+            $poDetails = $data['po_details'];
+            $poDetail->update([
+                'po_no' => $poDetails['po_no'] ?? $poDetail->po_no,
+                'inventory_id' => $poDetails['inventory_id'] ?? $poDetail->inventory_id,
+                'remarks' => $poDetails['remarks'] ?? $poDetail->remarks,
+                'name' => $poDetails['name'] ?? $poDetail->name,
+                'uom' => $poDetails['uom'] ?? $poDetail->uom,
+                'quantity' => $poDetails['quantity'] ?? $poDetail->quantity,
+                'unit_price' => $poDetails['unit_price'] ?? $poDetail->unit_price,
+                'total_price' => $poDetails['total_price'] ?? $poDetail->total_price,
+                'is_deleted' => Response::FALSE,
+            ]);
 
-            foreach ($poDetails['raw_materials'] as $rawMaterialDetail) {
-                $rawMaterial = RawMaterialV2::create([
-                    'maker' => $rawMaterialDetail['maker'] ?? null,
-                    'material' => $rawMaterialDetail['material'] ?? null,
-                    'color' => $rawMaterialDetail['color'] ?? null,
-                    'size' => $rawMaterialDetail['size'] ?? null,
-                    'uom' => $rawMaterialDetail['uom'] ?? null,
-                    'quantity' => $rawMaterialDetail['quantity'] ?? null,
-                    'unit_price' => $rawMaterialDetail['unit_price'] ?? null,
-                    'total_price' => $rawMaterialDetail['total_price'] ?? null,
-                    'remarks' => $rawMaterialDetail['remarks'] ?? null,
-                    'is_deleted' => Response::FALSE,
-                ]);
-                $rawMaterialIds[] = $rawMaterial->id;
+            if (isset($poDetails['raw_materials']) && is_array($poDetails['raw_materials'])) {
+                $rawMaterialIds = [];
+
+                foreach ($poDetails['raw_materials'] as $rawMaterialDetail) {
+                    $rawMaterial = RawMaterialV2::create([
+                        'maker' => $rawMaterialDetail['maker'] ?? null,
+                        'material' => $rawMaterialDetail['material'] ?? null,
+                        'color' => $rawMaterialDetail['color'] ?? null,
+                        'size' => $rawMaterialDetail['size'] ?? null,
+                        'uom' => $rawMaterialDetail['uom'] ?? null,
+                        'quantity' => $rawMaterialDetail['quantity'] ?? null,
+                        'unit_price' => $rawMaterialDetail['unit_price'] ?? null,
+                        'total_price' => $rawMaterialDetail['total_price'] ?? null,
+                        'remarks' => $rawMaterialDetail['remarks'] ?? null,
+                        'is_deleted' => Response::FALSE,
+                    ]);
+                    $rawMaterialIds[] = $rawMaterial->id;
+                }
+                $poDetail->raw_materials()->sync($rawMaterialIds);
             }
-            $poDetail->raw_materials()->sync($rawMaterialIds);
-        }
 
-        if (isset($poDetails['print_materials']) && is_array($poDetails['print_materials'])) {
-            $printMaterialIds = [];
+            if (isset($poDetails['print_materials']) && is_array($poDetails['print_materials'])) {
+                $printMaterialIds = [];
 
-            foreach ($poDetails['print_materials'] as $printMaterialDetail) {
-                $printMaterial = PrintMaterial::create([
-                    'print' => $printMaterialDetail['print'] ?? null,
-                    'color' => $printMaterialDetail['color'] ?? null,
-                    'size' => $printMaterialDetail['size'] ?? null,
-                    'uom' => $printMaterialDetail['uom'] ?? null,
-                    'quantity' => $printMaterialDetail['quantity'] ?? null,
-                    'unit_price' => $printMaterialDetail['unit_price'] ?? null,
-                    'total_price' => $printMaterialDetail['total_price'] ?? null,
-                    'remarks' => $printMaterialDetail['remarks'] ?? null,
-                    'is_deleted' => Response::FALSE,
-                ]);
-                $printMaterialIds[] = $printMaterial->id;
+                foreach ($poDetails['print_materials'] as $printMaterialDetail) {
+                    $printMaterial = PrintMaterial::create([
+                        'print' => $printMaterialDetail['print'] ?? null,
+                        'color' => $printMaterialDetail['color'] ?? null,
+                        'size' => $printMaterialDetail['size'] ?? null,
+                        'uom' => $printMaterialDetail['uom'] ?? null,
+                        'quantity' => $printMaterialDetail['quantity'] ?? null,
+                        'unit_price' => $printMaterialDetail['unit_price'] ?? null,
+                        'total_price' => $printMaterialDetail['total_price'] ?? null,
+                        'remarks' => $printMaterialDetail['remarks'] ?? null,
+                        'is_deleted' => Response::FALSE,
+                    ]);
+                    $printMaterialIds[] = $printMaterial->id;
+                }
+                $poDetail->print_materials()->sync($printMaterialIds);
             }
-            $poDetail->print_materials()->sync($printMaterialIds);
+            $result[] = $po->load(['po_details.raw_materials', 'po_details.print_materials']);
         }
-
-        return $po->load(['po_details.raw_materials', 'po_details.print_materials']);
+        return $result;
     }
 
     function delete($id)
